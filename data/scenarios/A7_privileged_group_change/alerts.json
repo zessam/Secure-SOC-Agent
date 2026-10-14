@@ -1,0 +1,29 @@
+[
+  {
+    "alert_id": "ALR-A7-001",
+    "created": "2026-10-13T23:52:00.000Z",
+    "rule": {
+      "name": "Member added to privileged group: Domain Admins"
+    },
+    "severity": "critical",
+    "source": "SIEM",
+    "description": "svc-backup added m.chen to Domain Admins from JUMP01.",
+    "entities": {
+      "users": [
+        "svc-backup",
+        "m.chen"
+      ],
+      "hosts": [
+        "DC01",
+        "JUMP01"
+      ]
+    },
+    "mitre_attack": [
+      "T1098"
+    ],
+    "status": "new",
+    "evidence_event_ids": [
+      "A7-SIEM-00036"
+    ]
+  }
+]

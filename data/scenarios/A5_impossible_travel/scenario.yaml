@@ -1,0 +1,39 @@
+id: A5
+title: Impossible travel with concurrent sessions (ambiguous)
+category: soc
+build_first: false
+description: r.okafor works from London; 42 minutes later her account signs in from a Singapore cloud IP on an unregistered
+  Mac, with MFA satisfied by an existing token claim, and reads a few emails. She keeps working on WS-007 in London
+  at the same time.
+trigger:
+  type: siem_alert
+  alert_id: ALR-A5-001
+agents_involved:
+- triage
+- identity
+- siem
+- threat_intel
+- investigator
+- response_planner
+timeline_utc:
+- time: 08:30
+  event: Sign-in from London on WS-007
+- time: 09:12
+  event: Sign-in from Singapore (token claim)
+- time: 09:13-09:19
+  event: 19 mail items read from SG
+- time: 09:14-09:15
+  event: User still active in London
+files:
+  alerts.json: Alerts that trigger or accompany the scenario
+  siem_events.jsonl: SIEM log events (auth, sign-in, email, proxy, DNS, firewall, AD audit)
+  edr_telemetry.jsonl: EDR telemetry (process, network, file, registry, device, detections)
+  ad_objects.json: Scenario-specific AD view (overrides merged over data/environment/ad_users.json)
+  ti_indicators.json: Threat-intel lookups available for this scenario
+  soar_case.json: SOAR case (if any)
+  tickets.json: ITSM tickets / changes (if any)
+  expected.yaml: Ground truth used by evals - never give this file to agents
+counts:
+  siem_events: 96
+  edr_events: 32
+  alerts: 1

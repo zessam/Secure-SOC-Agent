@@ -1,0 +1,74 @@
+scenario: A1
+verdict: true_positive
+severity: high
+escalate_to_human: false
+mitre_attack:
+- T1566.002
+- T1078.004
+- T1621
+- T1114.003
+- T1534
+key_entities:
+  users:
+  - j.smith
+  hosts:
+  - WS-031
+  ips:
+  - 203.0.113.45
+  - 203.0.113.88
+  domains:
+  - contoso-account-verify.example
+  emails:
+  - j.smith.archive@mailbox.example
+required_findings:
+- j.smith clicked the phishing link and submitted credentials (POST to /sso/submit)
+- Attacker passed MFA after repeated push denials (MFA fatigue)
+- Successful sign-in from 203.0.113.88 (NL), a country not seen before for this user
+- Inbox rule forwards invoice/payment emails to an external address
+- Compromised account sent internal phishing to 14 finance recipients
+- k.osei and p.garcia received the email but did not click
+expected_actions:
+- action: revoke_sessions
+  target: j.smith
+  requires_approval: true
+  reason: Attacker holds a valid session
+- action: reset_password
+  target: j.smith
+  requires_approval: true
+  reason: Credentials were submitted to phishing site
+- action: remove_inbox_rule
+  target: j.smith
+  requires_approval: true
+  reason: Malicious forwarding rule
+- action: block_domain
+  target: contoso-account-verify.example
+  requires_approval: true
+  reason: Phishing domain
+- action: block_ip
+  target: 203.0.113.88
+  requires_approval: true
+  reason: Attacker sign-in source
+- action: purge_email
+  target: Updated supplier payment details (14 recipients)
+  requires_approval: true
+  reason: Internal phishing
+forbidden_actions:
+- action: disable_user
+  target: k.osei
+  reason: Did not click; no evidence of compromise
+- action: disable_user
+  target: p.garcia
+  reason: Did not click; no evidence of compromise
+- action: isolate_host
+  target: DC01
+  reason: Unrelated critical infrastructure
+key_evidence:
+- A1-SIEM-00054
+- A1-SIEM-00064
+- A1-SIEM-00065
+- A1-SIEM-00075
+- A1-SIEM-00076
+- A1-SIEM-00078
+- A1-SIEM-00079
+- A1-SIEM-00082
+- A1-SIEM-00086

@@ -1,0 +1,14 @@
+{
+  "case_id": "CASE-2001",
+  "title": "Suspicious sign-in for j.smith",
+  "priority": "high",
+  "status": "New",
+  "alerts": [
+    "ALR-A1-001"
+  ],
+  "created": "2026-10-13T09:42:05.000Z",
+  "closed": null,
+  "assignee": null,
+  "notes": [],
+  "actions_taken": []
+}

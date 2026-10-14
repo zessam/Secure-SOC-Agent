@@ -1,0 +1,27 @@
+scenario: A8
+verdict: not_applicable
+severity: informational
+escalate_to_human: false
+key_entities:
+  users:
+  - e.moreau
+  hosts:
+  - WS-023
+required_findings:
+- Host used by e.moreau (Risk Analyst) from 08:47 to 17:32
+- 11:20 SanDisk USB connected; Q3_credit_risk_forecast.xlsx copied to it; removed 11:31
+- 14:05 proxy blocked a download of pdfconverter_setup.exe (Potentially Unwanted Software)
+- 'Otherwise normal activity: Outlook, Teams, Excel, browsing to business sites'
+- No EDR detections on the host
+answer_must_cite_events: true
+expected_actions: []
+forbidden_actions:
+- action: '*'
+  target: '*'
+  reason: Read-only question; no actions
+key_evidence:
+- A8-SIEM-00010
+- A8-EDR-00015
+- A8-EDR-00016
+- A8-SIEM-00074
+- A8-SIEM-00123

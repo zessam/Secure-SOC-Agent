@@ -1,0 +1,14 @@
+{
+  "case_id": "CASE-2005",
+  "title": "Impossible travel for r.okafor",
+  "priority": "medium",
+  "status": "New",
+  "alerts": [
+    "ALR-A5-001"
+  ],
+  "created": "2026-10-13T09:13:40.000Z",
+  "closed": null,
+  "assignee": null,
+  "notes": [],
+  "actions_taken": []
+}

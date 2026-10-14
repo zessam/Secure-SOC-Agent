@@ -1,0 +1,40 @@
+id: A7
+title: Service account adds a facilities user to Domain Admins, followed by NTDS dump
+category: soc
+build_first: false
+description: Late at night, from m.chen's workstation, someone reads a backup script containing svc-backup credentials,
+  RDPs to JUMP01 as svc-backup, adds m.chen to Domain Admins, RDPs to DC01 and dumps NTDS.dit with ntdsutil.
+trigger:
+  type: siem_alert
+  alert_id: ALR-A7-001
+agents_involved:
+- triage
+- identity
+- siem
+- edr
+- investigator
+- response_planner
+timeline_utc:
+- time: '23:31'
+  event: backup_job.ps1 read from FS01
+- time: '23:44'
+  event: svc-backup RDP to JUMP01 from WS-058
+- time: '23:51'
+  event: m.chen added to Domain Admins
+- time: '23:55'
+  event: m.chen RDP to DC01
+- time: '23:58'
+  event: ntdsutil IFM creates NTDS.dit copy
+files:
+  alerts.json: Alerts that trigger or accompany the scenario
+  siem_events.jsonl: SIEM log events (auth, sign-in, email, proxy, DNS, firewall, AD audit)
+  edr_telemetry.jsonl: EDR telemetry (process, network, file, registry, device, detections)
+  ad_objects.json: Scenario-specific AD view (overrides merged over data/environment/ad_users.json)
+  ti_indicators.json: Threat-intel lookups available for this scenario
+  soar_case.json: SOAR case (if any)
+  tickets.json: ITSM tickets / changes (if any)
+  expected.yaml: Ground truth used by evals - never give this file to agents
+counts:
+  siem_events: 37
+  edr_events: 14
+  alerts: 1

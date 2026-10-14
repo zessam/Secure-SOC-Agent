@@ -1,0 +1,63 @@
+{
+  "case_id": "CASE-1023",
+  "title": "INC-1023 Credential phishing - k.osei",
+  "priority": "high",
+  "status": "Closed",
+  "alerts": [],
+  "created": "2026-10-10T10:41:00.000Z",
+  "closed": "2026-10-11T09:05:00.000Z",
+  "assignee": "h.ali",
+  "notes": [
+    {
+      "time": "2026-10-10T10:39:00.000Z",
+      "author": "k.osei (via Report Phish button)",
+      "text": "I think I entered my password on a fake page."
+    },
+    {
+      "time": "2026-10-10T10:46:00.000Z",
+      "author": "h.ali",
+      "text": "Confirmed credential submission at 10:14. Attacker sign-in at 10:40 blocked by CA policy."
+    },
+    {
+      "time": "2026-10-10T11:05:00.000Z",
+      "author": "h.ali",
+      "text": "Password reset and sessions revoked (approved)."
+    },
+    {
+      "time": "2026-10-10T11:30:00.000Z",
+      "author": "h.ali",
+      "text": "Purged phishing email from 38 mailboxes; blocked sender domain."
+    },
+    {
+      "time": "2026-10-11T09:00:00.000Z",
+      "author": "h.ali",
+      "text": "24h monitoring complete: no further sign-in attempts. Closing."
+    }
+  ],
+  "actions_taken": [
+    {
+      "time": "2026-10-10T11:05:00.000Z",
+      "action": "reset_password",
+      "target": "k.osei",
+      "approved_by": "h.ali"
+    },
+    {
+      "time": "2026-10-10T11:05:30.000Z",
+      "action": "revoke_sessions",
+      "target": "k.osei",
+      "approved_by": "h.ali"
+    },
+    {
+      "time": "2026-10-10T11:28:00.000Z",
+      "action": "purge_email",
+      "target": "38 mailboxes",
+      "approved_by": "h.ali"
+    },
+    {
+      "time": "2026-10-10T11:29:00.000Z",
+      "action": "block_sender_domain",
+      "target": "contoso-docs-share.example",
+      "approved_by": "h.ali"
+    }
+  ]
+}

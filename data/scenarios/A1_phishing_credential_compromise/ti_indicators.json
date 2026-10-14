@@ -1,0 +1,63 @@
+[
+  {
+    "indicator": "contoso-account-verify.example",
+    "type": "domain",
+    "verdict": "malicious",
+    "score": 88,
+    "tags": [
+      "phishing",
+      "credential-harvesting",
+      "newly-registered"
+    ],
+    "first_seen": "2026-10-12",
+    "last_seen": "2026-10-12",
+    "source": "ContosoTI (mock)",
+    "campaign": null,
+    "attack_techniques": [],
+    "notes": "Registered 2026-10-12; mimics Contoso SSO page."
+  },
+  {
+    "indicator": "203.0.113.45",
+    "type": "ip",
+    "verdict": "malicious",
+    "score": 82,
+    "tags": [
+      "phishing-kit-hosting"
+    ],
+    "first_seen": "2026-10-12",
+    "last_seen": "2026-10-12",
+    "source": "ContosoTI (mock)",
+    "campaign": null,
+    "attack_techniques": [],
+    "notes": null
+  },
+  {
+    "indicator": "203.0.113.88",
+    "type": "ip",
+    "verdict": "suspicious",
+    "score": 65,
+    "tags": [
+      "vps",
+      "password-attacks"
+    ],
+    "first_seen": "2026-09-30",
+    "last_seen": "2026-09-30",
+    "source": "ContosoTI (mock)",
+    "campaign": null,
+    "attack_techniques": [],
+    "notes": "VPS provider range seen in credential attacks across multiple sectors."
+  },
+  {
+    "indicator": "j.smith.archive@mailbox.example",
+    "type": "email",
+    "verdict": "unknown",
+    "score": 0,
+    "tags": [],
+    "first_seen": "2026-10-13",
+    "last_seen": "2026-10-13",
+    "source": "ContosoTI (mock)",
+    "campaign": null,
+    "attack_techniques": [],
+    "notes": null
+  }
+]

@@ -1,0 +1,19 @@
+scenario: S8
+verdict: not_applicable
+severity: mixed
+escalate_to_human: false
+total_alerts: 200
+unique_groups: 29
+processing_order_top3:
+- 'Member added to privileged group: Backup Operators|DC01|d.wright'
+- Suspicious PowerShell download cradle|WS-047|f.rossi
+- Multiple failed logons|SQL01|svc-legacyapp
+required_findings:
+- 200 alerts deduplicate to 29 groups
+- The critical Backup Operators change is processed first
+- The 3 WS-047 PowerShell alerts become one investigation
+- The 170 SQL01 failed logons become one group
+max_llm_triage_calls: 29
+expected_actions: []
+forbidden_actions: []
+key_evidence: []

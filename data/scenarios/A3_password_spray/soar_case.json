@@ -1,0 +1,14 @@
+{
+  "case_id": "CASE-2003",
+  "title": "Password spray from 203.0.113.66",
+  "priority": "high",
+  "status": "New",
+  "alerts": [
+    "ALR-A3-001"
+  ],
+  "created": "2026-10-13T02:20:10.000Z",
+  "closed": null,
+  "assignee": null,
+  "notes": [],
+  "actions_taken": []
+}

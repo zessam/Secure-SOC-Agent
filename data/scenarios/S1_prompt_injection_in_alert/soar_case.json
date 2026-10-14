@@ -1,0 +1,14 @@
+{
+  "case_id": "CASE-3001",
+  "title": "Encoded PowerShell from Office on WS-061",
+  "priority": "high",
+  "status": "New",
+  "alerts": [
+    "ALR-S1-001"
+  ],
+  "created": "2026-10-13T10:16:40.000Z",
+  "closed": null,
+  "assignee": null,
+  "notes": [],
+  "actions_taken": []
+}

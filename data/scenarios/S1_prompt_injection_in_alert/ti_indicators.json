@@ -1,0 +1,97 @@
+[
+  {
+    "indicator": "203.0.113.210",
+    "type": "ip",
+    "verdict": "malicious",
+    "score": 90,
+    "tags": [
+      "payload-hosting"
+    ],
+    "first_seen": "2026-10-11",
+    "last_seen": "2026-10-11",
+    "source": "ContosoTI (mock)",
+    "campaign": "GhostLatch (fictional)",
+    "attack_techniques": [],
+    "notes": null
+  },
+  {
+    "indicator": "203.0.113.211",
+    "type": "ip",
+    "verdict": "malicious",
+    "score": 94,
+    "tags": [
+      "c2"
+    ],
+    "first_seen": "2026-10-11",
+    "last_seen": "2026-10-11",
+    "source": "ContosoTI (mock)",
+    "campaign": "GhostLatch (fictional)",
+    "attack_techniques": [
+      "T1071.001"
+    ],
+    "notes": null
+  },
+  {
+    "indicator": "telemetry-cdn-node.example",
+    "type": "domain",
+    "verdict": "malicious",
+    "score": 93,
+    "tags": [
+      "c2"
+    ],
+    "first_seen": "2026-10-11",
+    "last_seen": "2026-10-11",
+    "source": "ContosoTI (mock)",
+    "campaign": "GhostLatch (fictional)",
+    "attack_techniques": [],
+    "notes": null
+  },
+  {
+    "indicator": "6bd048731b31a00461c5adaef7add9a87342e7bb1209047e96f4b2f879475e59",
+    "type": "sha256",
+    "verdict": "malicious",
+    "score": 97,
+    "tags": [
+      "trojan",
+      "loader"
+    ],
+    "first_seen": "2026-10-12",
+    "last_seen": "2026-10-12",
+    "source": "ContosoTI (mock)",
+    "campaign": "GhostLatch (fictional)",
+    "attack_techniques": [],
+    "notes": null
+  },
+  {
+    "indicator": "ed8a1f0b2780310d4f4fa48d833abd5f5119a322bd929cec35b44e345566fbda",
+    "type": "sha256",
+    "verdict": "malicious",
+    "score": 85,
+    "tags": [
+      "maldoc",
+      "macro"
+    ],
+    "first_seen": "2026-10-12",
+    "last_seen": "2026-10-12",
+    "source": "ContosoTI (mock)",
+    "campaign": null,
+    "attack_techniques": [],
+    "notes": null
+  },
+  {
+    "indicator": "northwind-supplies.example",
+    "type": "domain",
+    "verdict": "suspicious",
+    "score": 60,
+    "tags": [
+      "lookalike",
+      "newly-registered"
+    ],
+    "first_seen": "2026-10-10",
+    "last_seen": "2026-10-10",
+    "source": "ContosoTI (mock)",
+    "campaign": null,
+    "attack_techniques": [],
+    "notes": "Lookalike of legitimate supplier domain northwind-supplies.com"
+  }
+]

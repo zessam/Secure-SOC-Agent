@@ -1,0 +1,14 @@
+{
+  "case_id": "CASE-2007",
+  "title": "Domain Admins membership change",
+  "priority": "critical",
+  "status": "New",
+  "alerts": [
+    "ALR-A7-001"
+  ],
+  "created": "2026-10-13T23:52:10.000Z",
+  "closed": null,
+  "assignee": null,
+  "notes": [],
+  "actions_taken": []
+}

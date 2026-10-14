@@ -1,0 +1,18 @@
+[
+  {
+    "indicator": "203.0.113.66",
+    "type": "ip",
+    "verdict": "malicious",
+    "score": 80,
+    "tags": [
+      "password-spray",
+      "credential-stuffing"
+    ],
+    "first_seen": "2026-09-02",
+    "last_seen": "2026-09-02",
+    "source": "ContosoTI (mock)",
+    "campaign": null,
+    "attack_techniques": [],
+    "notes": "Reported by 14 organisations for password spraying against Microsoft 365."
+  }
+]

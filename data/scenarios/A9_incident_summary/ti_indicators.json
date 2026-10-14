@@ -1,0 +1,17 @@
+[
+  {
+    "indicator": "contoso-docs-share.example",
+    "type": "domain",
+    "verdict": "malicious",
+    "score": 86,
+    "tags": [
+      "phishing"
+    ],
+    "first_seen": "2026-10-09",
+    "last_seen": "2026-10-09",
+    "source": "ContosoTI (mock)",
+    "campaign": null,
+    "attack_techniques": [],
+    "notes": null
+  }
+]

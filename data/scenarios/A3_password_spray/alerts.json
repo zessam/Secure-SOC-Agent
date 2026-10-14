@@ -1,0 +1,25 @@
+[
+  {
+    "alert_id": "ALR-A3-001",
+    "created": "2026-10-13T02:20:00.000Z",
+    "rule": {
+      "name": "Password spray: >15 accounts with failed sign-ins from one IP"
+    },
+    "severity": "high",
+    "source": "SIEM",
+    "description": "26 accounts had failed IMAP sign-ins from 203.0.113.66 within 10 minutes.",
+    "entities": {
+      "ips": [
+        "203.0.113.66"
+      ]
+    },
+    "mitre_attack": [
+      "T1110.003"
+    ],
+    "status": "new",
+    "evidence_event_ids": [
+      "A3-SIEM-00019",
+      "A3-SIEM-00046"
+    ]
+  }
+]

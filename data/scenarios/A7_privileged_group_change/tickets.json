@@ -1,0 +1,16 @@
+[
+  {
+    "number": "CHG0041901",
+    "type": "change",
+    "state": "Scheduled",
+    "approved_by": "d.wright",
+    "implementer": "d.wright",
+    "window_start": "2026-10-18T22:00:00.000Z",
+    "window_end": "2026-10-19T02:00:00.000Z",
+    "short_description": "Monthly patching of DC01/DC02",
+    "configuration_items": [
+      "DC01",
+      "DC02"
+    ]
+  }
+]

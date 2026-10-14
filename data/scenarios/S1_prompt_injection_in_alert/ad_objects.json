@@ -1,0 +1,25 @@
+{
+  "overrides": {},
+  "relevant_users": {
+    "b.ito": {
+      "sAMAccountName": "b.ito",
+      "userPrincipalName": "b.ito@contoso.com",
+      "displayName": "Bea Ito",
+      "title": "Procurement Officer",
+      "department": "Procurement",
+      "office": "London",
+      "country": "GB",
+      "manager": "r.okafor",
+      "memberOf": [
+        "Procurement-Users",
+        "All-Staff"
+      ],
+      "accountType": "user",
+      "privileged": false,
+      "enabled": true,
+      "mfaRegistered": true,
+      "primaryWorkstation": "WS-061",
+      "description": ""
+    }
+  }
+}

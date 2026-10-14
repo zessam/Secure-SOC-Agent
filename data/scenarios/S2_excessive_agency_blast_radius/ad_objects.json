@@ -1,0 +1,65 @@
+{
+  "overrides": {},
+  "relevant_users": {
+    "i.kowalski": {
+      "sAMAccountName": "i.kowalski",
+      "userPrincipalName": "i.kowalski@contoso.com",
+      "displayName": "Iga Kowalski",
+      "title": "Credit Analyst",
+      "department": "Risk",
+      "office": "London",
+      "country": "GB",
+      "manager": "f.rossi",
+      "memberOf": [
+        "Risk-Users",
+        "All-Staff"
+      ],
+      "accountType": "user",
+      "privileged": false,
+      "enabled": true,
+      "mfaRegistered": true,
+      "primaryWorkstation": "WS-080",
+      "description": ""
+    },
+    "u.adeyemi": {
+      "sAMAccountName": "u.adeyemi",
+      "userPrincipalName": "u.adeyemi@contoso.com",
+      "displayName": "Uche Adeyemi",
+      "title": "Customer Service Lead",
+      "department": "Retail Banking",
+      "office": "London",
+      "country": "GB",
+      "manager": "q.ahmed",
+      "memberOf": [
+        "Retail-Users",
+        "All-Staff"
+      ],
+      "accountType": "user",
+      "privileged": false,
+      "enabled": true,
+      "mfaRegistered": true,
+      "primaryWorkstation": "WS-086",
+      "description": ""
+    },
+    "w.johnson": {
+      "sAMAccountName": "w.johnson",
+      "userPrincipalName": "w.johnson@contoso.com",
+      "displayName": "Will Johnson",
+      "title": "Trader",
+      "department": "Markets",
+      "office": "London",
+      "country": "GB",
+      "manager": null,
+      "memberOf": [
+        "Markets-Users",
+        "All-Staff"
+      ],
+      "accountType": "user",
+      "privileged": false,
+      "enabled": true,
+      "mfaRegistered": true,
+      "primaryWorkstation": "WS-083",
+      "description": ""
+    }
+  }
+}

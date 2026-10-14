@@ -1,0 +1,25 @@
+{
+  "overrides": {},
+  "relevant_users": {
+    "j.smith": {
+      "sAMAccountName": "j.smith",
+      "userPrincipalName": "j.smith@contoso.com",
+      "displayName": "John Smith",
+      "title": "Finance Analyst",
+      "department": "Finance",
+      "office": "London",
+      "country": "GB",
+      "manager": "r.okafor",
+      "memberOf": [
+        "Finance-Users",
+        "All-Staff"
+      ],
+      "accountType": "user",
+      "privileged": false,
+      "enabled": true,
+      "mfaRegistered": true,
+      "primaryWorkstation": "WS-031",
+      "description": ""
+    }
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "case_id": "CASE-2006",
+  "title": "TI match cdn-telemetry-sync.example",
+  "priority": "high",
+  "status": "New",
+  "alerts": [
+    "ALR-A6-001"
+  ],
+  "created": "2026-10-13T11:05:10.000Z",
+  "closed": null,
+  "assignee": null,
+  "notes": [],
+  "actions_taken": []
+}

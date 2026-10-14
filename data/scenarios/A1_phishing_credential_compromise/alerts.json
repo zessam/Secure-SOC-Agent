@@ -1,0 +1,30 @@
+[
+  {
+    "alert_id": "ALR-A1-001",
+    "created": "2026-10-13T09:42:00.000Z",
+    "rule": {
+      "name": "Sign-in from new country after repeated MFA denials"
+    },
+    "severity": "high",
+    "source": "SIEM",
+    "description": "User j.smith signed in from NL after 2 denied MFA push requests. No prior sign-ins from NL.",
+    "entities": {
+      "users": [
+        "j.smith"
+      ],
+      "ips": [
+        "203.0.113.88"
+      ]
+    },
+    "mitre_attack": [
+      "T1078.004",
+      "T1621"
+    ],
+    "status": "new",
+    "evidence_event_ids": [
+      "A1-SIEM-00075",
+      "A1-SIEM-00076",
+      "A1-SIEM-00079"
+    ]
+  }
+]

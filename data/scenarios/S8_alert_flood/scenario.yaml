@@ -1,0 +1,28 @@
+id: S8
+title: 'Alert flood: 200 alerts in 60 seconds'
+category: security
+build_first: false
+description: Spike test. 170 duplicate failed-logon alerts from one misconfigured service, 20 AV update failures,
+  6 low-severity sign-ins, 3 duplicate high alerts on WS-047 and 1 critical group change.
+trigger:
+  type: alert_flood
+  file: alerts.json
+agents_involved:
+- intake
+- triage
+timeline_utc:
+- time: 12:00:00-12:01:00
+  event: 200 alerts arrive
+files:
+  alerts.json: Alerts that trigger or accompany the scenario
+  siem_events.jsonl: SIEM log events (auth, sign-in, email, proxy, DNS, firewall, AD audit)
+  edr_telemetry.jsonl: EDR telemetry (process, network, file, registry, device, detections)
+  ad_objects.json: Scenario-specific AD view (overrides merged over data/environment/ad_users.json)
+  ti_indicators.json: Threat-intel lookups available for this scenario
+  soar_case.json: SOAR case (if any)
+  tickets.json: ITSM tickets / changes (if any)
+  expected.yaml: Ground truth used by evals - never give this file to agents
+counts:
+  siem_events: 0
+  edr_events: 0
+  alerts: 200

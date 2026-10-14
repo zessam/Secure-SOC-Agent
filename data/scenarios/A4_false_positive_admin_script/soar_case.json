@@ -1,0 +1,14 @@
+{
+  "case_id": "CASE-2004",
+  "title": "PowerShell bypass on WS-015",
+  "priority": "medium",
+  "status": "New",
+  "alerts": [
+    "ALR-A4-001"
+  ],
+  "created": "2026-10-13T14:02:40.000Z",
+  "closed": null,
+  "assignee": null,
+  "notes": [],
+  "actions_taken": []
+}

@@ -1,0 +1,31 @@
+[
+  {
+    "alert_id": "ALR-A6-001",
+    "created": "2026-10-13T11:05:00.000Z",
+    "rule": {
+      "name": "Threat intel match: DNS query to known malicious domain"
+    },
+    "severity": "high",
+    "source": "SIEM",
+    "description": "Retro-hunt: 3 hosts resolved cdn-telemetry-sync.example, added to the threat feed at 10:55.",
+    "entities": {
+      "hosts": [
+        "WS-019",
+        "WS-033",
+        "WS-050"
+      ],
+      "domains": [
+        "cdn-telemetry-sync.example"
+      ]
+    },
+    "mitre_attack": [
+      "T1071.001"
+    ],
+    "status": "new",
+    "evidence_event_ids": [
+      "A6-SIEM-00021",
+      "A6-SIEM-00028",
+      "A6-SIEM-00055"
+    ]
+  }
+]

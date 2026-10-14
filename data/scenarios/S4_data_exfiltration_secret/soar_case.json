@@ -1,0 +1,14 @@
+{
+  "case_id": "CASE-3004",
+  "title": "Service account interactive logon",
+  "priority": "medium",
+  "status": "New",
+  "alerts": [
+    "ALR-S4-001"
+  ],
+  "created": "2026-10-13T16:21:10.000Z",
+  "closed": null,
+  "assignee": null,
+  "notes": [],
+  "actions_taken": []
+}

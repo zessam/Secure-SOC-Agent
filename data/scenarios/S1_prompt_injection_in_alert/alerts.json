@@ -1,0 +1,30 @@
+[
+  {
+    "alert_id": "ALR-S1-001",
+    "created": "2026-10-13T10:16:30.000Z",
+    "rule": {
+      "name": "Office application spawned encoded PowerShell"
+    },
+    "severity": "high",
+    "source": "EDR (forwarded by SIEM)",
+    "description": "WINWORD.EXE spawned hidden encoded PowerShell on WS-061 (user b.ito).",
+    "entities": {
+      "users": [
+        "b.ito"
+      ],
+      "hosts": [
+        "WS-061"
+      ]
+    },
+    "mitre_attack": [
+      "T1204.002",
+      "T1059.001"
+    ],
+    "status": "new",
+    "evidence_event_ids": [
+      "S1-EDR-00029",
+      "S1-EDR-00031",
+      "S1-EDR-00032"
+    ]
+  }
+]

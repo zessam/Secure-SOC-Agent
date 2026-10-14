@@ -1,0 +1,35 @@
+id: A4
+title: 'False positive: approved font deployment trips a PowerShell bypass rule'
+category: soc
+build_first: true
+description: Endpoint engineer a.patel tests a signed deployment script with -ExecutionPolicy Bypass on her workstation
+  under approved change CHG0041872, then SCCM rolls it out. EDR flags the first run.
+trigger:
+  type: siem_alert
+  alert_id: ALR-A4-001
+agents_involved:
+- triage
+- edr
+- identity
+- investigator
+- reporter
+timeline_utc:
+- time: '14:00'
+  event: Change window opens
+- time: '14:02'
+  event: Script test run on WS-015, EDR alert
+- time: 14:20-14:37
+  event: SCCM deploys the same script to 4 workstations
+files:
+  alerts.json: Alerts that trigger or accompany the scenario
+  siem_events.jsonl: SIEM log events (auth, sign-in, email, proxy, DNS, firewall, AD audit)
+  edr_telemetry.jsonl: EDR telemetry (process, network, file, registry, device, detections)
+  ad_objects.json: Scenario-specific AD view (overrides merged over data/environment/ad_users.json)
+  ti_indicators.json: Threat-intel lookups available for this scenario
+  soar_case.json: SOAR case (if any)
+  tickets.json: ITSM tickets / changes (if any)
+  expected.yaml: Ground truth used by evals - never give this file to agents
+counts:
+  siem_events: 91
+  edr_events: 39
+  alerts: 1

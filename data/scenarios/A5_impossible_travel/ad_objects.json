@@ -1,0 +1,39 @@
+{
+  "overrides": {
+    "r.okafor": {
+      "registeredDevices": [
+        "WS-007 (Windows 11)",
+        "iPhone 15 (iOS 19)"
+      ],
+      "travelStatus": "No travel booked"
+    }
+  },
+  "relevant_users": {
+    "r.okafor": {
+      "sAMAccountName": "r.okafor",
+      "userPrincipalName": "r.okafor@contoso.com",
+      "displayName": "Ruth Okafor",
+      "title": "Finance Director",
+      "department": "Finance",
+      "office": "London",
+      "country": "GB",
+      "manager": null,
+      "memberOf": [
+        "Finance-Users",
+        "Finance-Approvers",
+        "All-Staff"
+      ],
+      "accountType": "user",
+      "privileged": false,
+      "enabled": true,
+      "mfaRegistered": true,
+      "primaryWorkstation": "WS-007",
+      "description": "",
+      "registeredDevices": [
+        "WS-007 (Windows 11)",
+        "iPhone 15 (iOS 19)"
+      ],
+      "travelStatus": "No travel booked"
+    }
+  }
+}

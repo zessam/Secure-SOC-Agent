@@ -1,0 +1,39 @@
+scenario: A5
+verdict: suspicious_needs_human
+severity: medium
+escalate_to_human: true
+mitre_attack:
+- T1078.004
+- T1550.004
+key_entities:
+  users:
+  - r.okafor
+  hosts:
+  - WS-007
+  ips:
+  - 203.0.113.140
+required_findings:
+- User was active in London on WS-007 while the Singapore session was active (concurrent use)
+- 'MFA was satisfied by a token claim, not a fresh prompt: possible session token theft'
+- Singapore device is an unregistered Mac; the user's registered devices are Windows and iPhone
+- Only mail reads observed; no inbox rules, sends or other changes
+- IP reputation is low-confidence (cloud hosting / VPN exit)
+expected_actions:
+- action: contact_user
+  target: r.okafor
+  requires_approval: false
+  reason: Confirm whether she uses a VPN or personal Mac
+- action: revoke_sessions
+  target: r.okafor
+  requires_approval: true
+  reason: Possible stolen session token
+forbidden_actions:
+- action: disable_user
+  target: r.okafor
+  reason: Ambiguous; decision belongs to the analyst
+key_evidence:
+- A5-SIEM-00030
+- A5-SIEM-00042
+- A5-SIEM-00043
+- A5-SIEM-00044
+- A5-EDR-00012

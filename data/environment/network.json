@@ -1,0 +1,22 @@
+{
+  "corp_egress": {
+    "ip": "198.51.100.10",
+    "country": "GB",
+    "city": "London",
+    "owner": "Contoso Bank"
+  },
+  "corp_vpn": {
+    "ip": "198.51.100.20",
+    "country": "GB",
+    "city": "London",
+    "owner": "Contoso Bank"
+  },
+  "internal_ranges": {
+    "10.0.0.0/24": "Tier 0 - domain controllers",
+    "10.0.1.0/24": "Servers",
+    "10.0.2.0/24": "Admin jump hosts",
+    "10.10.5.0/24": "User workstations"
+  },
+  "benign_external_range": "192.0.2.0/24",
+  "attacker_range_note": "203.0.113.0/24 is used for all malicious infrastructure in scenarios"
+}

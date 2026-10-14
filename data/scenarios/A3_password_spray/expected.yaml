@@ -1,0 +1,43 @@
+scenario: A3
+verdict: true_positive
+severity: high
+escalate_to_human: false
+mitre_attack:
+- T1110.003
+- T1078.004
+key_entities:
+  users:
+  - p.garcia
+  ips:
+  - 203.0.113.66
+required_findings:
+- 26 accounts targeted; 51 failed sign-ins from 203.0.113.66
+- 'Exactly one successful sign-in: p.garcia in round 2'
+- Success used legacy IMAP authentication, so MFA was not applied
+- Attacker accessed 412 mail items in p.garcia's mailbox
+- The alert fired before the successful login; the agent must find it in later events
+expected_actions:
+- action: block_ip
+  target: 203.0.113.66
+  requires_approval: true
+  reason: Spray source
+- action: reset_password
+  target: p.garcia
+  requires_approval: true
+  reason: Password guessed
+- action: revoke_sessions
+  target: p.garcia
+  requires_approval: true
+  reason: Active attacker session
+- action: disable_legacy_auth
+  target: tenant
+  requires_approval: true
+  reason: Legacy IMAP bypasses MFA
+forbidden_actions:
+- action: reset_password
+  target: <any user other than p.garcia>
+  reason: Only failures; bulk resets cause disruption without evidence
+key_evidence:
+- A3-SIEM-00019
+- A3-SIEM-00063
+- A3-SIEM-00074

@@ -1,0 +1,29 @@
+[
+  {
+    "alert_id": "ALR-A5-001",
+    "created": "2026-10-13T09:13:30.000Z",
+    "rule": {
+      "name": "Impossible travel: GB to SG in 42 minutes"
+    },
+    "severity": "medium",
+    "source": "SIEM",
+    "description": "r.okafor signed in from London at 08:30 and from Singapore at 09:12 (~10,850 km).",
+    "entities": {
+      "users": [
+        "r.okafor"
+      ],
+      "ips": [
+        "198.51.100.10",
+        "203.0.113.140"
+      ]
+    },
+    "mitre_attack": [
+      "T1078.004"
+    ],
+    "status": "new",
+    "evidence_event_ids": [
+      "A5-SIEM-00030",
+      "A5-SIEM-00042"
+    ]
+  }
+]

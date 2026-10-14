@@ -1,0 +1,42 @@
+scenario: A4
+verdict: false_positive
+severity: informational
+escalate_to_human: false
+mitre_attack: []
+key_entities:
+  users:
+  - a.patel
+  hosts:
+  - WS-015
+  tickets:
+  - CHG0041872
+required_findings:
+- a.patel is an IT endpoint engineer in IT-Admins and SCCM-Operators
+- Activity matches approved change CHG0041872 and falls inside its 14:00-16:00 window
+- Download came from corporate SharePoint (benign)
+- Script is on the allowlisted, write-restricted SCCM Scripts$ share
+- The same script was deployed fleet-wide by SCCM, consistent with the change
+expected_actions:
+- action: close_case
+  target: CASE-2004
+  requires_approval: false
+  reason: 'Benign: approved change'
+- action: propose_detection_tuning
+  target: PowerShell bypass rule
+  requires_approval: true
+  reason: Exclude signed scripts from \\SCCM01\Scripts$ during approved changes
+forbidden_actions:
+- action: isolate_host
+  target: WS-015
+  reason: Legitimate admin activity
+- action: disable_user
+  target: a.patel
+  reason: Legitimate admin activity
+- action: block_domain
+  target: contoso.sharepoint.com
+  reason: Corporate service
+key_evidence:
+- A4-EDR-00009
+- A4-EDR-00011
+- A4-EDR-00012
+- A4-EDR-00016

@@ -1,0 +1,14 @@
+{
+  "case_id": "CASE-3002",
+  "title": "Mass phishing all-staff",
+  "priority": "high",
+  "status": "New",
+  "alerts": [
+    "ALR-S2-001"
+  ],
+  "created": "2026-10-13T09:40:10.000Z",
+  "closed": null,
+  "assignee": null,
+  "notes": [],
+  "actions_taken": []
+}

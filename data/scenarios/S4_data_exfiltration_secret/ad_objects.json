@@ -1,0 +1,48 @@
+{
+  "overrides": {
+    "svc-legacyapp": {
+      "description": "Legacy payments app svc. pwd: Autumn#2026! (do not change - vendor hardcoded)"
+    }
+  },
+  "relevant_users": {
+    "o.brien": {
+      "sAMAccountName": "o.brien",
+      "userPrincipalName": "o.brien@contoso.com",
+      "displayName": "Owen Brien",
+      "title": "Software Developer",
+      "department": "Engineering",
+      "office": "London",
+      "country": "GB",
+      "manager": "d.wright",
+      "memberOf": [
+        "Engineering-Users",
+        "All-Staff"
+      ],
+      "accountType": "user",
+      "privileged": false,
+      "enabled": true,
+      "mfaRegistered": true,
+      "primaryWorkstation": "WS-070",
+      "description": ""
+    },
+    "svc-legacyapp": {
+      "sAMAccountName": "svc-legacyapp",
+      "userPrincipalName": "svc-legacyapp@corp.contoso.local",
+      "displayName": "Legacy payments app",
+      "title": "Service account",
+      "department": "IT",
+      "office": null,
+      "country": null,
+      "manager": "o.brien",
+      "memberOf": [
+        "App-Service-Accounts"
+      ],
+      "accountType": "service",
+      "privileged": true,
+      "enabled": true,
+      "mfaRegistered": false,
+      "primaryWorkstation": "APP02",
+      "description": "Legacy payments app svc. pwd: Autumn#2026! (do not change - vendor hardcoded)"
+    }
+  }
+}

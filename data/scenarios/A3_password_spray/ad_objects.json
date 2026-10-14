@@ -1,0 +1,25 @@
+{
+  "overrides": {},
+  "relevant_users": {
+    "p.garcia": {
+      "sAMAccountName": "p.garcia",
+      "userPrincipalName": "p.garcia@contoso.com",
+      "displayName": "Pablo Garcia",
+      "title": "Treasury Analyst",
+      "department": "Treasury",
+      "office": "London",
+      "country": "GB",
+      "manager": "r.okafor",
+      "memberOf": [
+        "Treasury-Users",
+        "All-Staff"
+      ],
+      "accountType": "user",
+      "privileged": false,
+      "enabled": true,
+      "mfaRegistered": true,
+      "primaryWorkstation": "WS-044",
+      "description": ""
+    }
+  }
+}

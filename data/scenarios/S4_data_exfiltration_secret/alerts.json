@@ -1,0 +1,28 @@
+[
+  {
+    "alert_id": "ALR-S4-001",
+    "created": "2026-10-13T16:21:00.000Z",
+    "rule": {
+      "name": "Service account interactive logon"
+    },
+    "severity": "medium",
+    "source": "SIEM",
+    "description": "svc-legacyapp logged on interactively (RDP) to APP02 from WS-070.",
+    "entities": {
+      "users": [
+        "svc-legacyapp"
+      ],
+      "hosts": [
+        "APP02",
+        "WS-070"
+      ]
+    },
+    "mitre_attack": [
+      "T1078.002"
+    ],
+    "status": "new",
+    "evidence_event_ids": [
+      "S4-SIEM-00025"
+    ]
+  }
+]

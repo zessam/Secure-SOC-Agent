@@ -1,0 +1,182 @@
+[
+  {
+    "name": "Finance-Users",
+    "members": [
+      "j.smith",
+      "s.khan",
+      "r.okafor"
+    ]
+  },
+  {
+    "name": "All-Staff",
+    "members": [
+      "j.smith",
+      "s.khan",
+      "p.garcia",
+      "k.osei",
+      "a.patel",
+      "r.okafor",
+      "m.chen",
+      "e.moreau",
+      "t.berg",
+      "l.nguyen",
+      "d.wright",
+      "h.ali",
+      "b.ito",
+      "c.dubois",
+      "f.rossi",
+      "g.mensah",
+      "n.sato",
+      "o.brien",
+      "i.kowalski",
+      "q.ahmed",
+      "v.silva",
+      "w.johnson",
+      "y.park",
+      "z.haddad",
+      "u.adeyemi",
+      "ja.morales"
+    ],
+    "type": "distribution",
+    "member_count": 512,
+    "email": "all-staff@contoso.com"
+  },
+  {
+    "name": "Treasury-Users",
+    "members": [
+      "p.garcia"
+    ]
+  },
+  {
+    "name": "Retail-Users",
+    "members": [
+      "k.osei",
+      "q.ahmed",
+      "u.adeyemi"
+    ]
+  },
+  {
+    "name": "IT-Admins",
+    "members": [
+      "a.patel",
+      "d.wright"
+    ],
+    "privileged": true
+  },
+  {
+    "name": "SCCM-Operators",
+    "members": [
+      "a.patel",
+      "svc-sccm"
+    ]
+  },
+  {
+    "name": "Workstation-Admins",
+    "members": [
+      "a.patel"
+    ]
+  },
+  {
+    "name": "Finance-Approvers",
+    "members": [
+      "r.okafor"
+    ]
+  },
+  {
+    "name": "Facilities-Users",
+    "members": [
+      "m.chen"
+    ]
+  },
+  {
+    "name": "Risk-Users",
+    "members": [
+      "e.moreau",
+      "l.nguyen",
+      "i.kowalski"
+    ]
+  },
+  {
+    "name": "Marketing-Users",
+    "members": [
+      "t.berg"
+    ]
+  },
+  {
+    "name": "Domain Admins",
+    "members": [
+      "d.wright"
+    ],
+    "privileged": true
+  },
+  {
+    "name": "SOC-Analysts",
+    "members": [
+      "h.ali"
+    ]
+  },
+  {
+    "name": "Procurement-Users",
+    "members": [
+      "b.ito"
+    ]
+  },
+  {
+    "name": "HR-Users",
+    "members": [
+      "c.dubois"
+    ]
+  },
+  {
+    "name": "Compliance-Users",
+    "members": [
+      "f.rossi"
+    ]
+  },
+  {
+    "name": "Payments-Users",
+    "members": [
+      "g.mensah",
+      "n.sato",
+      "ja.morales"
+    ]
+  },
+  {
+    "name": "Engineering-Users",
+    "members": [
+      "o.brien",
+      "y.park"
+    ]
+  },
+  {
+    "name": "Legal-Users",
+    "members": [
+      "v.silva"
+    ]
+  },
+  {
+    "name": "Markets-Users",
+    "members": [
+      "w.johnson"
+    ]
+  },
+  {
+    "name": "Audit-Users",
+    "members": [
+      "z.haddad"
+    ]
+  },
+  {
+    "name": "Backup Operators",
+    "members": [
+      "svc-backup"
+    ],
+    "privileged": true
+  },
+  {
+    "name": "App-Service-Accounts",
+    "members": [
+      "svc-legacyapp"
+    ]
+  }
+]

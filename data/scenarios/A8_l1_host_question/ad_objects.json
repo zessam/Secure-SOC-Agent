@@ -1,0 +1,25 @@
+{
+  "overrides": {},
+  "relevant_users": {
+    "e.moreau": {
+      "sAMAccountName": "e.moreau",
+      "userPrincipalName": "e.moreau@contoso.com",
+      "displayName": "Elise Moreau",
+      "title": "Risk Analyst",
+      "department": "Risk",
+      "office": "London",
+      "country": "GB",
+      "manager": "f.rossi",
+      "memberOf": [
+        "Risk-Users",
+        "All-Staff"
+      ],
+      "accountType": "user",
+      "privileged": false,
+      "enabled": true,
+      "mfaRegistered": true,
+      "primaryWorkstation": "WS-023",
+      "description": ""
+    }
+  }
+}

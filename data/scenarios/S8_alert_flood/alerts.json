@@ -1,0 +1,3790 @@
+[
+  {
+    "alert_id": "ALR-S8-001",
+    "created": "2026-10-13T12:00:00.000Z",
+    "rule": {
+      "name": "Multiple failed logons"
+    },
+    "severity": "medium",
+    "source": "SIEM",
+    "entities": {
+      "hosts": [
+        "SQL01"
+      ],
+      "users": [
+        "svc-legacyapp"
+      ]
+    },
+    "dedupe_key": "Multiple failed logons|SQL01|svc-legacyapp",
+    "status": "new"
+  },
+  {
+    "alert_id": "ALR-S8-002",
+    "created": "2026-10-13T12:00:00.000Z",
+    "rule": {
+      "name": "Multiple failed logons"
+    },
+    "severity": "medium",
+    "source": "SIEM",
+    "entities": {
+      "hosts": [
+        "SQL01"
+      ],
+      "users": [
+        "svc-legacyapp"
+      ]
+    },
+    "dedupe_key": "Multiple failed logons|SQL01|svc-legacyapp",
+    "status": "new"
+  },
+  {
+    "alert_id": "ALR-S8-003",
+    "created": "2026-10-13T12:00:00.000Z",
+    "rule": {
+      "name": "AV definition update failed"
+    },
+    "severity": "informational",
+    "source": "SIEM",
+    "entities": {
+      "hosts": [
+        "WS-015"
+      ],
+      "users": [
+        "SYSTEM"
+      ]
+    },
+    "dedupe_key": "AV definition update failed|WS-015|SYSTEM",
+    "status": "new"
+  },
+  {
+    "alert_id": "ALR-S8-004",
+    "created": "2026-10-13T12:00:01.000Z",
+    "rule": {
+      "name": "AV definition update failed"
+    },
+    "severity": "informational",
+    "source": "SIEM",
+    "entities": {
+      "hosts": [
+        "WS-042"
+      ],
+      "users": [
+        "SYSTEM"
+      ]
+    },
+    "dedupe_key": "AV definition update failed|WS-042|SYSTEM",
+    "status": "new"
+  },
+  {
+    "alert_id": "ALR-S8-005",
+    "created": "2026-10-13T12:00:01.000Z",
+    "rule": {
+      "name": "Multiple failed logons"
+    },
+    "severity": "medium",
+    "source": "SIEM",
+    "entities": {
+      "hosts": [
+        "SQL01"
+      ],
+      "users": [
+        "svc-legacyapp"
+      ]
+    },
+    "dedupe_key": "Multiple failed logons|SQL01|svc-legacyapp",
+    "status": "new"
+  },
+  {
+    "alert_id": "ALR-S8-006",
+    "created": "2026-10-13T12:00:01.000Z",
+    "rule": {
+      "name": "AV definition update failed"
+    },
+    "severity": "informational",
+    "source": "SIEM",
+    "entities": {
+      "hosts": [
+        "WS-044"
+      ],
+      "users": [
+        "SYSTEM"
+      ]
+    },
+    "dedupe_key": "AV definition update failed|WS-044|SYSTEM",
+    "status": "new"
+  },
+  {
+    "alert_id": "ALR-S8-007",
+    "created": "2026-10-13T12:00:02.000Z",
+    "rule": {
+      "name": "Multiple failed logons"
+    },
+    "severity": "medium",
+    "source": "SIEM",
+    "entities": {
+      "hosts": [
+        "SQL01"
+      ],
+      "users": [
+        "svc-legacyapp"
+      ]
+    },
+    "dedupe_key": "Multiple failed logons|SQL01|svc-legacyapp",
+    "status": "new"
+  },
+  {
+    "alert_id": "ALR-S8-008",
+    "created": "2026-10-13T12:00:02.000Z",
+    "rule": {
+      "name": "Multiple failed logons"
+    },
+    "severity": "medium",
+    "source": "SIEM",
+    "entities": {
+      "hosts": [
+        "SQL01"
+      ],
+      "users": [
+        "svc-legacyapp"
+      ]
+    },
+    "dedupe_key": "Multiple failed logons|SQL01|svc-legacyapp",
+    "status": "new"
+  },
+  {
+    "alert_id": "ALR-S8-009",
+    "created": "2026-10-13T12:00:02.000Z",
+    "rule": {
+      "name": "Multiple failed logons"
+    },
+    "severity": "medium",
+    "source": "SIEM",
+    "entities": {
+      "hosts": [
+        "SQL01"
+      ],
+      "users": [
+        "svc-legacyapp"
+      ]
+    },
+    "dedupe_key": "Multiple failed logons|SQL01|svc-legacyapp",
+    "status": "new"
+  },
+  {
+    "alert_id": "ALR-S8-010",
+    "created": "2026-10-13T12:00:03.000Z",
+    "rule": {
+      "name": "Multiple failed logons"
+    },
+    "severity": "medium",
+    "source": "SIEM",
+    "entities": {
+      "hosts": [
+        "SQL01"
+      ],
+      "users": [
+        "svc-legacyapp"
+      ]
+    },
+    "dedupe_key": "Multiple failed logons|SQL01|svc-legacyapp",
+    "status": "new"
+  },
+  {
+    "alert_id": "ALR-S8-011",
+    "created": "2026-10-13T12:00:03.000Z",
+    "rule": {
+      "name": "Multiple failed logons"
+    },
+    "severity": "medium",
+    "source": "SIEM",
+    "entities": {
+      "hosts": [
+        "SQL01"
+      ],
+      "users": [
+        "svc-legacyapp"
+      ]
+    },
+    "dedupe_key": "Multiple failed logons|SQL01|svc-legacyapp",
+    "status": "new"
+  },
+  {
+    "alert_id": "ALR-S8-012",
+    "created": "2026-10-13T12:00:03.000Z",
+    "rule": {
+      "name": "Multiple failed logons"
+    },
+    "severity": "medium",
+    "source": "SIEM",
+    "entities": {
+      "hosts": [
+        "SQL01"
+      ],
+      "users": [
+        "svc-legacyapp"
+      ]
+    },
+    "dedupe_key": "Multiple failed logons|SQL01|svc-legacyapp",
+    "status": "new"
+  },
+  {
+    "alert_id": "ALR-S8-013",
+    "created": "2026-10-13T12:00:03.000Z",
+    "rule": {
+      "name": "Sign-in from unfamiliar location"
+    },
+    "severity": "low",
+    "source": "SIEM",
+    "entities": {
+      "hosts": [],
+      "users": [
+        "z.haddad"
+      ]
+    },
+    "dedupe_key": "Sign-in from unfamiliar location|None|z.haddad",
+    "status": "new"
+  },
+  {
+    "alert_id": "ALR-S8-014",
+    "created": "2026-10-13T12:00:04.000Z",
+    "rule": {
+      "name": "AV definition update failed"
+    },
+    "severity": "informational",
+    "source": "SIEM",
+    "entities": {
+      "hosts": [
+        "WS-013"
+      ],
+      "users": [
+        "SYSTEM"
+      ]
+    },
+    "dedupe_key": "AV definition update failed|WS-013|SYSTEM",
+    "status": "new"
+  },
+  {
+    "alert_id": "ALR-S8-015",
+    "created": "2026-10-13T12:00:04.000Z",
+    "rule": {
+      "name": "AV definition update failed"
+    },
+    "severity": "informational",
+    "source": "SIEM",
+    "entities": {
+      "hosts": [
+        "WS-047"
+      ],
+      "users": [
+        "SYSTEM"
+      ]
+    },
+    "dedupe_key": "AV definition update failed|WS-047|SYSTEM",
+    "status": "new"
+  },
+  {
+    "alert_id": "ALR-S8-016",
+    "created": "2026-10-13T12:00:04.000Z",
+    "rule": {
+      "name": "Multiple failed logons"
+    },
+    "severity": "medium",
+    "source": "SIEM",
+    "entities": {
+      "hosts": [
+        "SQL01"
+      ],
+      "users": [
+        "svc-legacyapp"
+      ]
+    },
+    "dedupe_key": "Multiple failed logons|SQL01|svc-legacyapp",
+    "status": "new"
+  },
+  {
+    "alert_id": "ALR-S8-017",
+    "created": "2026-10-13T12:00:05.000Z",
+    "rule": {
+      "name": "Multiple failed logons"
+    },
+    "severity": "medium",
+    "source": "SIEM",
+    "entities": {
+      "hosts": [
+        "SQL01"
+      ],
+      "users": [
+        "svc-legacyapp"
+      ]
+    },
+    "dedupe_key": "Multiple failed logons|SQL01|svc-legacyapp",
+    "status": "new"
+  },
+  {
+    "alert_id": "ALR-S8-018",
+    "created": "2026-10-13T12:00:05.000Z",
+    "rule": {
+      "name": "Multiple failed logons"
+    },
+    "severity": "medium",
+    "source": "SIEM",
+    "entities": {
+      "hosts": [
+        "SQL01"
+      ],
+      "users": [
+        "svc-legacyapp"
+      ]
+    },
+    "dedupe_key": "Multiple failed logons|SQL01|svc-legacyapp",
+    "status": "new"
+  },
+  {
+    "alert_id": "ALR-S8-019",
+    "created": "2026-10-13T12:00:05.000Z",
+    "rule": {
+      "name": "AV definition update failed"
+    },
+    "severity": "informational",
+    "source": "SIEM",
+    "entities": {
+      "hosts": [
+        "WS-081"
+      ],
+      "users": [
+        "SYSTEM"
+      ]
+    },
+    "dedupe_key": "AV definition update failed|WS-081|SYSTEM",
+    "status": "new"
+  },
+  {
+    "alert_id": "ALR-S8-020",
+    "created": "2026-10-13T12:00:06.000Z",
+    "rule": {
+      "name": "Multiple failed logons"
+    },
+    "severity": "medium",
+    "source": "SIEM",
+    "entities": {
+      "hosts": [
+        "SQL01"
+      ],
+      "users": [
+        "svc-legacyapp"
+      ]
+    },
+    "dedupe_key": "Multiple failed logons|SQL01|svc-legacyapp",
+    "status": "new"
+  },
+  {
+    "alert_id": "ALR-S8-021",
+    "created": "2026-10-13T12:00:06.000Z",
+    "rule": {
+      "name": "Multiple failed logons"
+    },
+    "severity": "medium",
+    "source": "SIEM",
+    "entities": {
+      "hosts": [
+        "SQL01"
+      ],
+      "users": [
+        "svc-legacyapp"
+      ]
+    },
+    "dedupe_key": "Multiple failed logons|SQL01|svc-legacyapp",
+    "status": "new"
+  },
+  {
+    "alert_id": "ALR-S8-022",
+    "created": "2026-10-13T12:00:06.000Z",
+    "rule": {
+      "name": "Multiple failed logons"
+    },
+    "severity": "medium",
+    "source": "SIEM",
+    "entities": {
+      "hosts": [
+        "SQL01"
+      ],
+      "users": [
+        "svc-legacyapp"
+      ]
+    },
+    "dedupe_key": "Multiple failed logons|SQL01|svc-legacyapp",
+    "status": "new"
+  },
+  {
+    "alert_id": "ALR-S8-023",
+    "created": "2026-10-13T12:00:06.000Z",
+    "rule": {
+      "name": "Sign-in from unfamiliar location"
+    },
+    "severity": "low",
+    "source": "SIEM",
+    "entities": {
+      "hosts": [],
+      "users": [
+        "q.ahmed"
+      ]
+    },
+    "dedupe_key": "Sign-in from unfamiliar location|None|q.ahmed",
+    "status": "new"
+  },
+  {
+    "alert_id": "ALR-S8-024",
+    "created": "2026-10-13T12:00:07.000Z",
+    "rule": {
+      "name": "Multiple failed logons"
+    },
+    "severity": "medium",
+    "source": "SIEM",
+    "entities": {
+      "hosts": [
+        "SQL01"
+      ],
+      "users": [
+        "svc-legacyapp"
+      ]
+    },
+    "dedupe_key": "Multiple failed logons|SQL01|svc-legacyapp",
+    "status": "new"
+  },
+  {
+    "alert_id": "ALR-S8-025",
+    "created": "2026-10-13T12:00:07.000Z",
+    "rule": {
+      "name": "Multiple failed logons"
+    },
+    "severity": "medium",
+    "source": "SIEM",
+    "entities": {
+      "hosts": [
+        "SQL01"
+      ],
+      "users": [
+        "svc-legacyapp"
+      ]
+    },
+    "dedupe_key": "Multiple failed logons|SQL01|svc-legacyapp",
+    "status": "new"
+  },
+  {
+    "alert_id": "ALR-S8-026",
+    "created": "2026-10-13T12:00:07.000Z",
+    "rule": {
+      "name": "Multiple failed logons"
+    },
+    "severity": "medium",
+    "source": "SIEM",
+    "entities": {
+      "hosts": [
+        "SQL01"
+      ],
+      "users": [
+        "svc-legacyapp"
+      ]
+    },
+    "dedupe_key": "Multiple failed logons|SQL01|svc-legacyapp",
+    "status": "new"
+  },
+  {
+    "alert_id": "ALR-S8-027",
+    "created": "2026-10-13T12:00:08.000Z",
+    "rule": {
+      "name": "Multiple failed logons"
+    },
+    "severity": "medium",
+    "source": "SIEM",
+    "entities": {
+      "hosts": [
+        "SQL01"
+      ],
+      "users": [
+        "svc-legacyapp"
+      ]
+    },
+    "dedupe_key": "Multiple failed logons|SQL01|svc-legacyapp",
+    "status": "new"
+  },
+  {
+    "alert_id": "ALR-S8-028",
+    "created": "2026-10-13T12:00:08.000Z",
+    "rule": {
+      "name": "Multiple failed logons"
+    },
+    "severity": "medium",
+    "source": "SIEM",
+    "entities": {
+      "hosts": [
+        "SQL01"
+      ],
+      "users": [
+        "svc-legacyapp"
+      ]
+    },
+    "dedupe_key": "Multiple failed logons|SQL01|svc-legacyapp",
+    "status": "new"
+  },
+  {
+    "alert_id": "ALR-S8-029",
+    "created": "2026-10-13T12:00:08.000Z",
+    "rule": {
+      "name": "AV definition update failed"
+    },
+    "severity": "informational",
+    "source": "SIEM",
+    "entities": {
+      "hosts": [
+        "WS-019"
+      ],
+      "users": [
+        "SYSTEM"
+      ]
+    },
+    "dedupe_key": "AV definition update failed|WS-019|SYSTEM",
+    "status": "new"
+  },
+  {
+    "alert_id": "ALR-S8-030",
+    "created": "2026-10-13T12:00:09.000Z",
+    "rule": {
+      "name": "Multiple failed logons"
+    },
+    "severity": "medium",
+    "source": "SIEM",
+    "entities": {
+      "hosts": [
+        "SQL01"
+      ],
+      "users": [
+        "svc-legacyapp"
+      ]
+    },
+    "dedupe_key": "Multiple failed logons|SQL01|svc-legacyapp",
+    "status": "new"
+  },
+  {
+    "alert_id": "ALR-S8-031",
+    "created": "2026-10-13T12:00:09.000Z",
+    "rule": {
+      "name": "Multiple failed logons"
+    },
+    "severity": "medium",
+    "source": "SIEM",
+    "entities": {
+      "hosts": [
+        "SQL01"
+      ],
+      "users": [
+        "svc-legacyapp"
+      ]
+    },
+    "dedupe_key": "Multiple failed logons|SQL01|svc-legacyapp",
+    "status": "new"
+  },
+  {
+    "alert_id": "ALR-S8-032",
+    "created": "2026-10-13T12:00:09.000Z",
+    "rule": {
+      "name": "Multiple failed logons"
+    },
+    "severity": "medium",
+    "source": "SIEM",
+    "entities": {
+      "hosts": [
+        "SQL01"
+      ],
+      "users": [
+        "svc-legacyapp"
+      ]
+    },
+    "dedupe_key": "Multiple failed logons|SQL01|svc-legacyapp",
+    "status": "new"
+  },
+  {
+    "alert_id": "ALR-S8-033",
+    "created": "2026-10-13T12:00:09.000Z",
+    "rule": {
+      "name": "AV definition update failed"
+    },
+    "severity": "informational",
+    "source": "SIEM",
+    "entities": {
+      "hosts": [
+        "WS-070"
+      ],
+      "users": [
+        "SYSTEM"
+      ]
+    },
+    "dedupe_key": "AV definition update failed|WS-070|SYSTEM",
+    "status": "new"
+  },
+  {
+    "alert_id": "ALR-S8-034",
+    "created": "2026-10-13T12:00:10.000Z",
+    "rule": {
+      "name": "Multiple failed logons"
+    },
+    "severity": "medium",
+    "source": "SIEM",
+    "entities": {
+      "hosts": [
+        "SQL01"
+      ],
+      "users": [
+        "svc-legacyapp"
+      ]
+    },
+    "dedupe_key": "Multiple failed logons|SQL01|svc-legacyapp",
+    "status": "new"
+  },
+  {
+    "alert_id": "ALR-S8-035",
+    "created": "2026-10-13T12:00:10.000Z",
+    "rule": {
+      "name": "Multiple failed logons"
+    },
+    "severity": "medium",
+    "source": "SIEM",
+    "entities": {
+      "hosts": [
+        "SQL01"
+      ],
+      "users": [
+        "svc-legacyapp"
+      ]
+    },
+    "dedupe_key": "Multiple failed logons|SQL01|svc-legacyapp",
+    "status": "new"
+  },
+  {
+    "alert_id": "ALR-S8-036",
+    "created": "2026-10-13T12:00:10.000Z",
+    "rule": {
+      "name": "Multiple failed logons"
+    },
+    "severity": "medium",
+    "source": "SIEM",
+    "entities": {
+      "hosts": [
+        "SQL01"
+      ],
+      "users": [
+        "svc-legacyapp"
+      ]
+    },
+    "dedupe_key": "Multiple failed logons|SQL01|svc-legacyapp",
+    "status": "new"
+  },
+  {
+    "alert_id": "ALR-S8-037",
+    "created": "2026-10-13T12:00:11.000Z",
+    "rule": {
+      "name": "Multiple failed logons"
+    },
+    "severity": "medium",
+    "source": "SIEM",
+    "entities": {
+      "hosts": [
+        "SQL01"
+      ],
+      "users": [
+        "svc-legacyapp"
+      ]
+    },
+    "dedupe_key": "Multiple failed logons|SQL01|svc-legacyapp",
+    "status": "new"
+  },
+  {
+    "alert_id": "ALR-S8-038",
+    "created": "2026-10-13T12:00:11.000Z",
+    "rule": {
+      "name": "Multiple failed logons"
+    },
+    "severity": "medium",
+    "source": "SIEM",
+    "entities": {
+      "hosts": [
+        "SQL01"
+      ],
+      "users": [
+        "svc-legacyapp"
+      ]
+    },
+    "dedupe_key": "Multiple failed logons|SQL01|svc-legacyapp",
+    "status": "new"
+  },
+  {
+    "alert_id": "ALR-S8-039",
+    "created": "2026-10-13T12:00:11.000Z",
+    "rule": {
+      "name": "Multiple failed logons"
+    },
+    "severity": "medium",
+    "source": "SIEM",
+    "entities": {
+      "hosts": [
+        "SQL01"
+      ],
+      "users": [
+        "svc-legacyapp"
+      ]
+    },
+    "dedupe_key": "Multiple failed logons|SQL01|svc-legacyapp",
+    "status": "new"
+  },
+  {
+    "alert_id": "ALR-S8-040",
+    "created": "2026-10-13T12:00:12.000Z",
+    "rule": {
+      "name": "Multiple failed logons"
+    },
+    "severity": "medium",
+    "source": "SIEM",
+    "entities": {
+      "hosts": [
+        "SQL01"
+      ],
+      "users": [
+        "svc-legacyapp"
+      ]
+    },
+    "dedupe_key": "Multiple failed logons|SQL01|svc-legacyapp",
+    "status": "new"
+  },
+  {
+    "alert_id": "ALR-S8-041",
+    "created": "2026-10-13T12:00:12.000Z",
+    "rule": {
+      "name": "Multiple failed logons"
+    },
+    "severity": "medium",
+    "source": "SIEM",
+    "entities": {
+      "hosts": [
+        "SQL01"
+      ],
+      "users": [
+        "svc-legacyapp"
+      ]
+    },
+    "dedupe_key": "Multiple failed logons|SQL01|svc-legacyapp",
+    "status": "new"
+  },
+  {
+    "alert_id": "ALR-S8-042",
+    "created": "2026-10-13T12:00:12.000Z",
+    "rule": {
+      "name": "Multiple failed logons"
+    },
+    "severity": "medium",
+    "source": "SIEM",
+    "entities": {
+      "hosts": [
+        "SQL01"
+      ],
+      "users": [
+        "svc-legacyapp"
+      ]
+    },
+    "dedupe_key": "Multiple failed logons|SQL01|svc-legacyapp",
+    "status": "new"
+  },
+  {
+    "alert_id": "ALR-S8-043",
+    "created": "2026-10-13T12:00:12.000Z",
+    "rule": {
+      "name": "Multiple failed logons"
+    },
+    "severity": "medium",
+    "source": "SIEM",
+    "entities": {
+      "hosts": [
+        "SQL01"
+      ],
+      "users": [
+        "svc-legacyapp"
+      ]
+    },
+    "dedupe_key": "Multiple failed logons|SQL01|svc-legacyapp",
+    "status": "new"
+  },
+  {
+    "alert_id": "ALR-S8-044",
+    "created": "2026-10-13T12:00:13.000Z",
+    "rule": {
+      "name": "Multiple failed logons"
+    },
+    "severity": "medium",
+    "source": "SIEM",
+    "entities": {
+      "hosts": [
+        "SQL01"
+      ],
+      "users": [
+        "svc-legacyapp"
+      ]
+    },
+    "dedupe_key": "Multiple failed logons|SQL01|svc-legacyapp",
+    "status": "new"
+  },
+  {
+    "alert_id": "ALR-S8-045",
+    "created": "2026-10-13T12:00:13.000Z",
+    "rule": {
+      "name": "AV definition update failed"
+    },
+    "severity": "informational",
+    "source": "SIEM",
+    "entities": {
+      "hosts": [
+        "WS-031"
+      ],
+      "users": [
+        "SYSTEM"
+      ]
+    },
+    "dedupe_key": "AV definition update failed|WS-031|SYSTEM",
+    "status": "new"
+  },
+  {
+    "alert_id": "ALR-S8-046",
+    "created": "2026-10-13T12:00:13.000Z",
+    "rule": {
+      "name": "Multiple failed logons"
+    },
+    "severity": "medium",
+    "source": "SIEM",
+    "entities": {
+      "hosts": [
+        "SQL01"
+      ],
+      "users": [
+        "svc-legacyapp"
+      ]
+    },
+    "dedupe_key": "Multiple failed logons|SQL01|svc-legacyapp",
+    "status": "new"
+  },
+  {
+    "alert_id": "ALR-S8-047",
+    "created": "2026-10-13T12:00:14.000Z",
+    "rule": {
+      "name": "Multiple failed logons"
+    },
+    "severity": "medium",
+    "source": "SIEM",
+    "entities": {
+      "hosts": [
+        "SQL01"
+      ],
+      "users": [
+        "svc-legacyapp"
+      ]
+    },
+    "dedupe_key": "Multiple failed logons|SQL01|svc-legacyapp",
+    "status": "new"
+  },
+  {
+    "alert_id": "ALR-S8-048",
+    "created": "2026-10-13T12:00:14.000Z",
+    "rule": {
+      "name": "Multiple failed logons"
+    },
+    "severity": "medium",
+    "source": "SIEM",
+    "entities": {
+      "hosts": [
+        "SQL01"
+      ],
+      "users": [
+        "svc-legacyapp"
+      ]
+    },
+    "dedupe_key": "Multiple failed logons|SQL01|svc-legacyapp",
+    "status": "new"
+  },
+  {
+    "alert_id": "ALR-S8-049",
+    "created": "2026-10-13T12:00:14.000Z",
+    "rule": {
+      "name": "AV definition update failed"
+    },
+    "severity": "informational",
+    "source": "SIEM",
+    "entities": {
+      "hosts": [
+        "WS-080"
+      ],
+      "users": [
+        "SYSTEM"
+      ]
+    },
+    "dedupe_key": "AV definition update failed|WS-080|SYSTEM",
+    "status": "new"
+  },
+  {
+    "alert_id": "ALR-S8-050",
+    "created": "2026-10-13T12:00:15.000Z",
+    "rule": {
+      "name": "Multiple failed logons"
+    },
+    "severity": "medium",
+    "source": "SIEM",
+    "entities": {
+      "hosts": [
+        "SQL01"
+      ],
+      "users": [
+        "svc-legacyapp"
+      ]
+    },
+    "dedupe_key": "Multiple failed logons|SQL01|svc-legacyapp",
+    "status": "new"
+  },
+  {
+    "alert_id": "ALR-S8-051",
+    "created": "2026-10-13T12:00:15.000Z",
+    "rule": {
+      "name": "Suspicious PowerShell download cradle"
+    },
+    "severity": "high",
+    "source": "SIEM",
+    "entities": {
+      "hosts": [
+        "WS-047"
+      ],
+      "users": [
+        "f.rossi"
+      ]
+    },
+    "dedupe_key": "Suspicious PowerShell download cradle|WS-047|f.rossi",
+    "status": "new"
+  },
+  {
+    "alert_id": "ALR-S8-052",
+    "created": "2026-10-13T12:00:15.000Z",
+    "rule": {
+      "name": "Multiple failed logons"
+    },
+    "severity": "medium",
+    "source": "SIEM",
+    "entities": {
+      "hosts": [
+        "SQL01"
+      ],
+      "users": [
+        "svc-legacyapp"
+      ]
+    },
+    "dedupe_key": "Multiple failed logons|SQL01|svc-legacyapp",
+    "status": "new"
+  },
+  {
+    "alert_id": "ALR-S8-053",
+    "created": "2026-10-13T12:00:15.000Z",
+    "rule": {
+      "name": "Multiple failed logons"
+    },
+    "severity": "medium",
+    "source": "SIEM",
+    "entities": {
+      "hosts": [
+        "SQL01"
+      ],
+      "users": [
+        "svc-legacyapp"
+      ]
+    },
+    "dedupe_key": "Multiple failed logons|SQL01|svc-legacyapp",
+    "status": "new"
+  },
+  {
+    "alert_id": "ALR-S8-054",
+    "created": "2026-10-13T12:00:16.000Z",
+    "rule": {
+      "name": "Multiple failed logons"
+    },
+    "severity": "medium",
+    "source": "SIEM",
+    "entities": {
+      "hosts": [
+        "SQL01"
+      ],
+      "users": [
+        "svc-legacyapp"
+      ]
+    },
+    "dedupe_key": "Multiple failed logons|SQL01|svc-legacyapp",
+    "status": "new"
+  },
+  {
+    "alert_id": "ALR-S8-055",
+    "created": "2026-10-13T12:00:16.000Z",
+    "rule": {
+      "name": "Multiple failed logons"
+    },
+    "severity": "medium",
+    "source": "SIEM",
+    "entities": {
+      "hosts": [
+        "SQL01"
+      ],
+      "users": [
+        "svc-legacyapp"
+      ]
+    },
+    "dedupe_key": "Multiple failed logons|SQL01|svc-legacyapp",
+    "status": "new"
+  },
+  {
+    "alert_id": "ALR-S8-056",
+    "created": "2026-10-13T12:00:16.000Z",
+    "rule": {
+      "name": "Multiple failed logons"
+    },
+    "severity": "medium",
+    "source": "SIEM",
+    "entities": {
+      "hosts": [
+        "SQL01"
+      ],
+      "users": [
+        "svc-legacyapp"
+      ]
+    },
+    "dedupe_key": "Multiple failed logons|SQL01|svc-legacyapp",
+    "status": "new"
+  },
+  {
+    "alert_id": "ALR-S8-057",
+    "created": "2026-10-13T12:00:17.000Z",
+    "rule": {
+      "name": "Multiple failed logons"
+    },
+    "severity": "medium",
+    "source": "SIEM",
+    "entities": {
+      "hosts": [
+        "SQL01"
+      ],
+      "users": [
+        "svc-legacyapp"
+      ]
+    },
+    "dedupe_key": "Multiple failed logons|SQL01|svc-legacyapp",
+    "status": "new"
+  },
+  {
+    "alert_id": "ALR-S8-058",
+    "created": "2026-10-13T12:00:17.000Z",
+    "rule": {
+      "name": "Multiple failed logons"
+    },
+    "severity": "medium",
+    "source": "SIEM",
+    "entities": {
+      "hosts": [
+        "SQL01"
+      ],
+      "users": [
+        "svc-legacyapp"
+      ]
+    },
+    "dedupe_key": "Multiple failed logons|SQL01|svc-legacyapp",
+    "status": "new"
+  },
+  {
+    "alert_id": "ALR-S8-059",
+    "created": "2026-10-13T12:00:17.000Z",
+    "rule": {
+      "name": "Multiple failed logons"
+    },
+    "severity": "medium",
+    "source": "SIEM",
+    "entities": {
+      "hosts": [
+        "SQL01"
+      ],
+      "users": [
+        "svc-legacyapp"
+      ]
+    },
+    "dedupe_key": "Multiple failed logons|SQL01|svc-legacyapp",
+    "status": "new"
+  },
+  {
+    "alert_id": "ALR-S8-060",
+    "created": "2026-10-13T12:00:18.000Z",
+    "rule": {
+      "name": "Multiple failed logons"
+    },
+    "severity": "medium",
+    "source": "SIEM",
+    "entities": {
+      "hosts": [
+        "SQL01"
+      ],
+      "users": [
+        "svc-legacyapp"
+      ]
+    },
+    "dedupe_key": "Multiple failed logons|SQL01|svc-legacyapp",
+    "status": "new"
+  },
+  {
+    "alert_id": "ALR-S8-061",
+    "created": "2026-10-13T12:00:18.000Z",
+    "rule": {
+      "name": "AV definition update failed"
+    },
+    "severity": "informational",
+    "source": "SIEM",
+    "entities": {
+      "hosts": [
+        "WS-036"
+      ],
+      "users": [
+        "SYSTEM"
+      ]
+    },
+    "dedupe_key": "AV definition update failed|WS-036|SYSTEM",
+    "status": "new"
+  },
+  {
+    "alert_id": "ALR-S8-062",
+    "created": "2026-10-13T12:00:18.000Z",
+    "rule": {
+      "name": "Multiple failed logons"
+    },
+    "severity": "medium",
+    "source": "SIEM",
+    "entities": {
+      "hosts": [
+        "SQL01"
+      ],
+      "users": [
+        "svc-legacyapp"
+      ]
+    },
+    "dedupe_key": "Multiple failed logons|SQL01|svc-legacyapp",
+    "status": "new"
+  },
+  {
+    "alert_id": "ALR-S8-063",
+    "created": "2026-10-13T12:00:18.000Z",
+    "rule": {
+      "name": "Multiple failed logons"
+    },
+    "severity": "medium",
+    "source": "SIEM",
+    "entities": {
+      "hosts": [
+        "SQL01"
+      ],
+      "users": [
+        "svc-legacyapp"
+      ]
+    },
+    "dedupe_key": "Multiple failed logons|SQL01|svc-legacyapp",
+    "status": "new"
+  },
+  {
+    "alert_id": "ALR-S8-064",
+    "created": "2026-10-13T12:00:19.000Z",
+    "rule": {
+      "name": "Multiple failed logons"
+    },
+    "severity": "medium",
+    "source": "SIEM",
+    "entities": {
+      "hosts": [
+        "SQL01"
+      ],
+      "users": [
+        "svc-legacyapp"
+      ]
+    },
+    "dedupe_key": "Multiple failed logons|SQL01|svc-legacyapp",
+    "status": "new"
+  },
+  {
+    "alert_id": "ALR-S8-065",
+    "created": "2026-10-13T12:00:19.000Z",
+    "rule": {
+      "name": "Multiple failed logons"
+    },
+    "severity": "medium",
+    "source": "SIEM",
+    "entities": {
+      "hosts": [
+        "SQL01"
+      ],
+      "users": [
+        "svc-legacyapp"
+      ]
+    },
+    "dedupe_key": "Multiple failed logons|SQL01|svc-legacyapp",
+    "status": "new"
+  },
+  {
+    "alert_id": "ALR-S8-066",
+    "created": "2026-10-13T12:00:19.000Z",
+    "rule": {
+      "name": "Sign-in from unfamiliar location"
+    },
+    "severity": "low",
+    "source": "SIEM",
+    "entities": {
+      "hosts": [],
+      "users": [
+        "u.adeyemi"
+      ]
+    },
+    "dedupe_key": "Sign-in from unfamiliar location|None|u.adeyemi",
+    "status": "new"
+  },
+  {
+    "alert_id": "ALR-S8-067",
+    "created": "2026-10-13T12:00:20.000Z",
+    "rule": {
+      "name": "Multiple failed logons"
+    },
+    "severity": "medium",
+    "source": "SIEM",
+    "entities": {
+      "hosts": [
+        "SQL01"
+      ],
+      "users": [
+        "svc-legacyapp"
+      ]
+    },
+    "dedupe_key": "Multiple failed logons|SQL01|svc-legacyapp",
+    "status": "new"
+  },
+  {
+    "alert_id": "ALR-S8-068",
+    "created": "2026-10-13T12:00:20.000Z",
+    "rule": {
+      "name": "Multiple failed logons"
+    },
+    "severity": "medium",
+    "source": "SIEM",
+    "entities": {
+      "hosts": [
+        "SQL01"
+      ],
+      "users": [
+        "svc-legacyapp"
+      ]
+    },
+    "dedupe_key": "Multiple failed logons|SQL01|svc-legacyapp",
+    "status": "new"
+  },
+  {
+    "alert_id": "ALR-S8-069",
+    "created": "2026-10-13T12:00:20.000Z",
+    "rule": {
+      "name": "Multiple failed logons"
+    },
+    "severity": "medium",
+    "source": "SIEM",
+    "entities": {
+      "hosts": [
+        "SQL01"
+      ],
+      "users": [
+        "svc-legacyapp"
+      ]
+    },
+    "dedupe_key": "Multiple failed logons|SQL01|svc-legacyapp",
+    "status": "new"
+  },
+  {
+    "alert_id": "ALR-S8-070",
+    "created": "2026-10-13T12:00:21.000Z",
+    "rule": {
+      "name": "Multiple failed logons"
+    },
+    "severity": "medium",
+    "source": "SIEM",
+    "entities": {
+      "hosts": [
+        "SQL01"
+      ],
+      "users": [
+        "svc-legacyapp"
+      ]
+    },
+    "dedupe_key": "Multiple failed logons|SQL01|svc-legacyapp",
+    "status": "new"
+  },
+  {
+    "alert_id": "ALR-S8-071",
+    "created": "2026-10-13T12:00:21.000Z",
+    "rule": {
+      "name": "Multiple failed logons"
+    },
+    "severity": "medium",
+    "source": "SIEM",
+    "entities": {
+      "hosts": [
+        "SQL01"
+      ],
+      "users": [
+        "svc-legacyapp"
+      ]
+    },
+    "dedupe_key": "Multiple failed logons|SQL01|svc-legacyapp",
+    "status": "new"
+  },
+  {
+    "alert_id": "ALR-S8-072",
+    "created": "2026-10-13T12:00:21.000Z",
+    "rule": {
+      "name": "Multiple failed logons"
+    },
+    "severity": "medium",
+    "source": "SIEM",
+    "entities": {
+      "hosts": [
+        "SQL01"
+      ],
+      "users": [
+        "svc-legacyapp"
+      ]
+    },
+    "dedupe_key": "Multiple failed logons|SQL01|svc-legacyapp",
+    "status": "new"
+  },
+  {
+    "alert_id": "ALR-S8-073",
+    "created": "2026-10-13T12:00:21.000Z",
+    "rule": {
+      "name": "Multiple failed logons"
+    },
+    "severity": "medium",
+    "source": "SIEM",
+    "entities": {
+      "hosts": [
+        "SQL01"
+      ],
+      "users": [
+        "svc-legacyapp"
+      ]
+    },
+    "dedupe_key": "Multiple failed logons|SQL01|svc-legacyapp",
+    "status": "new"
+  },
+  {
+    "alert_id": "ALR-S8-074",
+    "created": "2026-10-13T12:00:22.000Z",
+    "rule": {
+      "name": "Multiple failed logons"
+    },
+    "severity": "medium",
+    "source": "SIEM",
+    "entities": {
+      "hosts": [
+        "SQL01"
+      ],
+      "users": [
+        "svc-legacyapp"
+      ]
+    },
+    "dedupe_key": "Multiple failed logons|SQL01|svc-legacyapp",
+    "status": "new"
+  },
+  {
+    "alert_id": "ALR-S8-075",
+    "created": "2026-10-13T12:00:22.000Z",
+    "rule": {
+      "name": "Multiple failed logons"
+    },
+    "severity": "medium",
+    "source": "SIEM",
+    "entities": {
+      "hosts": [
+        "SQL01"
+      ],
+      "users": [
+        "svc-legacyapp"
+      ]
+    },
+    "dedupe_key": "Multiple failed logons|SQL01|svc-legacyapp",
+    "status": "new"
+  },
+  {
+    "alert_id": "ALR-S8-076",
+    "created": "2026-10-13T12:00:22.000Z",
+    "rule": {
+      "name": "Multiple failed logons"
+    },
+    "severity": "medium",
+    "source": "SIEM",
+    "entities": {
+      "hosts": [
+        "SQL01"
+      ],
+      "users": [
+        "svc-legacyapp"
+      ]
+    },
+    "dedupe_key": "Multiple failed logons|SQL01|svc-legacyapp",
+    "status": "new"
+  },
+  {
+    "alert_id": "ALR-S8-077",
+    "created": "2026-10-13T12:00:23.000Z",
+    "rule": {
+      "name": "Multiple failed logons"
+    },
+    "severity": "medium",
+    "source": "SIEM",
+    "entities": {
+      "hosts": [
+        "SQL01"
+      ],
+      "users": [
+        "svc-legacyapp"
+      ]
+    },
+    "dedupe_key": "Multiple failed logons|SQL01|svc-legacyapp",
+    "status": "new"
+  },
+  {
+    "alert_id": "ALR-S8-078",
+    "created": "2026-10-13T12:00:23.000Z",
+    "rule": {
+      "name": "Multiple failed logons"
+    },
+    "severity": "medium",
+    "source": "SIEM",
+    "entities": {
+      "hosts": [
+        "SQL01"
+      ],
+      "users": [
+        "svc-legacyapp"
+      ]
+    },
+    "dedupe_key": "Multiple failed logons|SQL01|svc-legacyapp",
+    "status": "new"
+  },
+  {
+    "alert_id": "ALR-S8-079",
+    "created": "2026-10-13T12:00:23.000Z",
+    "rule": {
+      "name": "Multiple failed logons"
+    },
+    "severity": "medium",
+    "source": "SIEM",
+    "entities": {
+      "hosts": [
+        "SQL01"
+      ],
+      "users": [
+        "svc-legacyapp"
+      ]
+    },
+    "dedupe_key": "Multiple failed logons|SQL01|svc-legacyapp",
+    "status": "new"
+  },
+  {
+    "alert_id": "ALR-S8-080",
+    "created": "2026-10-13T12:00:24.000Z",
+    "rule": {
+      "name": "Multiple failed logons"
+    },
+    "severity": "medium",
+    "source": "SIEM",
+    "entities": {
+      "hosts": [
+        "SQL01"
+      ],
+      "users": [
+        "svc-legacyapp"
+      ]
+    },
+    "dedupe_key": "Multiple failed logons|SQL01|svc-legacyapp",
+    "status": "new"
+  },
+  {
+    "alert_id": "ALR-S8-081",
+    "created": "2026-10-13T12:00:24.000Z",
+    "rule": {
+      "name": "Multiple failed logons"
+    },
+    "severity": "medium",
+    "source": "SIEM",
+    "entities": {
+      "hosts": [
+        "SQL01"
+      ],
+      "users": [
+        "svc-legacyapp"
+      ]
+    },
+    "dedupe_key": "Multiple failed logons|SQL01|svc-legacyapp",
+    "status": "new"
+  },
+  {
+    "alert_id": "ALR-S8-082",
+    "created": "2026-10-13T12:00:24.000Z",
+    "rule": {
+      "name": "Multiple failed logons"
+    },
+    "severity": "medium",
+    "source": "SIEM",
+    "entities": {
+      "hosts": [
+        "SQL01"
+      ],
+      "users": [
+        "svc-legacyapp"
+      ]
+    },
+    "dedupe_key": "Multiple failed logons|SQL01|svc-legacyapp",
+    "status": "new"
+  },
+  {
+    "alert_id": "ALR-S8-083",
+    "created": "2026-10-13T12:00:24.000Z",
+    "rule": {
+      "name": "Multiple failed logons"
+    },
+    "severity": "medium",
+    "source": "SIEM",
+    "entities": {
+      "hosts": [
+        "SQL01"
+      ],
+      "users": [
+        "svc-legacyapp"
+      ]
+    },
+    "dedupe_key": "Multiple failed logons|SQL01|svc-legacyapp",
+    "status": "new"
+  },
+  {
+    "alert_id": "ALR-S8-084",
+    "created": "2026-10-13T12:00:25.000Z",
+    "rule": {
+      "name": "Multiple failed logons"
+    },
+    "severity": "medium",
+    "source": "SIEM",
+    "entities": {
+      "hosts": [
+        "SQL01"
+      ],
+      "users": [
+        "svc-legacyapp"
+      ]
+    },
+    "dedupe_key": "Multiple failed logons|SQL01|svc-legacyapp",
+    "status": "new"
+  },
+  {
+    "alert_id": "ALR-S8-085",
+    "created": "2026-10-13T12:00:25.000Z",
+    "rule": {
+      "name": "Multiple failed logons"
+    },
+    "severity": "medium",
+    "source": "SIEM",
+    "entities": {
+      "hosts": [
+        "SQL01"
+      ],
+      "users": [
+        "svc-legacyapp"
+      ]
+    },
+    "dedupe_key": "Multiple failed logons|SQL01|svc-legacyapp",
+    "status": "new"
+  },
+  {
+    "alert_id": "ALR-S8-086",
+    "created": "2026-10-13T12:00:25.000Z",
+    "rule": {
+      "name": "Multiple failed logons"
+    },
+    "severity": "medium",
+    "source": "SIEM",
+    "entities": {
+      "hosts": [
+        "SQL01"
+      ],
+      "users": [
+        "svc-legacyapp"
+      ]
+    },
+    "dedupe_key": "Multiple failed logons|SQL01|svc-legacyapp",
+    "status": "new"
+  },
+  {
+    "alert_id": "ALR-S8-087",
+    "created": "2026-10-13T12:00:26.000Z",
+    "rule": {
+      "name": "Multiple failed logons"
+    },
+    "severity": "medium",
+    "source": "SIEM",
+    "entities": {
+      "hosts": [
+        "SQL01"
+      ],
+      "users": [
+        "svc-legacyapp"
+      ]
+    },
+    "dedupe_key": "Multiple failed logons|SQL01|svc-legacyapp",
+    "status": "new"
+  },
+  {
+    "alert_id": "ALR-S8-088",
+    "created": "2026-10-13T12:00:26.000Z",
+    "rule": {
+      "name": "Multiple failed logons"
+    },
+    "severity": "medium",
+    "source": "SIEM",
+    "entities": {
+      "hosts": [
+        "SQL01"
+      ],
+      "users": [
+        "svc-legacyapp"
+      ]
+    },
+    "dedupe_key": "Multiple failed logons|SQL01|svc-legacyapp",
+    "status": "new"
+  },
+  {
+    "alert_id": "ALR-S8-089",
+    "created": "2026-10-13T12:00:26.000Z",
+    "rule": {
+      "name": "Multiple failed logons"
+    },
+    "severity": "medium",
+    "source": "SIEM",
+    "entities": {
+      "hosts": [
+        "SQL01"
+      ],
+      "users": [
+        "svc-legacyapp"
+      ]
+    },
+    "dedupe_key": "Multiple failed logons|SQL01|svc-legacyapp",
+    "status": "new"
+  },
+  {
+    "alert_id": "ALR-S8-090",
+    "created": "2026-10-13T12:00:27.000Z",
+    "rule": {
+      "name": "Multiple failed logons"
+    },
+    "severity": "medium",
+    "source": "SIEM",
+    "entities": {
+      "hosts": [
+        "SQL01"
+      ],
+      "users": [
+        "svc-legacyapp"
+      ]
+    },
+    "dedupe_key": "Multiple failed logons|SQL01|svc-legacyapp",
+    "status": "new"
+  },
+  {
+    "alert_id": "ALR-S8-091",
+    "created": "2026-10-13T12:00:27.000Z",
+    "rule": {
+      "name": "Multiple failed logons"
+    },
+    "severity": "medium",
+    "source": "SIEM",
+    "entities": {
+      "hosts": [
+        "SQL01"
+      ],
+      "users": [
+        "svc-legacyapp"
+      ]
+    },
+    "dedupe_key": "Multiple failed logons|SQL01|svc-legacyapp",
+    "status": "new"
+  },
+  {
+    "alert_id": "ALR-S8-092",
+    "created": "2026-10-13T12:00:27.000Z",
+    "rule": {
+      "name": "AV definition update failed"
+    },
+    "severity": "informational",
+    "source": "SIEM",
+    "entities": {
+      "hosts": [
+        "WS-012"
+      ],
+      "users": [
+        "SYSTEM"
+      ]
+    },
+    "dedupe_key": "AV definition update failed|WS-012|SYSTEM",
+    "status": "new"
+  },
+  {
+    "alert_id": "ALR-S8-093",
+    "created": "2026-10-13T12:00:27.000Z",
+    "rule": {
+      "name": "Multiple failed logons"
+    },
+    "severity": "medium",
+    "source": "SIEM",
+    "entities": {
+      "hosts": [
+        "SQL01"
+      ],
+      "users": [
+        "svc-legacyapp"
+      ]
+    },
+    "dedupe_key": "Multiple failed logons|SQL01|svc-legacyapp",
+    "status": "new"
+  },
+  {
+    "alert_id": "ALR-S8-094",
+    "created": "2026-10-13T12:00:28.000Z",
+    "rule": {
+      "name": "Multiple failed logons"
+    },
+    "severity": "medium",
+    "source": "SIEM",
+    "entities": {
+      "hosts": [
+        "SQL01"
+      ],
+      "users": [
+        "svc-legacyapp"
+      ]
+    },
+    "dedupe_key": "Multiple failed logons|SQL01|svc-legacyapp",
+    "status": "new"
+  },
+  {
+    "alert_id": "ALR-S8-095",
+    "created": "2026-10-13T12:00:28.000Z",
+    "rule": {
+      "name": "Multiple failed logons"
+    },
+    "severity": "medium",
+    "source": "SIEM",
+    "entities": {
+      "hosts": [
+        "SQL01"
+      ],
+      "users": [
+        "svc-legacyapp"
+      ]
+    },
+    "dedupe_key": "Multiple failed logons|SQL01|svc-legacyapp",
+    "status": "new"
+  },
+  {
+    "alert_id": "ALR-S8-096",
+    "created": "2026-10-13T12:00:28.000Z",
+    "rule": {
+      "name": "Multiple failed logons"
+    },
+    "severity": "medium",
+    "source": "SIEM",
+    "entities": {
+      "hosts": [
+        "SQL01"
+      ],
+      "users": [
+        "svc-legacyapp"
+      ]
+    },
+    "dedupe_key": "Multiple failed logons|SQL01|svc-legacyapp",
+    "status": "new"
+  },
+  {
+    "alert_id": "ALR-S8-097",
+    "created": "2026-10-13T12:00:29.000Z",
+    "rule": {
+      "name": "Multiple failed logons"
+    },
+    "severity": "medium",
+    "source": "SIEM",
+    "entities": {
+      "hosts": [
+        "SQL01"
+      ],
+      "users": [
+        "svc-legacyapp"
+      ]
+    },
+    "dedupe_key": "Multiple failed logons|SQL01|svc-legacyapp",
+    "status": "new"
+  },
+  {
+    "alert_id": "ALR-S8-098",
+    "created": "2026-10-13T12:00:29.000Z",
+    "rule": {
+      "name": "Multiple failed logons"
+    },
+    "severity": "medium",
+    "source": "SIEM",
+    "entities": {
+      "hosts": [
+        "SQL01"
+      ],
+      "users": [
+        "svc-legacyapp"
+      ]
+    },
+    "dedupe_key": "Multiple failed logons|SQL01|svc-legacyapp",
+    "status": "new"
+  },
+  {
+    "alert_id": "ALR-S8-099",
+    "created": "2026-10-13T12:00:29.000Z",
+    "rule": {
+      "name": "Multiple failed logons"
+    },
+    "severity": "medium",
+    "source": "SIEM",
+    "entities": {
+      "hosts": [
+        "SQL01"
+      ],
+      "users": [
+        "svc-legacyapp"
+      ]
+    },
+    "dedupe_key": "Multiple failed logons|SQL01|svc-legacyapp",
+    "status": "new"
+  },
+  {
+    "alert_id": "ALR-S8-100",
+    "created": "2026-10-13T12:00:30.000Z",
+    "rule": {
+      "name": "AV definition update failed"
+    },
+    "severity": "informational",
+    "source": "SIEM",
+    "entities": {
+      "hosts": [
+        "WS-023"
+      ],
+      "users": [
+        "SYSTEM"
+      ]
+    },
+    "dedupe_key": "AV definition update failed|WS-023|SYSTEM",
+    "status": "new"
+  },
+  {
+    "alert_id": "ALR-S8-101",
+    "created": "2026-10-13T12:00:30.000Z",
+    "rule": {
+      "name": "Multiple failed logons"
+    },
+    "severity": "medium",
+    "source": "SIEM",
+    "entities": {
+      "hosts": [
+        "SQL01"
+      ],
+      "users": [
+        "svc-legacyapp"
+      ]
+    },
+    "dedupe_key": "Multiple failed logons|SQL01|svc-legacyapp",
+    "status": "new"
+  },
+  {
+    "alert_id": "ALR-S8-102",
+    "created": "2026-10-13T12:00:30.000Z",
+    "rule": {
+      "name": "Multiple failed logons"
+    },
+    "severity": "medium",
+    "source": "SIEM",
+    "entities": {
+      "hosts": [
+        "SQL01"
+      ],
+      "users": [
+        "svc-legacyapp"
+      ]
+    },
+    "dedupe_key": "Multiple failed logons|SQL01|svc-legacyapp",
+    "status": "new"
+  },
+  {
+    "alert_id": "ALR-S8-103",
+    "created": "2026-10-13T12:00:30.000Z",
+    "rule": {
+      "name": "Multiple failed logons"
+    },
+    "severity": "medium",
+    "source": "SIEM",
+    "entities": {
+      "hosts": [
+        "SQL01"
+      ],
+      "users": [
+        "svc-legacyapp"
+      ]
+    },
+    "dedupe_key": "Multiple failed logons|SQL01|svc-legacyapp",
+    "status": "new"
+  },
+  {
+    "alert_id": "ALR-S8-104",
+    "created": "2026-10-13T12:00:31.000Z",
+    "rule": {
+      "name": "Multiple failed logons"
+    },
+    "severity": "medium",
+    "source": "SIEM",
+    "entities": {
+      "hosts": [
+        "SQL01"
+      ],
+      "users": [
+        "svc-legacyapp"
+      ]
+    },
+    "dedupe_key": "Multiple failed logons|SQL01|svc-legacyapp",
+    "status": "new"
+  },
+  {
+    "alert_id": "ALR-S8-105",
+    "created": "2026-10-13T12:00:31.000Z",
+    "rule": {
+      "name": "Multiple failed logons"
+    },
+    "severity": "medium",
+    "source": "SIEM",
+    "entities": {
+      "hosts": [
+        "SQL01"
+      ],
+      "users": [
+        "svc-legacyapp"
+      ]
+    },
+    "dedupe_key": "Multiple failed logons|SQL01|svc-legacyapp",
+    "status": "new"
+  },
+  {
+    "alert_id": "ALR-S8-106",
+    "created": "2026-10-13T12:00:31.000Z",
+    "rule": {
+      "name": "AV definition update failed"
+    },
+    "severity": "informational",
+    "source": "SIEM",
+    "entities": {
+      "hosts": [
+        "WS-007"
+      ],
+      "users": [
+        "SYSTEM"
+      ]
+    },
+    "dedupe_key": "AV definition update failed|WS-007|SYSTEM",
+    "status": "new"
+  },
+  {
+    "alert_id": "ALR-S8-107",
+    "created": "2026-10-13T12:00:32.000Z",
+    "rule": {
+      "name": "Multiple failed logons"
+    },
+    "severity": "medium",
+    "source": "SIEM",
+    "entities": {
+      "hosts": [
+        "SQL01"
+      ],
+      "users": [
+        "svc-legacyapp"
+      ]
+    },
+    "dedupe_key": "Multiple failed logons|SQL01|svc-legacyapp",
+    "status": "new"
+  },
+  {
+    "alert_id": "ALR-S8-108",
+    "created": "2026-10-13T12:00:32.000Z",
+    "rule": {
+      "name": "Multiple failed logons"
+    },
+    "severity": "medium",
+    "source": "SIEM",
+    "entities": {
+      "hosts": [
+        "SQL01"
+      ],
+      "users": [
+        "svc-legacyapp"
+      ]
+    },
+    "dedupe_key": "Multiple failed logons|SQL01|svc-legacyapp",
+    "status": "new"
+  },
+  {
+    "alert_id": "ALR-S8-109",
+    "created": "2026-10-13T12:00:32.000Z",
+    "rule": {
+      "name": "Multiple failed logons"
+    },
+    "severity": "medium",
+    "source": "SIEM",
+    "entities": {
+      "hosts": [
+        "SQL01"
+      ],
+      "users": [
+        "svc-legacyapp"
+      ]
+    },
+    "dedupe_key": "Multiple failed logons|SQL01|svc-legacyapp",
+    "status": "new"
+  },
+  {
+    "alert_id": "ALR-S8-110",
+    "created": "2026-10-13T12:00:33.000Z",
+    "rule": {
+      "name": "Multiple failed logons"
+    },
+    "severity": "medium",
+    "source": "SIEM",
+    "entities": {
+      "hosts": [
+        "SQL01"
+      ],
+      "users": [
+        "svc-legacyapp"
+      ]
+    },
+    "dedupe_key": "Multiple failed logons|SQL01|svc-legacyapp",
+    "status": "new"
+  },
+  {
+    "alert_id": "ALR-S8-111",
+    "created": "2026-10-13T12:00:33.000Z",
+    "rule": {
+      "name": "Multiple failed logons"
+    },
+    "severity": "medium",
+    "source": "SIEM",
+    "entities": {
+      "hosts": [
+        "SQL01"
+      ],
+      "users": [
+        "svc-legacyapp"
+      ]
+    },
+    "dedupe_key": "Multiple failed logons|SQL01|svc-legacyapp",
+    "status": "new"
+  },
+  {
+    "alert_id": "ALR-S8-112",
+    "created": "2026-10-13T12:00:33.000Z",
+    "rule": {
+      "name": "AV definition update failed"
+    },
+    "severity": "informational",
+    "source": "SIEM",
+    "entities": {
+      "hosts": [
+        "WS-050"
+      ],
+      "users": [
+        "SYSTEM"
+      ]
+    },
+    "dedupe_key": "AV definition update failed|WS-050|SYSTEM",
+    "status": "new"
+  },
+  {
+    "alert_id": "ALR-S8-113",
+    "created": "2026-10-13T12:00:33.000Z",
+    "rule": {
+      "name": "Sign-in from unfamiliar location"
+    },
+    "severity": "low",
+    "source": "SIEM",
+    "entities": {
+      "hosts": [],
+      "users": [
+        "w.johnson"
+      ]
+    },
+    "dedupe_key": "Sign-in from unfamiliar location|None|w.johnson",
+    "status": "new"
+  },
+  {
+    "alert_id": "ALR-S8-114",
+    "created": "2026-10-13T12:00:34.000Z",
+    "rule": {
+      "name": "Multiple failed logons"
+    },
+    "severity": "medium",
+    "source": "SIEM",
+    "entities": {
+      "hosts": [
+        "SQL01"
+      ],
+      "users": [
+        "svc-legacyapp"
+      ]
+    },
+    "dedupe_key": "Multiple failed logons|SQL01|svc-legacyapp",
+    "status": "new"
+  },
+  {
+    "alert_id": "ALR-S8-115",
+    "created": "2026-10-13T12:00:34.000Z",
+    "rule": {
+      "name": "Multiple failed logons"
+    },
+    "severity": "medium",
+    "source": "SIEM",
+    "entities": {
+      "hosts": [
+        "SQL01"
+      ],
+      "users": [
+        "svc-legacyapp"
+      ]
+    },
+    "dedupe_key": "Multiple failed logons|SQL01|svc-legacyapp",
+    "status": "new"
+  },
+  {
+    "alert_id": "ALR-S8-116",
+    "created": "2026-10-13T12:00:34.000Z",
+    "rule": {
+      "name": "AV definition update failed"
+    },
+    "severity": "informational",
+    "source": "SIEM",
+    "entities": {
+      "hosts": [
+        "WS-033"
+      ],
+      "users": [
+        "SYSTEM"
+      ]
+    },
+    "dedupe_key": "AV definition update failed|WS-033|SYSTEM",
+    "status": "new"
+  },
+  {
+    "alert_id": "ALR-S8-117",
+    "created": "2026-10-13T12:00:35.000Z",
+    "rule": {
+      "name": "Multiple failed logons"
+    },
+    "severity": "medium",
+    "source": "SIEM",
+    "entities": {
+      "hosts": [
+        "SQL01"
+      ],
+      "users": [
+        "svc-legacyapp"
+      ]
+    },
+    "dedupe_key": "Multiple failed logons|SQL01|svc-legacyapp",
+    "status": "new"
+  },
+  {
+    "alert_id": "ALR-S8-118",
+    "created": "2026-10-13T12:00:35.000Z",
+    "rule": {
+      "name": "AV definition update failed"
+    },
+    "severity": "informational",
+    "source": "SIEM",
+    "entities": {
+      "hosts": [
+        "WS-058"
+      ],
+      "users": [
+        "SYSTEM"
+      ]
+    },
+    "dedupe_key": "AV definition update failed|WS-058|SYSTEM",
+    "status": "new"
+  },
+  {
+    "alert_id": "ALR-S8-119",
+    "created": "2026-10-13T12:00:35.000Z",
+    "rule": {
+      "name": "Multiple failed logons"
+    },
+    "severity": "medium",
+    "source": "SIEM",
+    "entities": {
+      "hosts": [
+        "SQL01"
+      ],
+      "users": [
+        "svc-legacyapp"
+      ]
+    },
+    "dedupe_key": "Multiple failed logons|SQL01|svc-legacyapp",
+    "status": "new"
+  },
+  {
+    "alert_id": "ALR-S8-120",
+    "created": "2026-10-13T12:00:36.000Z",
+    "rule": {
+      "name": "Multiple failed logons"
+    },
+    "severity": "medium",
+    "source": "SIEM",
+    "entities": {
+      "hosts": [
+        "SQL01"
+      ],
+      "users": [
+        "svc-legacyapp"
+      ]
+    },
+    "dedupe_key": "Multiple failed logons|SQL01|svc-legacyapp",
+    "status": "new"
+  },
+  {
+    "alert_id": "ALR-S8-121",
+    "created": "2026-10-13T12:00:36.000Z",
+    "rule": {
+      "name": "Multiple failed logons"
+    },
+    "severity": "medium",
+    "source": "SIEM",
+    "entities": {
+      "hosts": [
+        "SQL01"
+      ],
+      "users": [
+        "svc-legacyapp"
+      ]
+    },
+    "dedupe_key": "Multiple failed logons|SQL01|svc-legacyapp",
+    "status": "new"
+  },
+  {
+    "alert_id": "ALR-S8-122",
+    "created": "2026-10-13T12:00:36.000Z",
+    "rule": {
+      "name": "Multiple failed logons"
+    },
+    "severity": "medium",
+    "source": "SIEM",
+    "entities": {
+      "hosts": [
+        "SQL01"
+      ],
+      "users": [
+        "svc-legacyapp"
+      ]
+    },
+    "dedupe_key": "Multiple failed logons|SQL01|svc-legacyapp",
+    "status": "new"
+  },
+  {
+    "alert_id": "ALR-S8-123",
+    "created": "2026-10-13T12:00:36.000Z",
+    "rule": {
+      "name": "Multiple failed logons"
+    },
+    "severity": "medium",
+    "source": "SIEM",
+    "entities": {
+      "hosts": [
+        "SQL01"
+      ],
+      "users": [
+        "svc-legacyapp"
+      ]
+    },
+    "dedupe_key": "Multiple failed logons|SQL01|svc-legacyapp",
+    "status": "new"
+  },
+  {
+    "alert_id": "ALR-S8-124",
+    "created": "2026-10-13T12:00:37.000Z",
+    "rule": {
+      "name": "Multiple failed logons"
+    },
+    "severity": "medium",
+    "source": "SIEM",
+    "entities": {
+      "hosts": [
+        "SQL01"
+      ],
+      "users": [
+        "svc-legacyapp"
+      ]
+    },
+    "dedupe_key": "Multiple failed logons|SQL01|svc-legacyapp",
+    "status": "new"
+  },
+  {
+    "alert_id": "ALR-S8-125",
+    "created": "2026-10-13T12:00:37.000Z",
+    "rule": {
+      "name": "Multiple failed logons"
+    },
+    "severity": "medium",
+    "source": "SIEM",
+    "entities": {
+      "hosts": [
+        "SQL01"
+      ],
+      "users": [
+        "svc-legacyapp"
+      ]
+    },
+    "dedupe_key": "Multiple failed logons|SQL01|svc-legacyapp",
+    "status": "new"
+  },
+  {
+    "alert_id": "ALR-S8-126",
+    "created": "2026-10-13T12:00:37.000Z",
+    "rule": {
+      "name": "Multiple failed logons"
+    },
+    "severity": "medium",
+    "source": "SIEM",
+    "entities": {
+      "hosts": [
+        "SQL01"
+      ],
+      "users": [
+        "svc-legacyapp"
+      ]
+    },
+    "dedupe_key": "Multiple failed logons|SQL01|svc-legacyapp",
+    "status": "new"
+  },
+  {
+    "alert_id": "ALR-S8-127",
+    "created": "2026-10-13T12:00:38.000Z",
+    "rule": {
+      "name": "Multiple failed logons"
+    },
+    "severity": "medium",
+    "source": "SIEM",
+    "entities": {
+      "hosts": [
+        "SQL01"
+      ],
+      "users": [
+        "svc-legacyapp"
+      ]
+    },
+    "dedupe_key": "Multiple failed logons|SQL01|svc-legacyapp",
+    "status": "new"
+  },
+  {
+    "alert_id": "ALR-S8-128",
+    "created": "2026-10-13T12:00:38.000Z",
+    "rule": {
+      "name": "Multiple failed logons"
+    },
+    "severity": "medium",
+    "source": "SIEM",
+    "entities": {
+      "hosts": [
+        "SQL01"
+      ],
+      "users": [
+        "svc-legacyapp"
+      ]
+    },
+    "dedupe_key": "Multiple failed logons|SQL01|svc-legacyapp",
+    "status": "new"
+  },
+  {
+    "alert_id": "ALR-S8-129",
+    "created": "2026-10-13T12:00:38.000Z",
+    "rule": {
+      "name": "Multiple failed logons"
+    },
+    "severity": "medium",
+    "source": "SIEM",
+    "entities": {
+      "hosts": [
+        "SQL01"
+      ],
+      "users": [
+        "svc-legacyapp"
+      ]
+    },
+    "dedupe_key": "Multiple failed logons|SQL01|svc-legacyapp",
+    "status": "new"
+  },
+  {
+    "alert_id": "ALR-S8-130",
+    "created": "2026-10-13T12:00:39.000Z",
+    "rule": {
+      "name": "Multiple failed logons"
+    },
+    "severity": "medium",
+    "source": "SIEM",
+    "entities": {
+      "hosts": [
+        "SQL01"
+      ],
+      "users": [
+        "svc-legacyapp"
+      ]
+    },
+    "dedupe_key": "Multiple failed logons|SQL01|svc-legacyapp",
+    "status": "new"
+  },
+  {
+    "alert_id": "ALR-S8-131",
+    "created": "2026-10-13T12:00:39.000Z",
+    "rule": {
+      "name": "Multiple failed logons"
+    },
+    "severity": "medium",
+    "source": "SIEM",
+    "entities": {
+      "hosts": [
+        "SQL01"
+      ],
+      "users": [
+        "svc-legacyapp"
+      ]
+    },
+    "dedupe_key": "Multiple failed logons|SQL01|svc-legacyapp",
+    "status": "new"
+  },
+  {
+    "alert_id": "ALR-S8-132",
+    "created": "2026-10-13T12:00:39.000Z",
+    "rule": {
+      "name": "Multiple failed logons"
+    },
+    "severity": "medium",
+    "source": "SIEM",
+    "entities": {
+      "hosts": [
+        "SQL01"
+      ],
+      "users": [
+        "svc-legacyapp"
+      ]
+    },
+    "dedupe_key": "Multiple failed logons|SQL01|svc-legacyapp",
+    "status": "new"
+  },
+  {
+    "alert_id": "ALR-S8-133",
+    "created": "2026-10-13T12:00:39.000Z",
+    "rule": {
+      "name": "Multiple failed logons"
+    },
+    "severity": "medium",
+    "source": "SIEM",
+    "entities": {
+      "hosts": [
+        "SQL01"
+      ],
+      "users": [
+        "svc-legacyapp"
+      ]
+    },
+    "dedupe_key": "Multiple failed logons|SQL01|svc-legacyapp",
+    "status": "new"
+  },
+  {
+    "alert_id": "ALR-S8-134",
+    "created": "2026-10-13T12:00:40.000Z",
+    "rule": {
+      "name": "Multiple failed logons"
+    },
+    "severity": "medium",
+    "source": "SIEM",
+    "entities": {
+      "hosts": [
+        "SQL01"
+      ],
+      "users": [
+        "svc-legacyapp"
+      ]
+    },
+    "dedupe_key": "Multiple failed logons|SQL01|svc-legacyapp",
+    "status": "new"
+  },
+  {
+    "alert_id": "ALR-S8-135",
+    "created": "2026-10-13T12:00:40.000Z",
+    "rule": {
+      "name": "Sign-in from unfamiliar location"
+    },
+    "severity": "low",
+    "source": "SIEM",
+    "entities": {
+      "hosts": [],
+      "users": [
+        "v.silva"
+      ]
+    },
+    "dedupe_key": "Sign-in from unfamiliar location|None|v.silva",
+    "status": "new"
+  },
+  {
+    "alert_id": "ALR-S8-136",
+    "created": "2026-10-13T12:00:40.000Z",
+    "rule": {
+      "name": "Multiple failed logons"
+    },
+    "severity": "medium",
+    "source": "SIEM",
+    "entities": {
+      "hosts": [
+        "SQL01"
+      ],
+      "users": [
+        "svc-legacyapp"
+      ]
+    },
+    "dedupe_key": "Multiple failed logons|SQL01|svc-legacyapp",
+    "status": "new"
+  },
+  {
+    "alert_id": "ALR-S8-137",
+    "created": "2026-10-13T12:00:41.000Z",
+    "rule": {
+      "name": "Multiple failed logons"
+    },
+    "severity": "medium",
+    "source": "SIEM",
+    "entities": {
+      "hosts": [
+        "SQL01"
+      ],
+      "users": [
+        "svc-legacyapp"
+      ]
+    },
+    "dedupe_key": "Multiple failed logons|SQL01|svc-legacyapp",
+    "status": "new"
+  },
+  {
+    "alert_id": "ALR-S8-138",
+    "created": "2026-10-13T12:00:41.000Z",
+    "rule": {
+      "name": "Multiple failed logons"
+    },
+    "severity": "medium",
+    "source": "SIEM",
+    "entities": {
+      "hosts": [
+        "SQL01"
+      ],
+      "users": [
+        "svc-legacyapp"
+      ]
+    },
+    "dedupe_key": "Multiple failed logons|SQL01|svc-legacyapp",
+    "status": "new"
+  },
+  {
+    "alert_id": "ALR-S8-139",
+    "created": "2026-10-13T12:00:41.000Z",
+    "rule": {
+      "name": "Multiple failed logons"
+    },
+    "severity": "medium",
+    "source": "SIEM",
+    "entities": {
+      "hosts": [
+        "SQL01"
+      ],
+      "users": [
+        "svc-legacyapp"
+      ]
+    },
+    "dedupe_key": "Multiple failed logons|SQL01|svc-legacyapp",
+    "status": "new"
+  },
+  {
+    "alert_id": "ALR-S8-140",
+    "created": "2026-10-13T12:00:42.000Z",
+    "rule": {
+      "name": "Multiple failed logons"
+    },
+    "severity": "medium",
+    "source": "SIEM",
+    "entities": {
+      "hosts": [
+        "SQL01"
+      ],
+      "users": [
+        "svc-legacyapp"
+      ]
+    },
+    "dedupe_key": "Multiple failed logons|SQL01|svc-legacyapp",
+    "status": "new"
+  },
+  {
+    "alert_id": "ALR-S8-141",
+    "created": "2026-10-13T12:00:42.000Z",
+    "rule": {
+      "name": "Suspicious PowerShell download cradle"
+    },
+    "severity": "high",
+    "source": "SIEM",
+    "entities": {
+      "hosts": [
+        "WS-047"
+      ],
+      "users": [
+        "f.rossi"
+      ]
+    },
+    "dedupe_key": "Suspicious PowerShell download cradle|WS-047|f.rossi",
+    "status": "new"
+  },
+  {
+    "alert_id": "ALR-S8-142",
+    "created": "2026-10-13T12:00:42.000Z",
+    "rule": {
+      "name": "Multiple failed logons"
+    },
+    "severity": "medium",
+    "source": "SIEM",
+    "entities": {
+      "hosts": [
+        "SQL01"
+      ],
+      "users": [
+        "svc-legacyapp"
+      ]
+    },
+    "dedupe_key": "Multiple failed logons|SQL01|svc-legacyapp",
+    "status": "new"
+  },
+  {
+    "alert_id": "ALR-S8-143",
+    "created": "2026-10-13T12:00:42.000Z",
+    "rule": {
+      "name": "Multiple failed logons"
+    },
+    "severity": "medium",
+    "source": "SIEM",
+    "entities": {
+      "hosts": [
+        "SQL01"
+      ],
+      "users": [
+        "svc-legacyapp"
+      ]
+    },
+    "dedupe_key": "Multiple failed logons|SQL01|svc-legacyapp",
+    "status": "new"
+  },
+  {
+    "alert_id": "ALR-S8-144",
+    "created": "2026-10-13T12:00:43.000Z",
+    "rule": {
+      "name": "Multiple failed logons"
+    },
+    "severity": "medium",
+    "source": "SIEM",
+    "entities": {
+      "hosts": [
+        "SQL01"
+      ],
+      "users": [
+        "svc-legacyapp"
+      ]
+    },
+    "dedupe_key": "Multiple failed logons|SQL01|svc-legacyapp",
+    "status": "new"
+  },
+  {
+    "alert_id": "ALR-S8-145",
+    "created": "2026-10-13T12:00:43.000Z",
+    "rule": {
+      "name": "Multiple failed logons"
+    },
+    "severity": "medium",
+    "source": "SIEM",
+    "entities": {
+      "hosts": [
+        "SQL01"
+      ],
+      "users": [
+        "svc-legacyapp"
+      ]
+    },
+    "dedupe_key": "Multiple failed logons|SQL01|svc-legacyapp",
+    "status": "new"
+  },
+  {
+    "alert_id": "ALR-S8-146",
+    "created": "2026-10-13T12:00:43.000Z",
+    "rule": {
+      "name": "AV definition update failed"
+    },
+    "severity": "informational",
+    "source": "SIEM",
+    "entities": {
+      "hosts": [
+        "WS-061"
+      ],
+      "users": [
+        "SYSTEM"
+      ]
+    },
+    "dedupe_key": "AV definition update failed|WS-061|SYSTEM",
+    "status": "new"
+  },
+  {
+    "alert_id": "ALR-S8-147",
+    "created": "2026-10-13T12:00:44.000Z",
+    "rule": {
+      "name": "Multiple failed logons"
+    },
+    "severity": "medium",
+    "source": "SIEM",
+    "entities": {
+      "hosts": [
+        "SQL01"
+      ],
+      "users": [
+        "svc-legacyapp"
+      ]
+    },
+    "dedupe_key": "Multiple failed logons|SQL01|svc-legacyapp",
+    "status": "new"
+  },
+  {
+    "alert_id": "ALR-S8-148",
+    "created": "2026-10-13T12:00:44.000Z",
+    "rule": {
+      "name": "Multiple failed logons"
+    },
+    "severity": "medium",
+    "source": "SIEM",
+    "entities": {
+      "hosts": [
+        "SQL01"
+      ],
+      "users": [
+        "svc-legacyapp"
+      ]
+    },
+    "dedupe_key": "Multiple failed logons|SQL01|svc-legacyapp",
+    "status": "new"
+  },
+  {
+    "alert_id": "ALR-S8-149",
+    "created": "2026-10-13T12:00:44.000Z",
+    "rule": {
+      "name": "Multiple failed logons"
+    },
+    "severity": "medium",
+    "source": "SIEM",
+    "entities": {
+      "hosts": [
+        "SQL01"
+      ],
+      "users": [
+        "svc-legacyapp"
+      ]
+    },
+    "dedupe_key": "Multiple failed logons|SQL01|svc-legacyapp",
+    "status": "new"
+  },
+  {
+    "alert_id": "ALR-S8-150",
+    "created": "2026-10-13T12:00:45.000Z",
+    "rule": {
+      "name": "Multiple failed logons"
+    },
+    "severity": "medium",
+    "source": "SIEM",
+    "entities": {
+      "hosts": [
+        "SQL01"
+      ],
+      "users": [
+        "svc-legacyapp"
+      ]
+    },
+    "dedupe_key": "Multiple failed logons|SQL01|svc-legacyapp",
+    "status": "new"
+  },
+  {
+    "alert_id": "ALR-S8-151",
+    "created": "2026-10-13T12:00:45.000Z",
+    "rule": {
+      "name": "Multiple failed logons"
+    },
+    "severity": "medium",
+    "source": "SIEM",
+    "entities": {
+      "hosts": [
+        "SQL01"
+      ],
+      "users": [
+        "svc-legacyapp"
+      ]
+    },
+    "dedupe_key": "Multiple failed logons|SQL01|svc-legacyapp",
+    "status": "new"
+  },
+  {
+    "alert_id": "ALR-S8-152",
+    "created": "2026-10-13T12:00:45.000Z",
+    "rule": {
+      "name": "Multiple failed logons"
+    },
+    "severity": "medium",
+    "source": "SIEM",
+    "entities": {
+      "hosts": [
+        "SQL01"
+      ],
+      "users": [
+        "svc-legacyapp"
+      ]
+    },
+    "dedupe_key": "Multiple failed logons|SQL01|svc-legacyapp",
+    "status": "new"
+  },
+  {
+    "alert_id": "ALR-S8-153",
+    "created": "2026-10-13T12:00:45.000Z",
+    "rule": {
+      "name": "Multiple failed logons"
+    },
+    "severity": "medium",
+    "source": "SIEM",
+    "entities": {
+      "hosts": [
+        "SQL01"
+      ],
+      "users": [
+        "svc-legacyapp"
+      ]
+    },
+    "dedupe_key": "Multiple failed logons|SQL01|svc-legacyapp",
+    "status": "new"
+  },
+  {
+    "alert_id": "ALR-S8-154",
+    "created": "2026-10-13T12:00:46.000Z",
+    "rule": {
+      "name": "Multiple failed logons"
+    },
+    "severity": "medium",
+    "source": "SIEM",
+    "entities": {
+      "hosts": [
+        "SQL01"
+      ],
+      "users": [
+        "svc-legacyapp"
+      ]
+    },
+    "dedupe_key": "Multiple failed logons|SQL01|svc-legacyapp",
+    "status": "new"
+  },
+  {
+    "alert_id": "ALR-S8-155",
+    "created": "2026-10-13T12:00:46.000Z",
+    "rule": {
+      "name": "Multiple failed logons"
+    },
+    "severity": "medium",
+    "source": "SIEM",
+    "entities": {
+      "hosts": [
+        "SQL01"
+      ],
+      "users": [
+        "svc-legacyapp"
+      ]
+    },
+    "dedupe_key": "Multiple failed logons|SQL01|svc-legacyapp",
+    "status": "new"
+  },
+  {
+    "alert_id": "ALR-S8-156",
+    "created": "2026-10-13T12:00:46.000Z",
+    "rule": {
+      "name": "AV definition update failed"
+    },
+    "severity": "informational",
+    "source": "SIEM",
+    "entities": {
+      "hosts": [
+        "WS-082"
+      ],
+      "users": [
+        "SYSTEM"
+      ]
+    },
+    "dedupe_key": "AV definition update failed|WS-082|SYSTEM",
+    "status": "new"
+  },
+  {
+    "alert_id": "ALR-S8-157",
+    "created": "2026-10-13T12:00:47.000Z",
+    "rule": {
+      "name": "Multiple failed logons"
+    },
+    "severity": "medium",
+    "source": "SIEM",
+    "entities": {
+      "hosts": [
+        "SQL01"
+      ],
+      "users": [
+        "svc-legacyapp"
+      ]
+    },
+    "dedupe_key": "Multiple failed logons|SQL01|svc-legacyapp",
+    "status": "new"
+  },
+  {
+    "alert_id": "ALR-S8-158",
+    "created": "2026-10-13T12:00:47.000Z",
+    "rule": {
+      "name": "Multiple failed logons"
+    },
+    "severity": "medium",
+    "source": "SIEM",
+    "entities": {
+      "hosts": [
+        "SQL01"
+      ],
+      "users": [
+        "svc-legacyapp"
+      ]
+    },
+    "dedupe_key": "Multiple failed logons|SQL01|svc-legacyapp",
+    "status": "new"
+  },
+  {
+    "alert_id": "ALR-S8-159",
+    "created": "2026-10-13T12:00:47.000Z",
+    "rule": {
+      "name": "Multiple failed logons"
+    },
+    "severity": "medium",
+    "source": "SIEM",
+    "entities": {
+      "hosts": [
+        "SQL01"
+      ],
+      "users": [
+        "svc-legacyapp"
+      ]
+    },
+    "dedupe_key": "Multiple failed logons|SQL01|svc-legacyapp",
+    "status": "new"
+  },
+  {
+    "alert_id": "ALR-S8-160",
+    "created": "2026-10-13T12:00:48.000Z",
+    "rule": {
+      "name": "Multiple failed logons"
+    },
+    "severity": "medium",
+    "source": "SIEM",
+    "entities": {
+      "hosts": [
+        "SQL01"
+      ],
+      "users": [
+        "svc-legacyapp"
+      ]
+    },
+    "dedupe_key": "Multiple failed logons|SQL01|svc-legacyapp",
+    "status": "new"
+  },
+  {
+    "alert_id": "ALR-S8-161",
+    "created": "2026-10-13T12:00:48.000Z",
+    "rule": {
+      "name": "Multiple failed logons"
+    },
+    "severity": "medium",
+    "source": "SIEM",
+    "entities": {
+      "hosts": [
+        "SQL01"
+      ],
+      "users": [
+        "svc-legacyapp"
+      ]
+    },
+    "dedupe_key": "Multiple failed logons|SQL01|svc-legacyapp",
+    "status": "new"
+  },
+  {
+    "alert_id": "ALR-S8-162",
+    "created": "2026-10-13T12:00:48.000Z",
+    "rule": {
+      "name": "AV definition update failed"
+    },
+    "severity": "informational",
+    "source": "SIEM",
+    "entities": {
+      "hosts": [
+        "WS-002"
+      ],
+      "users": [
+        "SYSTEM"
+      ]
+    },
+    "dedupe_key": "AV definition update failed|WS-002|SYSTEM",
+    "status": "new"
+  },
+  {
+    "alert_id": "ALR-S8-163",
+    "created": "2026-10-13T12:00:48.000Z",
+    "rule": {
+      "name": "Multiple failed logons"
+    },
+    "severity": "medium",
+    "source": "SIEM",
+    "entities": {
+      "hosts": [
+        "SQL01"
+      ],
+      "users": [
+        "svc-legacyapp"
+      ]
+    },
+    "dedupe_key": "Multiple failed logons|SQL01|svc-legacyapp",
+    "status": "new"
+  },
+  {
+    "alert_id": "ALR-S8-164",
+    "created": "2026-10-13T12:00:49.000Z",
+    "rule": {
+      "name": "Multiple failed logons"
+    },
+    "severity": "medium",
+    "source": "SIEM",
+    "entities": {
+      "hosts": [
+        "SQL01"
+      ],
+      "users": [
+        "svc-legacyapp"
+      ]
+    },
+    "dedupe_key": "Multiple failed logons|SQL01|svc-legacyapp",
+    "status": "new"
+  },
+  {
+    "alert_id": "ALR-S8-165",
+    "created": "2026-10-13T12:00:49.000Z",
+    "rule": {
+      "name": "Multiple failed logons"
+    },
+    "severity": "medium",
+    "source": "SIEM",
+    "entities": {
+      "hosts": [
+        "SQL01"
+      ],
+      "users": [
+        "svc-legacyapp"
+      ]
+    },
+    "dedupe_key": "Multiple failed logons|SQL01|svc-legacyapp",
+    "status": "new"
+  },
+  {
+    "alert_id": "ALR-S8-166",
+    "created": "2026-10-13T12:00:49.000Z",
+    "rule": {
+      "name": "Multiple failed logons"
+    },
+    "severity": "medium",
+    "source": "SIEM",
+    "entities": {
+      "hosts": [
+        "SQL01"
+      ],
+      "users": [
+        "svc-legacyapp"
+      ]
+    },
+    "dedupe_key": "Multiple failed logons|SQL01|svc-legacyapp",
+    "status": "new"
+  },
+  {
+    "alert_id": "ALR-S8-167",
+    "created": "2026-10-13T12:00:50.000Z",
+    "rule": {
+      "name": "Multiple failed logons"
+    },
+    "severity": "medium",
+    "source": "SIEM",
+    "entities": {
+      "hosts": [
+        "SQL01"
+      ],
+      "users": [
+        "svc-legacyapp"
+      ]
+    },
+    "dedupe_key": "Multiple failed logons|SQL01|svc-legacyapp",
+    "status": "new"
+  },
+  {
+    "alert_id": "ALR-S8-168",
+    "created": "2026-10-13T12:00:50.000Z",
+    "rule": {
+      "name": "Multiple failed logons"
+    },
+    "severity": "medium",
+    "source": "SIEM",
+    "entities": {
+      "hosts": [
+        "SQL01"
+      ],
+      "users": [
+        "svc-legacyapp"
+      ]
+    },
+    "dedupe_key": "Multiple failed logons|SQL01|svc-legacyapp",
+    "status": "new"
+  },
+  {
+    "alert_id": "ALR-S8-169",
+    "created": "2026-10-13T12:00:50.000Z",
+    "rule": {
+      "name": "Member added to privileged group: Backup Operators"
+    },
+    "severity": "critical",
+    "source": "SIEM",
+    "entities": {
+      "hosts": [
+        "DC01"
+      ],
+      "users": [
+        "d.wright"
+      ]
+    },
+    "dedupe_key": "Member added to privileged group: Backup Operators|DC01|d.wright",
+    "status": "new"
+  },
+  {
+    "alert_id": "ALR-S8-170",
+    "created": "2026-10-13T12:00:51.000Z",
+    "rule": {
+      "name": "Multiple failed logons"
+    },
+    "severity": "medium",
+    "source": "SIEM",
+    "entities": {
+      "hosts": [
+        "SQL01"
+      ],
+      "users": [
+        "svc-legacyapp"
+      ]
+    },
+    "dedupe_key": "Multiple failed logons|SQL01|svc-legacyapp",
+    "status": "new"
+  },
+  {
+    "alert_id": "ALR-S8-171",
+    "created": "2026-10-13T12:00:51.000Z",
+    "rule": {
+      "name": "Suspicious PowerShell download cradle"
+    },
+    "severity": "high",
+    "source": "SIEM",
+    "entities": {
+      "hosts": [
+        "WS-047"
+      ],
+      "users": [
+        "f.rossi"
+      ]
+    },
+    "dedupe_key": "Suspicious PowerShell download cradle|WS-047|f.rossi",
+    "status": "new"
+  },
+  {
+    "alert_id": "ALR-S8-172",
+    "created": "2026-10-13T12:00:51.000Z",
+    "rule": {
+      "name": "Multiple failed logons"
+    },
+    "severity": "medium",
+    "source": "SIEM",
+    "entities": {
+      "hosts": [
+        "SQL01"
+      ],
+      "users": [
+        "svc-legacyapp"
+      ]
+    },
+    "dedupe_key": "Multiple failed logons|SQL01|svc-legacyapp",
+    "status": "new"
+  },
+  {
+    "alert_id": "ALR-S8-173",
+    "created": "2026-10-13T12:00:51.000Z",
+    "rule": {
+      "name": "Multiple failed logons"
+    },
+    "severity": "medium",
+    "source": "SIEM",
+    "entities": {
+      "hosts": [
+        "SQL01"
+      ],
+      "users": [
+        "svc-legacyapp"
+      ]
+    },
+    "dedupe_key": "Multiple failed logons|SQL01|svc-legacyapp",
+    "status": "new"
+  },
+  {
+    "alert_id": "ALR-S8-174",
+    "created": "2026-10-13T12:00:52.000Z",
+    "rule": {
+      "name": "Multiple failed logons"
+    },
+    "severity": "medium",
+    "source": "SIEM",
+    "entities": {
+      "hosts": [
+        "SQL01"
+      ],
+      "users": [
+        "svc-legacyapp"
+      ]
+    },
+    "dedupe_key": "Multiple failed logons|SQL01|svc-legacyapp",
+    "status": "new"
+  },
+  {
+    "alert_id": "ALR-S8-175",
+    "created": "2026-10-13T12:00:52.000Z",
+    "rule": {
+      "name": "Multiple failed logons"
+    },
+    "severity": "medium",
+    "source": "SIEM",
+    "entities": {
+      "hosts": [
+        "SQL01"
+      ],
+      "users": [
+        "svc-legacyapp"
+      ]
+    },
+    "dedupe_key": "Multiple failed logons|SQL01|svc-legacyapp",
+    "status": "new"
+  },
+  {
+    "alert_id": "ALR-S8-176",
+    "created": "2026-10-13T12:00:52.000Z",
+    "rule": {
+      "name": "Multiple failed logons"
+    },
+    "severity": "medium",
+    "source": "SIEM",
+    "entities": {
+      "hosts": [
+        "SQL01"
+      ],
+      "users": [
+        "svc-legacyapp"
+      ]
+    },
+    "dedupe_key": "Multiple failed logons|SQL01|svc-legacyapp",
+    "status": "new"
+  },
+  {
+    "alert_id": "ALR-S8-177",
+    "created": "2026-10-13T12:00:53.000Z",
+    "rule": {
+      "name": "Multiple failed logons"
+    },
+    "severity": "medium",
+    "source": "SIEM",
+    "entities": {
+      "hosts": [
+        "SQL01"
+      ],
+      "users": [
+        "svc-legacyapp"
+      ]
+    },
+    "dedupe_key": "Multiple failed logons|SQL01|svc-legacyapp",
+    "status": "new"
+  },
+  {
+    "alert_id": "ALR-S8-178",
+    "created": "2026-10-13T12:00:53.000Z",
+    "rule": {
+      "name": "Multiple failed logons"
+    },
+    "severity": "medium",
+    "source": "SIEM",
+    "entities": {
+      "hosts": [
+        "SQL01"
+      ],
+      "users": [
+        "svc-legacyapp"
+      ]
+    },
+    "dedupe_key": "Multiple failed logons|SQL01|svc-legacyapp",
+    "status": "new"
+  },
+  {
+    "alert_id": "ALR-S8-179",
+    "created": "2026-10-13T12:00:53.000Z",
+    "rule": {
+      "name": "Multiple failed logons"
+    },
+    "severity": "medium",
+    "source": "SIEM",
+    "entities": {
+      "hosts": [
+        "SQL01"
+      ],
+      "users": [
+        "svc-legacyapp"
+      ]
+    },
+    "dedupe_key": "Multiple failed logons|SQL01|svc-legacyapp",
+    "status": "new"
+  },
+  {
+    "alert_id": "ALR-S8-180",
+    "created": "2026-10-13T12:00:54.000Z",
+    "rule": {
+      "name": "Multiple failed logons"
+    },
+    "severity": "medium",
+    "source": "SIEM",
+    "entities": {
+      "hosts": [
+        "SQL01"
+      ],
+      "users": [
+        "svc-legacyapp"
+      ]
+    },
+    "dedupe_key": "Multiple failed logons|SQL01|svc-legacyapp",
+    "status": "new"
+  },
+  {
+    "alert_id": "ALR-S8-181",
+    "created": "2026-10-13T12:00:54.000Z",
+    "rule": {
+      "name": "Multiple failed logons"
+    },
+    "severity": "medium",
+    "source": "SIEM",
+    "entities": {
+      "hosts": [
+        "SQL01"
+      ],
+      "users": [
+        "svc-legacyapp"
+      ]
+    },
+    "dedupe_key": "Multiple failed logons|SQL01|svc-legacyapp",
+    "status": "new"
+  },
+  {
+    "alert_id": "ALR-S8-182",
+    "created": "2026-10-13T12:00:54.000Z",
+    "rule": {
+      "name": "Multiple failed logons"
+    },
+    "severity": "medium",
+    "source": "SIEM",
+    "entities": {
+      "hosts": [
+        "SQL01"
+      ],
+      "users": [
+        "svc-legacyapp"
+      ]
+    },
+    "dedupe_key": "Multiple failed logons|SQL01|svc-legacyapp",
+    "status": "new"
+  },
+  {
+    "alert_id": "ALR-S8-183",
+    "created": "2026-10-13T12:00:54.000Z",
+    "rule": {
+      "name": "Multiple failed logons"
+    },
+    "severity": "medium",
+    "source": "SIEM",
+    "entities": {
+      "hosts": [
+        "SQL01"
+      ],
+      "users": [
+        "svc-legacyapp"
+      ]
+    },
+    "dedupe_key": "Multiple failed logons|SQL01|svc-legacyapp",
+    "status": "new"
+  },
+  {
+    "alert_id": "ALR-S8-184",
+    "created": "2026-10-13T12:00:55.000Z",
+    "rule": {
+      "name": "Multiple failed logons"
+    },
+    "severity": "medium",
+    "source": "SIEM",
+    "entities": {
+      "hosts": [
+        "SQL01"
+      ],
+      "users": [
+        "svc-legacyapp"
+      ]
+    },
+    "dedupe_key": "Multiple failed logons|SQL01|svc-legacyapp",
+    "status": "new"
+  },
+  {
+    "alert_id": "ALR-S8-185",
+    "created": "2026-10-13T12:00:55.000Z",
+    "rule": {
+      "name": "Multiple failed logons"
+    },
+    "severity": "medium",
+    "source": "SIEM",
+    "entities": {
+      "hosts": [
+        "SQL01"
+      ],
+      "users": [
+        "svc-legacyapp"
+      ]
+    },
+    "dedupe_key": "Multiple failed logons|SQL01|svc-legacyapp",
+    "status": "new"
+  },
+  {
+    "alert_id": "ALR-S8-186",
+    "created": "2026-10-13T12:00:55.000Z",
+    "rule": {
+      "name": "Multiple failed logons"
+    },
+    "severity": "medium",
+    "source": "SIEM",
+    "entities": {
+      "hosts": [
+        "SQL01"
+      ],
+      "users": [
+        "svc-legacyapp"
+      ]
+    },
+    "dedupe_key": "Multiple failed logons|SQL01|svc-legacyapp",
+    "status": "new"
+  },
+  {
+    "alert_id": "ALR-S8-187",
+    "created": "2026-10-13T12:00:56.000Z",
+    "rule": {
+      "name": "Multiple failed logons"
+    },
+    "severity": "medium",
+    "source": "SIEM",
+    "entities": {
+      "hosts": [
+        "SQL01"
+      ],
+      "users": [
+        "svc-legacyapp"
+      ]
+    },
+    "dedupe_key": "Multiple failed logons|SQL01|svc-legacyapp",
+    "status": "new"
+  },
+  {
+    "alert_id": "ALR-S8-188",
+    "created": "2026-10-13T12:00:56.000Z",
+    "rule": {
+      "name": "Multiple failed logons"
+    },
+    "severity": "medium",
+    "source": "SIEM",
+    "entities": {
+      "hosts": [
+        "SQL01"
+      ],
+      "users": [
+        "svc-legacyapp"
+      ]
+    },
+    "dedupe_key": "Multiple failed logons|SQL01|svc-legacyapp",
+    "status": "new"
+  },
+  {
+    "alert_id": "ALR-S8-189",
+    "created": "2026-10-13T12:00:56.000Z",
+    "rule": {
+      "name": "Multiple failed logons"
+    },
+    "severity": "medium",
+    "source": "SIEM",
+    "entities": {
+      "hosts": [
+        "SQL01"
+      ],
+      "users": [
+        "svc-legacyapp"
+      ]
+    },
+    "dedupe_key": "Multiple failed logons|SQL01|svc-legacyapp",
+    "status": "new"
+  },
+  {
+    "alert_id": "ALR-S8-190",
+    "created": "2026-10-13T12:00:57.000Z",
+    "rule": {
+      "name": "Multiple failed logons"
+    },
+    "severity": "medium",
+    "source": "SIEM",
+    "entities": {
+      "hosts": [
+        "SQL01"
+      ],
+      "users": [
+        "svc-legacyapp"
+      ]
+    },
+    "dedupe_key": "Multiple failed logons|SQL01|svc-legacyapp",
+    "status": "new"
+  },
+  {
+    "alert_id": "ALR-S8-191",
+    "created": "2026-10-13T12:00:57.000Z",
+    "rule": {
+      "name": "Multiple failed logons"
+    },
+    "severity": "medium",
+    "source": "SIEM",
+    "entities": {
+      "hosts": [
+        "SQL01"
+      ],
+      "users": [
+        "svc-legacyapp"
+      ]
+    },
+    "dedupe_key": "Multiple failed logons|SQL01|svc-legacyapp",
+    "status": "new"
+  },
+  {
+    "alert_id": "ALR-S8-192",
+    "created": "2026-10-13T12:00:57.000Z",
+    "rule": {
+      "name": "Multiple failed logons"
+    },
+    "severity": "medium",
+    "source": "SIEM",
+    "entities": {
+      "hosts": [
+        "SQL01"
+      ],
+      "users": [
+        "svc-legacyapp"
+      ]
+    },
+    "dedupe_key": "Multiple failed logons|SQL01|svc-legacyapp",
+    "status": "new"
+  },
+  {
+    "alert_id": "ALR-S8-193",
+    "created": "2026-10-13T12:00:57.000Z",
+    "rule": {
+      "name": "Multiple failed logons"
+    },
+    "severity": "medium",
+    "source": "SIEM",
+    "entities": {
+      "hosts": [
+        "SQL01"
+      ],
+      "users": [
+        "svc-legacyapp"
+      ]
+    },
+    "dedupe_key": "Multiple failed logons|SQL01|svc-legacyapp",
+    "status": "new"
+  },
+  {
+    "alert_id": "ALR-S8-194",
+    "created": "2026-10-13T12:00:58.000Z",
+    "rule": {
+      "name": "Multiple failed logons"
+    },
+    "severity": "medium",
+    "source": "SIEM",
+    "entities": {
+      "hosts": [
+        "SQL01"
+      ],
+      "users": [
+        "svc-legacyapp"
+      ]
+    },
+    "dedupe_key": "Multiple failed logons|SQL01|svc-legacyapp",
+    "status": "new"
+  },
+  {
+    "alert_id": "ALR-S8-195",
+    "created": "2026-10-13T12:00:58.000Z",
+    "rule": {
+      "name": "Multiple failed logons"
+    },
+    "severity": "medium",
+    "source": "SIEM",
+    "entities": {
+      "hosts": [
+        "SQL01"
+      ],
+      "users": [
+        "svc-legacyapp"
+      ]
+    },
+    "dedupe_key": "Multiple failed logons|SQL01|svc-legacyapp",
+    "status": "new"
+  },
+  {
+    "alert_id": "ALR-S8-196",
+    "created": "2026-10-13T12:00:58.000Z",
+    "rule": {
+      "name": "Multiple failed logons"
+    },
+    "severity": "medium",
+    "source": "SIEM",
+    "entities": {
+      "hosts": [
+        "SQL01"
+      ],
+      "users": [
+        "svc-legacyapp"
+      ]
+    },
+    "dedupe_key": "Multiple failed logons|SQL01|svc-legacyapp",
+    "status": "new"
+  },
+  {
+    "alert_id": "ALR-S8-197",
+    "created": "2026-10-13T12:00:59.000Z",
+    "rule": {
+      "name": "Multiple failed logons"
+    },
+    "severity": "medium",
+    "source": "SIEM",
+    "entities": {
+      "hosts": [
+        "SQL01"
+      ],
+      "users": [
+        "svc-legacyapp"
+      ]
+    },
+    "dedupe_key": "Multiple failed logons|SQL01|svc-legacyapp",
+    "status": "new"
+  },
+  {
+    "alert_id": "ALR-S8-198",
+    "created": "2026-10-13T12:00:59.000Z",
+    "rule": {
+      "name": "Multiple failed logons"
+    },
+    "severity": "medium",
+    "source": "SIEM",
+    "entities": {
+      "hosts": [
+        "SQL01"
+      ],
+      "users": [
+        "svc-legacyapp"
+      ]
+    },
+    "dedupe_key": "Multiple failed logons|SQL01|svc-legacyapp",
+    "status": "new"
+  },
+  {
+    "alert_id": "ALR-S8-199",
+    "created": "2026-10-13T12:00:59.000Z",
+    "rule": {
+      "name": "Sign-in from unfamiliar location"
+    },
+    "severity": "low",
+    "source": "SIEM",
+    "entities": {
+      "hosts": [],
+      "users": [
+        "y.park"
+      ]
+    },
+    "dedupe_key": "Sign-in from unfamiliar location|None|y.park",
+    "status": "new"
+  },
+  {
+    "alert_id": "ALR-S8-200",
+    "created": "2026-10-13T12:01:00.000Z",
+    "rule": {
+      "name": "Multiple failed logons"
+    },
+    "severity": "medium",
+    "source": "SIEM",
+    "entities": {
+      "hosts": [
+        "SQL01"
+      ],
+      "users": [
+        "svc-legacyapp"
+      ]
+    },
+    "dedupe_key": "Multiple failed logons|SQL01|svc-legacyapp",
+    "status": "new"
+  }
+]

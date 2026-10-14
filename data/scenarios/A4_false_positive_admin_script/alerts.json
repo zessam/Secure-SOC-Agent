@@ -1,0 +1,28 @@
+[
+  {
+    "alert_id": "ALR-A4-001",
+    "created": "2026-10-13T14:02:30.000Z",
+    "rule": {
+      "name": "PowerShell execution policy bypass with network download"
+    },
+    "severity": "medium",
+    "source": "EDR (forwarded by SIEM)",
+    "description": "powershell.exe -ExecutionPolicy Bypass ran a script that downloaded content.",
+    "entities": {
+      "users": [
+        "a.patel"
+      ],
+      "hosts": [
+        "WS-015"
+      ]
+    },
+    "mitre_attack": [
+      "T1059.001"
+    ],
+    "status": "new",
+    "evidence_event_ids": [
+      "A4-EDR-00009",
+      "A4-EDR-00010"
+    ]
+  }
+]

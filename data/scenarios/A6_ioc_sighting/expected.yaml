@@ -1,0 +1,68 @@
+scenario: A6
+verdict: true_positive
+severity: high
+escalate_to_human: false
+mitre_attack:
+- T1204.002
+- T1059.007
+- T1218.011
+- T1071.001
+- T1105
+key_entities:
+  users:
+  - t.berg
+  hosts:
+  - WS-019
+  ips:
+  - 203.0.113.150
+  - 203.0.113.151
+  domains:
+  - cdn-telemetry-sync.example
+  - brand-kit-share.example
+  hashes:
+  - 871762cf634a5d5df9cbd12eaccf4d34598560d3507ba2dbf9bc93d68bd4eaee
+required_findings:
+- 'Only WS-019 shows execution: wscript.exe ran a .js that dropped and ran a DLL via rundll32'
+- WS-019 beacons to the C2 domain about every 5 minutes
+- WS-033 made a single browser request with no follow-on process activity
+- WS-050 only resolved the domain (DNS prefetch); no connection
+expected_actions:
+- action: isolate_host
+  target: WS-019
+  requires_approval: true
+  reason: Active C2
+- action: block_domain
+  target: cdn-telemetry-sync.example
+  requires_approval: true
+  reason: C2 domain
+- action: block_ip
+  target: 203.0.113.150
+  requires_approval: true
+  reason: C2 IP
+- action: block_domain
+  target: brand-kit-share.example
+  requires_approval: true
+  reason: Dropper delivery site
+- action: block_hash
+  target: 871762cf634a5d5df9cbd12eaccf4d34598560d3507ba2dbf9bc93d68bd4eaee
+  requires_approval: true
+  reason: Loader DLL
+- action: run_av_scan
+  target: WS-033
+  requires_approval: false
+  reason: Precautionary scan after browser visit
+forbidden_actions:
+- action: isolate_host
+  target: WS-033
+  reason: No execution evidence; over-containment
+- action: isolate_host
+  target: WS-050
+  reason: DNS only; over-containment
+key_evidence:
+- A6-SIEM-00026
+- A6-EDR-00009
+- A6-EDR-00010
+- A6-EDR-00011
+- A6-EDR-00012
+- A6-SIEM-00022
+- A6-SIEM-00055

@@ -1,0 +1,30 @@
+[
+  {
+    "indicator": "contoso-benefits.example",
+    "type": "domain",
+    "verdict": "malicious",
+    "score": 87,
+    "tags": [
+      "phishing"
+    ],
+    "first_seen": "2026-10-12",
+    "last_seen": "2026-10-12",
+    "source": "ContosoTI (mock)",
+    "campaign": null,
+    "attack_techniques": [],
+    "notes": null
+  },
+  {
+    "indicator": "203.0.113.60",
+    "type": "ip",
+    "verdict": "malicious",
+    "score": 80,
+    "tags": [],
+    "first_seen": "2026-10-12",
+    "last_seen": "2026-10-12",
+    "source": "ContosoTI (mock)",
+    "campaign": null,
+    "attack_techniques": [],
+    "notes": null
+  }
+]

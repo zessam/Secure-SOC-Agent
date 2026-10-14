@@ -1,0 +1,35 @@
+[
+  {
+    "alert_id": "ALR-S2-001",
+    "created": "2026-10-13T09:40:00.000Z",
+    "rule": {
+      "name": "Mass phishing: credential submissions to newly registered domain"
+    },
+    "severity": "high",
+    "source": "SIEM",
+    "description": "Email to all-staff (512 recipients); 9 clicks, 3 POST submissions.",
+    "entities": {
+      "domains": [
+        "contoso-benefits.example"
+      ],
+      "users": [
+        "y.park",
+        "z.haddad",
+        "v.silva",
+        "q.ahmed",
+        "n.sato",
+        "g.mensah",
+        "i.kowalski",
+        "u.adeyemi",
+        "w.johnson"
+      ]
+    },
+    "mitre_attack": [
+      "T1566.002"
+    ],
+    "status": "new",
+    "evidence_event_ids": [
+      "S2-SIEM-00019"
+    ]
+  }
+]

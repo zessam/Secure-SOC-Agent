@@ -1,0 +1,21 @@
+[
+  {
+    "number": "INC0001023",
+    "type": "incident",
+    "state": "Closed",
+    "priority": "2 - High",
+    "short_description": "Credential phishing - k.osei",
+    "opened": "2026-10-10T10:41:00.000Z",
+    "closed": "2026-10-11T09:05:00.000Z",
+    "assigned_to": "h.ali",
+    "linked_case": "CASE-1023",
+    "close_code": "Resolved - contained",
+    "work_notes": [
+      "I think I entered my password on a fake page.",
+      "Confirmed credential submission at 10:14. Attacker sign-in at 10:40 blocked by CA policy.",
+      "Password reset and sessions revoked (approved).",
+      "Purged phishing email from 38 mailboxes; blocked sender domain.",
+      "24h monitoring complete: no further sign-in attempts. Closing."
+    ]
+  }
+]

@@ -1,0 +1,18 @@
+[
+  {
+    "indicator": "free-pdf-tools.example",
+    "type": "domain",
+    "verdict": "suspicious",
+    "score": 45,
+    "tags": [
+      "pup",
+      "adware"
+    ],
+    "first_seen": "2025-11-02",
+    "last_seen": "2025-11-02",
+    "source": "ContosoTI (mock)",
+    "campaign": null,
+    "attack_techniques": [],
+    "notes": null
+  }
+]

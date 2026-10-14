@@ -1,0 +1,47 @@
+[
+  {
+    "indicator": "contoso.sharepoint.com",
+    "type": "domain",
+    "verdict": "benign",
+    "score": 0,
+    "tags": [
+      "corporate-saas"
+    ],
+    "first_seen": "2019-01-01",
+    "last_seen": "2019-01-01",
+    "source": "ContosoTI (mock)",
+    "campaign": null,
+    "attack_techniques": [],
+    "notes": null
+  },
+  {
+    "indicator": "f307e73a3447b10444e67233700c1aa5ca8e3673dd2f292084bf485583caad6f",
+    "type": "sha256",
+    "verdict": "benign",
+    "score": 0,
+    "tags": [
+      "microsoft-signed"
+    ],
+    "first_seen": "2021-01-01",
+    "last_seen": "2021-01-01",
+    "source": "ContosoTI (mock)",
+    "campaign": null,
+    "attack_techniques": [],
+    "notes": null
+  },
+  {
+    "indicator": "\\\\SCCM01\\Scripts$\\Install-CorpFonts.ps1",
+    "type": "file_path",
+    "verdict": "benign",
+    "score": 0,
+    "tags": [
+      "internal-allowlist"
+    ],
+    "first_seen": "2024-03-01",
+    "last_seen": "2024-03-01",
+    "source": "Contoso internal allowlist",
+    "campaign": null,
+    "attack_techniques": [],
+    "notes": "Scripts$ share is write-restricted to SCCM-Operators; scripts signed by 'Contoso Bank IT Code Signing'."
+  }
+]

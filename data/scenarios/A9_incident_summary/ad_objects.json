@@ -1,0 +1,25 @@
+{
+  "overrides": {},
+  "relevant_users": {
+    "k.osei": {
+      "sAMAccountName": "k.osei",
+      "userPrincipalName": "k.osei@contoso.com",
+      "displayName": "Kwame Osei",
+      "title": "Relationship Manager",
+      "department": "Retail Banking",
+      "office": "London",
+      "country": "GB",
+      "manager": "f.rossi",
+      "memberOf": [
+        "Retail-Users",
+        "All-Staff"
+      ],
+      "accountType": "user",
+      "privileged": false,
+      "enabled": true,
+      "mfaRegistered": true,
+      "primaryWorkstation": "WS-036",
+      "description": ""
+    }
+  }
+}

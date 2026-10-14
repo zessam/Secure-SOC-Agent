@@ -1,0 +1,18 @@
+[
+  {
+    "indicator": "203.0.113.140",
+    "type": "ip",
+    "verdict": "suspicious",
+    "score": 35,
+    "tags": [
+      "cloud-hosting",
+      "vpn-exit-node"
+    ],
+    "first_seen": "2026-06-01",
+    "last_seen": "2026-06-01",
+    "source": "ContosoTI (mock)",
+    "campaign": null,
+    "attack_techniques": [],
+    "notes": "Cloud hosting range also used by a commercial VPN service. Low-confidence reputation."
+  }
+]

@@ -1,0 +1,20 @@
+[
+  {
+    "number": "CHG0041872",
+    "type": "change",
+    "state": "Implement",
+    "approved_by": "d.wright",
+    "implementer": "a.patel",
+    "window_start": "2026-10-13T14:00:00.000Z",
+    "window_end": "2026-10-13T16:00:00.000Z",
+    "short_description": "Deploy Contoso corporate font pack to Finance and Payments workstations",
+    "description": "Run \\\\SCCM01\\Scripts$\\Install-CorpFonts.ps1 on WS-015 (test), then deploy via SCCM to WS-012, WS-013, WS-031, WS-042. Script downloads https://contoso.sharepoint.com/sites/IT/Packages/ContosoSans.zip.",
+    "configuration_items": [
+      "WS-015",
+      "WS-012",
+      "WS-013",
+      "WS-031",
+      "WS-042"
+    ]
+  }
+]

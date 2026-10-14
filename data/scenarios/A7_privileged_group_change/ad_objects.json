@@ -1,0 +1,55 @@
+{
+  "overrides": {
+    "m.chen": {
+      "memberOf": [
+        "Facilities-Users",
+        "All-Staff",
+        "Domain Admins"
+      ],
+      "whenChanged": "2026-10-13T23:51:37.000Z"
+    }
+  },
+  "relevant_users": {
+    "m.chen": {
+      "sAMAccountName": "m.chen",
+      "userPrincipalName": "m.chen@contoso.com",
+      "displayName": "Michael Chen",
+      "title": "Facilities Coordinator",
+      "department": "Facilities",
+      "office": "London",
+      "country": "GB",
+      "manager": "c.dubois",
+      "memberOf": [
+        "Facilities-Users",
+        "All-Staff",
+        "Domain Admins"
+      ],
+      "accountType": "user",
+      "privileged": false,
+      "enabled": true,
+      "mfaRegistered": true,
+      "primaryWorkstation": "WS-058",
+      "description": "",
+      "whenChanged": "2026-10-13T23:51:37.000Z"
+    },
+    "svc-backup": {
+      "sAMAccountName": "svc-backup",
+      "userPrincipalName": "svc-backup@corp.contoso.local",
+      "displayName": "Backup service",
+      "title": "Service account",
+      "department": "IT",
+      "office": null,
+      "country": null,
+      "manager": "d.wright",
+      "memberOf": [
+        "Backup Operators"
+      ],
+      "accountType": "service",
+      "privileged": true,
+      "enabled": true,
+      "mfaRegistered": false,
+      "primaryWorkstation": "BKP01",
+      "description": "Runs nightly backup jobs on BKP01. Interactive logon not expected."
+    }
+  }
+}

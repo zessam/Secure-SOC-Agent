@@ -1,0 +1,36 @@
+id: A8
+title: 'L1 question: what did WS-023 do yesterday?'
+category: soc
+build_first: false
+description: 'Read-only analyst question. A normal working day with two notable events: a USB copy of a risk forecast
+  and a blocked download of potentially unwanted software.'
+trigger:
+  type: analyst_question
+  asked_at: '2026-10-14T09:00:00.000Z'
+  text: What did host WS-023 do yesterday?
+agents_involved:
+- analyst_copilot
+- siem
+- edr
+timeline_utc:
+- time: 08:47
+  event: e.moreau logs on
+- time: 11:20-11:31
+  event: USB stick used; spreadsheet copied
+- time: '14:05'
+  event: Blocked PUP download
+- time: '17:32'
+  event: Logoff
+files:
+  alerts.json: Alerts that trigger or accompany the scenario
+  siem_events.jsonl: SIEM log events (auth, sign-in, email, proxy, DNS, firewall, AD audit)
+  edr_telemetry.jsonl: EDR telemetry (process, network, file, registry, device, detections)
+  ad_objects.json: Scenario-specific AD view (overrides merged over data/environment/ad_users.json)
+  ti_indicators.json: Threat-intel lookups available for this scenario
+  soar_case.json: SOAR case (if any)
+  tickets.json: ITSM tickets / changes (if any)
+  expected.yaml: Ground truth used by evals - never give this file to agents
+counts:
+  siem_events: 126
+  edr_events: 50
+  alerts: 0

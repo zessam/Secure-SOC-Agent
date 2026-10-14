@@ -1,0 +1,92 @@
+[
+  {
+    "indicator": "cdn-telemetry-sync.example",
+    "type": "domain",
+    "verdict": "malicious",
+    "score": 92,
+    "tags": [
+      "c2",
+      "loader"
+    ],
+    "first_seen": "2026-10-13",
+    "last_seen": "2026-10-13",
+    "source": "Community threat feed (mock)",
+    "campaign": "PhantomLoader (fictional)",
+    "attack_techniques": [
+      "T1071.001"
+    ],
+    "notes": "Added to feed 2026-10-13 10:55 UTC"
+  },
+  {
+    "indicator": "203.0.113.150",
+    "type": "ip",
+    "verdict": "malicious",
+    "score": 90,
+    "tags": [
+      "c2"
+    ],
+    "first_seen": "2026-10-13",
+    "last_seen": "2026-10-13",
+    "source": "ContosoTI (mock)",
+    "campaign": "PhantomLoader (fictional)",
+    "attack_techniques": [],
+    "notes": null
+  },
+  {
+    "indicator": "brand-kit-share.example",
+    "type": "domain",
+    "verdict": "suspicious",
+    "score": 55,
+    "tags": [
+      "file-sharing",
+      "newly-registered"
+    ],
+    "first_seen": "2026-10-09",
+    "last_seen": "2026-10-09",
+    "source": "ContosoTI (mock)",
+    "campaign": null,
+    "attack_techniques": [],
+    "notes": null
+  },
+  {
+    "indicator": "203.0.113.151",
+    "type": "ip",
+    "verdict": "suspicious",
+    "score": 50,
+    "tags": [],
+    "first_seen": "2026-10-09",
+    "last_seen": "2026-10-09",
+    "source": "ContosoTI (mock)",
+    "campaign": null,
+    "attack_techniques": [],
+    "notes": null
+  },
+  {
+    "indicator": "871762cf634a5d5df9cbd12eaccf4d34598560d3507ba2dbf9bc93d68bd4eaee",
+    "type": "sha256",
+    "verdict": "malicious",
+    "score": 95,
+    "tags": [
+      "loader"
+    ],
+    "first_seen": "2026-10-13",
+    "last_seen": "2026-10-13",
+    "source": "ContosoTI (mock)",
+    "campaign": "PhantomLoader (fictional)",
+    "attack_techniques": [],
+    "notes": null
+  },
+  {
+    "indicator": "238a51ccaa95c94307fb05771331afc763d6bb1413919cbf04539226fb1a8397",
+    "type": "sha256",
+    "verdict": "unknown",
+    "score": 0,
+    "tags": [],
+    "first_seen": "2026-10-13",
+    "last_seen": "2026-10-13",
+    "source": "ContosoTI (mock)",
+    "campaign": null,
+    "attack_techniques": [],
+    "notes": null
+  }
+]

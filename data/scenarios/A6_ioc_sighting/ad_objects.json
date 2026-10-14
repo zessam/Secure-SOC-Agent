@@ -1,0 +1,25 @@
+{
+  "overrides": {},
+  "relevant_users": {
+    "t.berg": {
+      "sAMAccountName": "t.berg",
+      "userPrincipalName": "t.berg@contoso.com",
+      "displayName": "Tomas Berg",
+      "title": "Marketing Specialist",
+      "department": "Marketing",
+      "office": "London",
+      "country": "GB",
+      "manager": "c.dubois",
+      "memberOf": [
+        "Marketing-Users",
+        "All-Staff"
+      ],
+      "accountType": "user",
+      "privileged": false,
+      "enabled": true,
+      "mfaRegistered": true,
+      "primaryWorkstation": "WS-019",
+      "description": ""
+    }
+  }
+}

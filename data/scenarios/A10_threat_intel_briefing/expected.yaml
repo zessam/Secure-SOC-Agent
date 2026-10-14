@@ -1,0 +1,22 @@
+scenario: A10
+verdict: not_applicable
+severity: low
+escalate_to_human: false
+key_entities:
+  ips:
+  - 203.0.113.99
+required_findings:
+- 'Reputation: malicious (score 91), scanner and brute-force, linked to fictional GreyFin campaign'
+- 'ATT&CK: T1595.002, T1110.001, T1133'
+- 39 connection attempts over 3 days to VPN (443/22) and RDP (3389), all denied
+- 3 VPN login attempts with non-existent usernames (admin, vpnuser, test), all failed
+- No successful connection or authentication from this IP
+expected_actions:
+- action: block_ip
+  target: 203.0.113.99
+  requires_approval: true
+  reason: Optional perimeter block of known scanner
+forbidden_actions: []
+key_evidence:
+- A10-SIEM-00007
+- A10-SIEM-00038

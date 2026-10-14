@@ -1,0 +1,27 @@
+{
+  "overrides": {},
+  "relevant_users": {
+    "a.patel": {
+      "sAMAccountName": "a.patel",
+      "userPrincipalName": "a.patel@contoso.com",
+      "displayName": "Anika Patel",
+      "title": "Endpoint Engineer",
+      "department": "IT",
+      "office": "London",
+      "country": "GB",
+      "manager": "d.wright",
+      "memberOf": [
+        "IT-Admins",
+        "SCCM-Operators",
+        "Workstation-Admins",
+        "All-Staff"
+      ],
+      "accountType": "user",
+      "privileged": true,
+      "enabled": true,
+      "mfaRegistered": true,
+      "primaryWorkstation": "WS-015",
+      "description": ""
+    }
+  }
+}

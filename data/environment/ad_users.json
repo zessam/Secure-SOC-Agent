@@ -1,0 +1,583 @@
+[
+  {
+    "sAMAccountName": "j.smith",
+    "userPrincipalName": "j.smith@contoso.com",
+    "displayName": "John Smith",
+    "title": "Finance Analyst",
+    "department": "Finance",
+    "office": "London",
+    "country": "GB",
+    "manager": "r.okafor",
+    "memberOf": [
+      "Finance-Users",
+      "All-Staff"
+    ],
+    "accountType": "user",
+    "privileged": false,
+    "enabled": true,
+    "mfaRegistered": true,
+    "primaryWorkstation": "WS-031",
+    "description": ""
+  },
+  {
+    "sAMAccountName": "s.khan",
+    "userPrincipalName": "s.khan@contoso.com",
+    "displayName": "Sara Khan",
+    "title": "Accounts Payable Clerk",
+    "department": "Finance",
+    "office": "London",
+    "country": "GB",
+    "manager": "r.okafor",
+    "memberOf": [
+      "Finance-Users",
+      "All-Staff"
+    ],
+    "accountType": "user",
+    "privileged": false,
+    "enabled": true,
+    "mfaRegistered": true,
+    "primaryWorkstation": "WS-042",
+    "description": ""
+  },
+  {
+    "sAMAccountName": "p.garcia",
+    "userPrincipalName": "p.garcia@contoso.com",
+    "displayName": "Pablo Garcia",
+    "title": "Treasury Analyst",
+    "department": "Treasury",
+    "office": "London",
+    "country": "GB",
+    "manager": "r.okafor",
+    "memberOf": [
+      "Treasury-Users",
+      "All-Staff"
+    ],
+    "accountType": "user",
+    "privileged": false,
+    "enabled": true,
+    "mfaRegistered": true,
+    "primaryWorkstation": "WS-044",
+    "description": ""
+  },
+  {
+    "sAMAccountName": "k.osei",
+    "userPrincipalName": "k.osei@contoso.com",
+    "displayName": "Kwame Osei",
+    "title": "Relationship Manager",
+    "department": "Retail Banking",
+    "office": "London",
+    "country": "GB",
+    "manager": "f.rossi",
+    "memberOf": [
+      "Retail-Users",
+      "All-Staff"
+    ],
+    "accountType": "user",
+    "privileged": false,
+    "enabled": true,
+    "mfaRegistered": true,
+    "primaryWorkstation": "WS-036",
+    "description": ""
+  },
+  {
+    "sAMAccountName": "a.patel",
+    "userPrincipalName": "a.patel@contoso.com",
+    "displayName": "Anika Patel",
+    "title": "Endpoint Engineer",
+    "department": "IT",
+    "office": "London",
+    "country": "GB",
+    "manager": "d.wright",
+    "memberOf": [
+      "IT-Admins",
+      "SCCM-Operators",
+      "Workstation-Admins",
+      "All-Staff"
+    ],
+    "accountType": "user",
+    "privileged": true,
+    "enabled": true,
+    "mfaRegistered": true,
+    "primaryWorkstation": "WS-015",
+    "description": ""
+  },
+  {
+    "sAMAccountName": "r.okafor",
+    "userPrincipalName": "r.okafor@contoso.com",
+    "displayName": "Ruth Okafor",
+    "title": "Finance Director",
+    "department": "Finance",
+    "office": "London",
+    "country": "GB",
+    "manager": null,
+    "memberOf": [
+      "Finance-Users",
+      "Finance-Approvers",
+      "All-Staff"
+    ],
+    "accountType": "user",
+    "privileged": false,
+    "enabled": true,
+    "mfaRegistered": true,
+    "primaryWorkstation": "WS-007",
+    "description": ""
+  },
+  {
+    "sAMAccountName": "m.chen",
+    "userPrincipalName": "m.chen@contoso.com",
+    "displayName": "Michael Chen",
+    "title": "Facilities Coordinator",
+    "department": "Facilities",
+    "office": "London",
+    "country": "GB",
+    "manager": "c.dubois",
+    "memberOf": [
+      "Facilities-Users",
+      "All-Staff"
+    ],
+    "accountType": "user",
+    "privileged": false,
+    "enabled": true,
+    "mfaRegistered": true,
+    "primaryWorkstation": "WS-058",
+    "description": ""
+  },
+  {
+    "sAMAccountName": "e.moreau",
+    "userPrincipalName": "e.moreau@contoso.com",
+    "displayName": "Elise Moreau",
+    "title": "Risk Analyst",
+    "department": "Risk",
+    "office": "London",
+    "country": "GB",
+    "manager": "f.rossi",
+    "memberOf": [
+      "Risk-Users",
+      "All-Staff"
+    ],
+    "accountType": "user",
+    "privileged": false,
+    "enabled": true,
+    "mfaRegistered": true,
+    "primaryWorkstation": "WS-023",
+    "description": ""
+  },
+  {
+    "sAMAccountName": "t.berg",
+    "userPrincipalName": "t.berg@contoso.com",
+    "displayName": "Tomas Berg",
+    "title": "Marketing Specialist",
+    "department": "Marketing",
+    "office": "London",
+    "country": "GB",
+    "manager": "c.dubois",
+    "memberOf": [
+      "Marketing-Users",
+      "All-Staff"
+    ],
+    "accountType": "user",
+    "privileged": false,
+    "enabled": true,
+    "mfaRegistered": true,
+    "primaryWorkstation": "WS-019",
+    "description": ""
+  },
+  {
+    "sAMAccountName": "l.nguyen",
+    "userPrincipalName": "l.nguyen@contoso.com",
+    "displayName": "Linh Nguyen",
+    "title": "Data Analyst",
+    "department": "Risk",
+    "office": "London",
+    "country": "GB",
+    "manager": "f.rossi",
+    "memberOf": [
+      "Risk-Users",
+      "All-Staff"
+    ],
+    "accountType": "user",
+    "privileged": false,
+    "enabled": true,
+    "mfaRegistered": true,
+    "primaryWorkstation": "WS-033",
+    "description": ""
+  },
+  {
+    "sAMAccountName": "d.wright",
+    "userPrincipalName": "d.wright@contoso.com",
+    "displayName": "Daniel Wright",
+    "title": "Infrastructure Lead",
+    "department": "IT",
+    "office": "London",
+    "country": "GB",
+    "manager": null,
+    "memberOf": [
+      "Domain Admins",
+      "IT-Admins",
+      "All-Staff"
+    ],
+    "accountType": "user",
+    "privileged": true,
+    "enabled": true,
+    "mfaRegistered": true,
+    "primaryWorkstation": "WS-002",
+    "description": ""
+  },
+  {
+    "sAMAccountName": "h.ali",
+    "userPrincipalName": "h.ali@contoso.com",
+    "displayName": "Hamza Ali",
+    "title": "SOC Analyst L2",
+    "department": "Security",
+    "office": "London",
+    "country": "GB",
+    "manager": "d.wright",
+    "memberOf": [
+      "SOC-Analysts",
+      "All-Staff"
+    ],
+    "accountType": "user",
+    "privileged": false,
+    "enabled": true,
+    "mfaRegistered": true,
+    "primaryWorkstation": "WS-090",
+    "description": ""
+  },
+  {
+    "sAMAccountName": "b.ito",
+    "userPrincipalName": "b.ito@contoso.com",
+    "displayName": "Bea Ito",
+    "title": "Procurement Officer",
+    "department": "Procurement",
+    "office": "London",
+    "country": "GB",
+    "manager": "r.okafor",
+    "memberOf": [
+      "Procurement-Users",
+      "All-Staff"
+    ],
+    "accountType": "user",
+    "privileged": false,
+    "enabled": true,
+    "mfaRegistered": true,
+    "primaryWorkstation": "WS-061",
+    "description": ""
+  },
+  {
+    "sAMAccountName": "c.dubois",
+    "userPrincipalName": "c.dubois@contoso.com",
+    "displayName": "Claire Dubois",
+    "title": "HR Business Partner",
+    "department": "HR",
+    "office": "London",
+    "country": "GB",
+    "manager": null,
+    "memberOf": [
+      "HR-Users",
+      "All-Staff"
+    ],
+    "accountType": "user",
+    "privileged": false,
+    "enabled": true,
+    "mfaRegistered": true,
+    "primaryWorkstation": "WS-050",
+    "description": ""
+  },
+  {
+    "sAMAccountName": "f.rossi",
+    "userPrincipalName": "f.rossi@contoso.com",
+    "displayName": "Franco Rossi",
+    "title": "Compliance Officer",
+    "department": "Compliance",
+    "office": "London",
+    "country": "GB",
+    "manager": null,
+    "memberOf": [
+      "Compliance-Users",
+      "All-Staff"
+    ],
+    "accountType": "user",
+    "privileged": false,
+    "enabled": true,
+    "mfaRegistered": true,
+    "primaryWorkstation": "WS-047",
+    "description": ""
+  },
+  {
+    "sAMAccountName": "g.mensah",
+    "userPrincipalName": "g.mensah@contoso.com",
+    "displayName": "Grace Mensah",
+    "title": "Payments Operations",
+    "department": "Payments",
+    "office": "London",
+    "country": "GB",
+    "manager": "r.okafor",
+    "memberOf": [
+      "Payments-Users",
+      "All-Staff"
+    ],
+    "accountType": "user",
+    "privileged": false,
+    "enabled": true,
+    "mfaRegistered": true,
+    "primaryWorkstation": "WS-012",
+    "description": ""
+  },
+  {
+    "sAMAccountName": "n.sato",
+    "userPrincipalName": "n.sato@contoso.com",
+    "displayName": "Naomi Sato",
+    "title": "Payments Operations",
+    "department": "Payments",
+    "office": "London",
+    "country": "GB",
+    "manager": "r.okafor",
+    "memberOf": [
+      "Payments-Users",
+      "All-Staff"
+    ],
+    "accountType": "user",
+    "privileged": false,
+    "enabled": true,
+    "mfaRegistered": true,
+    "primaryWorkstation": "WS-013",
+    "description": ""
+  },
+  {
+    "sAMAccountName": "o.brien",
+    "userPrincipalName": "o.brien@contoso.com",
+    "displayName": "Owen Brien",
+    "title": "Software Developer",
+    "department": "Engineering",
+    "office": "London",
+    "country": "GB",
+    "manager": "d.wright",
+    "memberOf": [
+      "Engineering-Users",
+      "All-Staff"
+    ],
+    "accountType": "user",
+    "privileged": false,
+    "enabled": true,
+    "mfaRegistered": true,
+    "primaryWorkstation": "WS-070",
+    "description": ""
+  },
+  {
+    "sAMAccountName": "i.kowalski",
+    "userPrincipalName": "i.kowalski@contoso.com",
+    "displayName": "Iga Kowalski",
+    "title": "Credit Analyst",
+    "department": "Risk",
+    "office": "London",
+    "country": "GB",
+    "manager": "f.rossi",
+    "memberOf": [
+      "Risk-Users",
+      "All-Staff"
+    ],
+    "accountType": "user",
+    "privileged": false,
+    "enabled": true,
+    "mfaRegistered": true,
+    "primaryWorkstation": "WS-080",
+    "description": ""
+  },
+  {
+    "sAMAccountName": "q.ahmed",
+    "userPrincipalName": "q.ahmed@contoso.com",
+    "displayName": "Qasim Ahmed",
+    "title": "Branch Manager",
+    "department": "Retail Banking",
+    "office": "London",
+    "country": "GB",
+    "manager": "f.rossi",
+    "memberOf": [
+      "Retail-Users",
+      "All-Staff"
+    ],
+    "accountType": "user",
+    "privileged": false,
+    "enabled": true,
+    "mfaRegistered": true,
+    "primaryWorkstation": "WS-081",
+    "description": ""
+  },
+  {
+    "sAMAccountName": "v.silva",
+    "userPrincipalName": "v.silva@contoso.com",
+    "displayName": "Vera Silva",
+    "title": "Legal Counsel",
+    "department": "Legal",
+    "office": "London",
+    "country": "GB",
+    "manager": null,
+    "memberOf": [
+      "Legal-Users",
+      "All-Staff"
+    ],
+    "accountType": "user",
+    "privileged": false,
+    "enabled": true,
+    "mfaRegistered": true,
+    "primaryWorkstation": "WS-082",
+    "description": ""
+  },
+  {
+    "sAMAccountName": "w.johnson",
+    "userPrincipalName": "w.johnson@contoso.com",
+    "displayName": "Will Johnson",
+    "title": "Trader",
+    "department": "Markets",
+    "office": "London",
+    "country": "GB",
+    "manager": null,
+    "memberOf": [
+      "Markets-Users",
+      "All-Staff"
+    ],
+    "accountType": "user",
+    "privileged": false,
+    "enabled": true,
+    "mfaRegistered": true,
+    "primaryWorkstation": "WS-083",
+    "description": ""
+  },
+  {
+    "sAMAccountName": "y.park",
+    "userPrincipalName": "y.park@contoso.com",
+    "displayName": "Yuna Park",
+    "title": "Product Owner",
+    "department": "Engineering",
+    "office": "London",
+    "country": "GB",
+    "manager": "d.wright",
+    "memberOf": [
+      "Engineering-Users",
+      "All-Staff"
+    ],
+    "accountType": "user",
+    "privileged": false,
+    "enabled": true,
+    "mfaRegistered": true,
+    "primaryWorkstation": "WS-084",
+    "description": ""
+  },
+  {
+    "sAMAccountName": "z.haddad",
+    "userPrincipalName": "z.haddad@contoso.com",
+    "displayName": "Zain Haddad",
+    "title": "Auditor",
+    "department": "Internal Audit",
+    "office": "London",
+    "country": "GB",
+    "manager": null,
+    "memberOf": [
+      "Audit-Users",
+      "All-Staff"
+    ],
+    "accountType": "user",
+    "privileged": false,
+    "enabled": true,
+    "mfaRegistered": true,
+    "primaryWorkstation": "WS-085",
+    "description": ""
+  },
+  {
+    "sAMAccountName": "u.adeyemi",
+    "userPrincipalName": "u.adeyemi@contoso.com",
+    "displayName": "Uche Adeyemi",
+    "title": "Customer Service Lead",
+    "department": "Retail Banking",
+    "office": "London",
+    "country": "GB",
+    "manager": "q.ahmed",
+    "memberOf": [
+      "Retail-Users",
+      "All-Staff"
+    ],
+    "accountType": "user",
+    "privileged": false,
+    "enabled": true,
+    "mfaRegistered": true,
+    "primaryWorkstation": "WS-086",
+    "description": ""
+  },
+  {
+    "sAMAccountName": "ja.morales",
+    "userPrincipalName": "ja.morales@contoso.com",
+    "displayName": "Javier Morales",
+    "title": "Payments Analyst",
+    "department": "Payments",
+    "office": "London",
+    "country": "GB",
+    "manager": "r.okafor",
+    "memberOf": [
+      "Payments-Users",
+      "All-Staff"
+    ],
+    "accountType": "user",
+    "privileged": false,
+    "enabled": true,
+    "mfaRegistered": true,
+    "primaryWorkstation": "WS-087",
+    "description": ""
+  },
+  {
+    "sAMAccountName": "svc-backup",
+    "userPrincipalName": "svc-backup@corp.contoso.local",
+    "displayName": "Backup service",
+    "title": "Service account",
+    "department": "IT",
+    "office": null,
+    "country": null,
+    "manager": "d.wright",
+    "memberOf": [
+      "Backup Operators"
+    ],
+    "accountType": "service",
+    "privileged": true,
+    "enabled": true,
+    "mfaRegistered": false,
+    "primaryWorkstation": "BKP01",
+    "description": "Runs nightly backup jobs on BKP01. Interactive logon not expected."
+  },
+  {
+    "sAMAccountName": "svc-sccm",
+    "userPrincipalName": "svc-sccm@corp.contoso.local",
+    "displayName": "SCCM service",
+    "title": "Service account",
+    "department": "IT",
+    "office": null,
+    "country": null,
+    "manager": "a.patel",
+    "memberOf": [
+      "SCCM-Operators"
+    ],
+    "accountType": "service",
+    "privileged": true,
+    "enabled": true,
+    "mfaRegistered": false,
+    "primaryWorkstation": "SCCM01",
+    "description": "Software deployment service account."
+  },
+  {
+    "sAMAccountName": "svc-legacyapp",
+    "userPrincipalName": "svc-legacyapp@corp.contoso.local",
+    "displayName": "Legacy payments app",
+    "title": "Service account",
+    "department": "IT",
+    "office": null,
+    "country": null,
+    "manager": "o.brien",
+    "memberOf": [
+      "App-Service-Accounts"
+    ],
+    "accountType": "service",
+    "privileged": true,
+    "enabled": true,
+    "mfaRegistered": false,
+    "primaryWorkstation": "APP02",
+    "description": "Service account for legacy payments app on APP02."
+  }
+]
