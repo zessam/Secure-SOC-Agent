@@ -12,7 +12,8 @@
 | Investigator (`soc_agents/investigator/`) | Built; verdict, timeline, ATT&CK, scope |
 | Analyst Copilot (`soc_agents/copilot/`) | Built and tested live on Gemini (A8: 4/5 findings, 16/16 citations real) |
 | Response Planner (`soc_agents/planner/`) | Built: proposes actions; `policy.py` (plain code) enforces approval and blocks unsafe ones |
-| Reporter, approval queue, Executor | Not started |
+| Reporter (`soc_agents/reporter/`) | Built: writes the ticket; `redact.py` (plain code) strips secrets |
+| Approval queue, Executor | Not started (Phase 3) |
 
 **Code layout: one folder per agent** (`agent.py` = wiring, `prompt.py` = instructions, `schema.py` = output):
 
@@ -27,8 +28,9 @@ soc_agents/
 │   └── threat_intel/agent.py · prompt.py
 ├── investigator/    agent.py · prompt.py · schema.py
 ├── planner/         agent.py · prompt.py · schema.py · policy.py
+├── reporter/        agent.py · prompt.py · schema.py · redact.py
 ├── copilot/         agent.py · prompt.py
-└── workflow.py      Triage → specialists (parallel) → Investigator → Response Planner
+└── workflow.py      Triage → specialists (parallel) → Investigator → Response Planner → Reporter
 ```
 
 **The 5 mock systems the agents will query:**

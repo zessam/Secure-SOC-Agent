@@ -40,7 +40,7 @@ def test_specialist_tools_are_least_privilege(monkeypatch):
 def test_workflow_order(monkeypatch):
     monkeypatch.setenv("SOC_MODEL_PROVIDER", "gemini")
     wf = build_incident_workflow()
-    assert [a.name for a in wf.sub_agents] == ["triage", "specialists", "investigator", "response_planner"]
+    assert [a.name for a in wf.sub_agents] == ["triage", "specialists", "investigator", "response_planner", "reporter"]
 
 
 def test_specialist_skipped_when_not_requested():

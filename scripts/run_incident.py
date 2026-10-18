@@ -20,7 +20,7 @@ from dotenv import load_dotenv  # noqa: E402
 load_dotenv(ROOT / ".env", override=True)
 
 OUTPUT_KEYS = ["triage", "siem_findings", "edr_findings", "identity_findings", "threat_intel_findings",
-               "investigation", "response_plan"]
+               "investigation", "response_plan", "incident_report"]
 
 
 async def main(scenario: str) -> None:
@@ -68,6 +68,12 @@ async def main(scenario: str) -> None:
     out.parent.mkdir(exist_ok=True)
     out.write_text(json.dumps({"scenario": scenario, "alert_id": alert_id, **results}, indent=2))
     print(f"\nsaved {out.relative_to(ROOT)}")
+    report = results.get("incident_report")
+    if isinstance(report, dict) and report.get("report_markdown"):
+        md = out.with_suffix(".md")
+        md.write_text(f"# {report.get('ticket_title')}\n\n**{report.get('priority')} | {report.get('status')}"
+                      f" | case {report.get('case_id')}**\n\n{report['report_markdown']}\n", encoding="utf-8")
+        print(f"ticket  {md.relative_to(ROOT)}")
 
 
 if __name__ == "__main__":
