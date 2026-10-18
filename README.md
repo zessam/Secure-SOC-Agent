@@ -42,31 +42,57 @@ Example: alert `ALR-A2-001`, *"Office application spawned encoded PowerShell on 
 
 ## 2. Architecture
 
+```mermaid
+flowchart TD
+    alert([SIEM alert]) --> triage
+
+    subgraph WF["incident_workflow · ADK SequentialAgent"]
+        triage["Triage"]
+        subgraph PAR["ParallelAgent"]
+            siem["SIEM specialist"]
+            edr["EDR specialist"]
+            idn["Identity specialist"]
+            ti["Threat Intel specialist"]
+        end
+        inv["Investigator<br/>verdict · timeline · ATT&CK"]
+        plan["Response Planner<br/>proposes only"]
+        policy{{"policy.py<br/>plain code"}}
+        rep["Reporter<br/>ticket, secrets redacted"]
+
+        triage --> siem & edr & idn & ti
+        siem & edr & idn & ti --> inv
+        inv --> plan --> policy --> rep
+    end
+
+    subgraph READ["Read-only MCP servers"]
+        rsrv["siem_mcp · edr_read_mcp · ad_mcp · ti_mcp · case_mcp"]
+    end
+    triage & siem & edr & idn & ti & inv -. read .-> rsrv
+
+    policy --> queue[("Approval queue<br/>SQLite")]
+    queue --> human{"Analyst<br/>approve / reject"}
+    human -- approved --> exec["Executor<br/>plain code, no AI"]
+    human -- rejected --> logged["Kept for audit"]
+    queue -- blocked by policy --> logged
+
+    subgraph WRITE["Write-only MCP servers · Executor identity only"]
+        wsrv["edr_response_mcp · ad_write_mcp · soar_write_mcp"]
+    end
+    exec -- "approval id re-checked" --> wsrv
+    kill[/"Kill switch"/] -. stops .-> exec & wsrv
+    wsrv --> audit[("Audit log · system change log")]
+
+    classDef ai fill:#e8f0fe,stroke:#4a6fd1,color:#1a2b5c
+    classDef code fill:#e7f6ec,stroke:#2e8b57,color:#174d2e
+    classDef human fill:#fff4e0,stroke:#d18b1f,color:#5c3b06
+    classDef danger fill:#fdeaea,stroke:#c0392b,color:#5c1a14
+    class triage,siem,edr,idn,ti,inv,plan,rep ai
+    class policy,queue,exec,audit,logged code
+    class human human
+    class kill,wsrv danger
 ```
- SIEM alert
-     │
-     ▼
-┌──────────────────────────── incident_workflow (ADK SequentialAgent) ─────────────────────────────┐
-│                                                                                                  │
-│  Triage ──► ┌─ SIEM specialist ─────┐ ──► Investigator ──► Response Planner ──► Reporter         │
-│             ├─ EDR specialist ──────┤      (verdict,         (proposes only)     (ticket)        │
-│             ├─ Identity specialist ─┤       timeline,              │                             │
-│             └─ Threat Intel spec. ──┘       ATT&CK)                │ policy.py (plain code)      │
-│               (ParallelAgent)                                      ▼                             │
-└────────────────────────────────────────────────────────────── approval queue ────────────────────┘
-        │  read-only MCP tools                                         │
-        ▼                                                              ▼
- siem_mcp · edr_read_mcp · ad_mcp · ti_mcp · case_mcp       analyst approves / rejects (named human)
-                                                                       │
-                                                                       ▼
-                                                         Executor (plain code, no AI)
-                                                                       │  write-only MCP tools
-                                                                       ▼
-                                                 edr_response_mcp · ad_write_mcp · soar_write_mcp
-                                                                       │
-                                                                       ▼
-                                                        audit log · system change log
-```
+
+Blue boxes are AI agents, green boxes are plain code, orange is the human, and red marks write access and the kill switch.
 
 **Design principles**
 - **Agents read, code writes.** No AI agent has write access. The Executor is plain Python.
