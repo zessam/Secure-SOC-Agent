@@ -10,11 +10,14 @@ from ..common.tools import mcp_tools
 from .schema import SpecialistFindings
 
 INCIDENT_CONTEXT = """
-Triage output for this incident (JSON):
-{triage}
-
+- You receive the triage output for this incident (JSON) in the message.
 - Answer the questions in triage.questions_for_specialists that concern your system.
 - Always filter by the entities and the triage time_window; widen the window only if needed.
+"""
+
+# The only live data: sent as the user message, so the system prompt stays identical across runs.
+INCIDENT_INPUTS = """Triage output for this incident (JSON):
+{triage}
 """
 
 COPILOT_CONTEXT = """
@@ -65,7 +68,10 @@ def build_specialist(name: str, description: str, role: str, tools: list[tuple[s
         name=f"{name}_specialist",
         description=description,
         model=get_model("flash"),
-        instruction=role + "\n" + (INCIDENT_CONTEXT if incident else COPILOT_CONTEXT) + COMMON_RULES,
+        # Fixed rules -> system prompt (identical for every run / scenario, so it stays cached).
+        static_instruction=role + "\n" + (INCIDENT_CONTEXT if incident else COPILOT_CONTEXT) + COMMON_RULES,
+        # Live incident data -> user content.
+        instruction=INCIDENT_INPUTS if incident else "",
         tools=[mcp_tools(server, allowed) for server, allowed in tools],
         include_contents="none",  # inputs come via {state} in the instruction, not chat history
         output_schema=SpecialistFindings,

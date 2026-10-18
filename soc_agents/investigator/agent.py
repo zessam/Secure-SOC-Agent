@@ -6,7 +6,7 @@ from google.adk.agents import LlmAgent
 from ..common.callbacks import tool_budget
 from ..common.models import get_model
 from ..common.tools import mcp_tools
-from .prompt import INSTRUCTION
+from .prompt import INPUTS, STATIC
 from .schema import InvestigationReport
 
 
@@ -15,7 +15,8 @@ def build_investigator_agent() -> LlmAgent:
         name="investigator",
         description="Correlates triage and specialist findings into a verdict, timeline and ATT&CK mapping.",
         model=get_model("pro"),
-        instruction=INSTRUCTION,
+        static_instruction=STATIC,  # fixed rules: cache-friendly system prompt
+        instruction=INPUTS,         # this incident's data -> user content
         tools=[  # only to verify cited evidence
             mcp_tools("siem_mcp", ["get_events"]),
             mcp_tools("edr_read_mcp", ["get_events"]),

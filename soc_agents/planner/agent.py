@@ -7,7 +7,7 @@ from ..common.callbacks import tool_budget
 from ..common.models import get_model
 from ..common.tools import mcp_tools
 from .policy import review_plan
-from .prompt import INSTRUCTION
+from .prompt import INPUTS, STATIC
 from .schema import ResponsePlan
 
 
@@ -48,7 +48,8 @@ def build_planner_agent() -> LlmAgent:
         name="response_planner",
         description="Proposes containment and recovery actions (never executes); reviewed by policy code.",
         model=get_model("pro"),
-        instruction=INSTRUCTION,
+        static_instruction=STATIC,  # fixed rules: cache-friendly system prompt
+        instruction=INPUTS,         # this incident's data -> user content
         tools=[mcp_tools("ad_mcp", ["get_host", "get_user"])],  # check tier / account type before proposing
         include_contents="none",  # inputs come via {state} in the instruction, not chat history
         output_schema=ResponsePlan,

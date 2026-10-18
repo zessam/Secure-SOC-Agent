@@ -5,7 +5,7 @@ from google.adk.agents import LlmAgent
 
 from ..common.callbacks import tool_budget
 from ..common.models import get_model
-from .prompt import INSTRUCTION
+from .prompt import STATIC
 from .schema import TriageResult
 from ..common.tools import mcp_tools
 
@@ -15,7 +15,7 @@ def build_triage_agent() -> LlmAgent:
         name="triage",
         description="First look at a SOC alert: severity, entities, time window, what to investigate.",
         model=get_model("pro"),
-        instruction=INSTRUCTION,
+        static_instruction=STATIC,  # fixed rules: cache-friendly system prompt
         tools=[
             mcp_tools("siem_mcp", ["get_alert", "get_events", "list_alerts"]),
             mcp_tools("edr_read_mcp", ["get_events"]),
