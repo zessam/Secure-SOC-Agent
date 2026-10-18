@@ -6,7 +6,7 @@ import asyncio
 from google.adk.models.llm_request import LlmRequest
 from google.genai import types
 
-from soc_agents import models
+from soc_agents.common import models
 from soc_agents.triage import build_triage_agent
 
 

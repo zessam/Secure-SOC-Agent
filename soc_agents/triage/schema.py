@@ -1,26 +1,14 @@
-"""Structured outputs passed between agents (saved in session state via output_key)."""
+"""Triage output, saved in session state as `triage`."""
 from __future__ import annotations
 
 from typing import Literal
 
-from pydantic import BaseModel, Field
+from pydantic import Field
+
+from ..common.schemas import AgentOutput, Entities, TimeWindow
 
 
-class Entities(BaseModel):
-    users: list[str] = Field(default_factory=list)
-    hosts: list[str] = Field(default_factory=list)
-    ips: list[str] = Field(default_factory=list)
-    domains: list[str] = Field(default_factory=list)
-    hashes: list[str] = Field(default_factory=list)
-    emails: list[str] = Field(default_factory=list)
-
-
-class TimeWindow(BaseModel):
-    start: str = Field(description="ISO-8601 UTC start of the window to investigate")
-    end: str = Field(description="ISO-8601 UTC end of the window to investigate")
-
-
-class TriageResult(BaseModel):
+class TriageResult(AgentOutput):
     alert_id: str
     summary: str = Field(description="2-3 sentences: what the alert says happened, to whom, where")
     alert_type: str = Field(description="e.g. malware, phishing, credential_attack, privilege_change, data_exfil")

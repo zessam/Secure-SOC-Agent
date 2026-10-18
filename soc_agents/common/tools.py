@@ -8,7 +8,7 @@ from pathlib import Path
 from google.adk.tools.mcp_tool import McpToolset, StdioConnectionParams
 from mcp import StdioServerParameters
 
-PROJECT_ROOT = Path(__file__).resolve().parents[1]
+PROJECT_ROOT = Path(__file__).resolve().parents[2]
 
 
 def mcp_tools(server: str, allowed: list[str]) -> McpToolset:
