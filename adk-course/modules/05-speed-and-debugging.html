@@ -1,0 +1,177 @@
+<section class="module" id="module-5" style="background: var(--color-bg)">
+  <div class="module-content">
+    <header class="module-header animate-in">
+      <span class="module-number">05</span>
+      <h1 class="module-title">Speed, Cost and Debugging</h1>
+      <p class="module-subtitle">Where the time and money go, the tricks that cut them, and how to find out what went wrong</p>
+    </header>
+
+    <div class="module-body">
+
+      <section class="screen animate-in">
+        <h2 class="screen-heading">Where the time goes: model calls</h2>
+        <p>Every time an agent thinks or uses a tool, the model reads its whole prompt again. The amount of text it reads is measured in <span class="term" data-definition="Pieces of words (roughly 3–4 characters each) that models read and write. Cost and speed are both measured in tokens: more tokens means slower and more expensive.">tokens</span>. In one real A2 run, the SIEM and EDR specialists each read about <strong>50,000 input tokens</strong>, mostly their own growing tool results.</p>
+
+        <div class="pattern-cards">
+          <div class="pattern-card" style="border-top: 3px solid var(--color-actor-1)">
+            <div class="pattern-icon" style="background: var(--color-actor-1)">🧹</div>
+            <h4 class="pattern-title">No chat history</h4>
+            <p class="pattern-desc"><code>include_contents="none"</code>: each agent sees only its inputs, not everyone's earlier tool results.</p>
+          </div>
+          <div class="pattern-card" style="border-top: 3px solid var(--color-actor-2)">
+            <div class="pattern-icon" style="background: var(--color-actor-2)">🗜️</div>
+            <h4 class="pattern-title">Compact tool results</h4>
+            <p class="pattern-desc">No pretty-printing and no empty fields: about 40% fewer characters. At most 10 events per search.</p>
+          </div>
+          <div class="pattern-card" style="border-top: 3px solid var(--color-actor-3)">
+            <div class="pattern-icon" style="background: var(--color-actor-3)">✂️</div>
+            <h4 class="pattern-title">Word limits</h4>
+            <p class="pattern-desc">Schemas say "max 2 sentences", "max 4 findings". Shorter answers are faster answers.</p>
+          </div>
+          <div class="pattern-card" style="border-top: 3px solid var(--color-actor-4)">
+            <div class="pattern-icon" style="background: var(--color-actor-4)">⚙️</div>
+            <h4 class="pattern-title">Plain-code Reporter</h4>
+            <p class="pattern-desc">The ticket is a template, so one whole model call (the biggest output) is gone. 7,974 → 2,653 characters.</p>
+          </div>
+          <div class="pattern-card" style="border-top: 3px solid var(--color-actor-5)">
+            <div class="pattern-icon" style="background: var(--color-actor-5)">💤</div>
+            <h4 class="pattern-title">Thinking off</h4>
+            <p class="pattern-desc">Qwen normally "thinks" in hidden text before answering. <code>VLLM_THINKING=off</code> skips that.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="screen animate-in">
+        <h2 class="screen-heading">The barista who already knows your order</h2>
+        <p>A good barista starts your usual drink when you walk in. Model servers do the same with a <span class="term" data-definition="The model server remembers the work it did on the beginning of a prompt. If the next prompt starts with exactly the same text, it skips that part, which is much faster.">prompt cache</span>. If a prompt starts with exactly the same text as last time, that part is skipped. ADK always adds "Your internal name is…" to each agent's system prompt, though, so the start was different at every hand-off between agents.</p>
+
+        <div class="translation-block animate-in">
+          <div class="translation-code">
+            <span class="translation-label">CODE · soc_agents/common/callbacks.py</span>
+            <pre><code><span class="code-line"><span class="code-keyword">def</span> <span class="code-function">shared_system_prompt</span>(callback_context, llm_request) -&gt; <span class="code-keyword">None</span>:</span>
+<span class="code-line">    <span class="code-string">"""before_model_callback: move the agent-specific system text into the first user message."""</span></span>
+<span class="code-line">    config = llm_request.config</span>
+<span class="code-line">    own = config.system_instruction <span class="code-keyword">if</span> config <span class="code-keyword">else</span> <span class="code-keyword">None</span></span>
+<span class="code-line">    <span class="code-keyword">if</span> <span class="code-function">isinstance</span>(own, str) <span class="code-keyword">and</span> own.<span class="code-function">strip</span>() <span class="code-keyword">and</span> own != SHARED_SYSTEM_PROMPT:</span>
+<span class="code-line">        <span class="code-keyword">from</span> google.genai <span class="code-keyword">import</span> types</span>
+<span class="code-line">        role = types.<span class="code-function">Content</span>(role=<span class="code-string">"user"</span>, parts=[types.<span class="code-function">Part</span>(text=<span class="code-string">"ROLE INSTRUCTIONS:\n"</span> + own)])</span>
+<span class="code-line">        llm_request.contents = [role, *llm_request.contents]</span>
+<span class="code-line">        config.system_instruction = SHARED_SYSTEM_PROMPT</span>
+<span class="code-line">    <span class="code-keyword">return</span> <span class="code-keyword">None</span></span></code></pre>
+          </div>
+          <div class="translation-english">
+            <span class="translation-label">PLAIN ENGLISH</span>
+            <div class="translation-lines">
+              <p class="tl">Runs just before every model call, holding the finished request.</p>
+              <p class="tl">(What it does: move each agent's own rules out of the system prompt.)</p>
+              <p class="tl">Look at the request's settings…</p>
+              <p class="tl">…and grab this agent's own <span class="term" data-definition="The hidden 'rules' text sent at the top of every model request. It tells the model who it is and how to behave, before the actual message.">system prompt</span>.</p>
+              <p class="tl">If it's real text and not already the shared one…</p>
+              <p class="tl">(load the message building blocks)</p>
+              <p class="tl">…turn this agent's rules into a message labelled ROLE INSTRUCTIONS…</p>
+              <p class="tl">…and put that message first in the conversation.</p>
+              <p class="tl">Then give every agent the same shared system prompt, so the cache can match it.</p>
+              <p class="tl">"None" means "carry on with the call".</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="screen animate-in">
+        <h2 class="screen-heading">Gemini free tier vs your own server</h2>
+        <p>Free Gemini is like a toll road with a daily pass: about 5 cars per minute and 20 per day for each model. One incident needs about 50 model calls, so it runs out fast. Your vLLM server has no pass to buy, but it's one road, so traffic jams happen.</p>
+
+        <div class="icon-rows">
+          <div class="icon-row">
+            <div class="icon-circle" style="background: var(--color-actor-1)">⏱️</div>
+            <div><strong>Gemini: <span class="term" data-definition="HTTP error 429 'Too Many Requests': the service is saying 'slow down, you've used your quota'. Waiting and retrying is the right response.">429 errors</span></strong><p>The code waits and retries (up to 8 times). The daily limit can only be fixed by billing or switching to vLLM.</p></div>
+          </div>
+          <div class="icon-row">
+            <div class="icon-circle" style="background: var(--color-actor-2)">🚦</div>
+            <div><strong>vLLM: at most 2 requests at once</strong><p>Four specialists firing together caused a <span class="term" data-definition="The connection to the server couldn't even be opened in time (here: 30 seconds), usually because the server was too busy to accept it.">connect timeout</span>. Now they queue for 2 slots and retry with growing pauses.</p></div>
+          </div>
+          <div class="icon-row">
+            <div class="icon-circle" style="background: var(--color-actor-5)">🔒</div>
+            <div><strong>vLLM: data stays local</strong><p>On the free Gemini tier Google may use your data, so only synthetic data belongs there.</p></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="screen animate-in">
+        <h2 class="screen-heading">When things break: read the flight recorder</h2>
+        <p>Planes carry a black box that records everything. ADK's web UI has one too: the <strong>Events</strong> tab (every model call and tool call, in order) and the <strong>State</strong> tab (each agent's saved answer). Here are real bugs from this project and how they showed up.</p>
+
+        <div class="step-cards">
+          <div class="step-card"><div class="step-num">1</div><div class="step-body"><strong>Symptom: the run stops right after Triage</strong><p>Events showed <code>httpx.ConnectTimeout</code> → four specialists overloaded vLLM → fix: concurrency limit and retries.</p></div></div>
+          <div class="step-card"><div class="step-num">2</div><div class="step-body"><strong>Symptom: "Validation Error … Input should be a valid list"</strong><p>Qwen sent a list as text → the schema now accepts list-as-text instead of failing.</p></div></div>
+          <div class="step-card"><div class="step-num">3</div><div class="step-body"><strong>Symptom: typing "Approve" re-ran the whole investigation</strong><p>Every message was treated as a new alert → plain-code Intake now handles commands.</p></div></div>
+          <div class="step-card"><div class="step-num">4</div><div class="step-body"><strong>Symptom: the policy blocked killing the malware</strong><p>The target was written as "svchost-update.exe on WS-042" → the policy now finds the host inside the text.</p></div></div>
+        </div>
+
+        <div class="callout callout-accent">
+          <div class="callout-icon">💡</div>
+          <div class="callout-content">
+            <strong class="callout-title">Give the AI the evidence, not your guess</strong>
+            <p>When an agent run fails, copy the exact error and the last few Events into your request to the AI coding tool. "It stopped after triage" leads to guessing. "<code>httpx.ConnectTimeout</code> while 4 specialists ran in parallel" leads to the real fix in one step.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="screen animate-in">
+        <h2 class="screen-heading">Check your understanding</h2>
+        <div class="quiz-container" id="quiz-module5">
+          <div class="quiz-question-block"
+               data-correct="b"
+               data-explanation-right="Exactly. 429 is a quota problem, not a bug. Retries help with per-minute limits, but a daily limit needs vLLM or a paid key."
+               data-explanation-wrong="A 429 means 'too many requests': the free quota is used up. Changing prompts won't help. Switch to vLLM (SOC_MODEL_PROVIDER=vllm) or enable billing.">
+            <h3 class="quiz-question">On Gemini, runs keep failing with <code>429 RESOURCE_EXHAUSTED … PerDay</code>. What's the right move?</h3>
+            <div class="quiz-options">
+              <button class="quiz-option" data-value="a" onclick="selectOption(this)"><div class="quiz-option-radio"></div><span>Rewrite the Triage prompt</span></button>
+              <button class="quiz-option" data-value="b" onclick="selectOption(this)"><div class="quiz-option-radio"></div><span>Switch to vLLM in .env (or enable billing): the daily quota is used up</span></button>
+              <button class="quiz-option" data-value="c" onclick="selectOption(this)"><div class="quiz-option-radio"></div><span>Raise the specialists' tool budgets</span></button>
+            </div>
+            <div class="quiz-feedback"></div>
+          </div>
+
+          <div class="quiz-question-block"
+               data-correct="c"
+               data-explanation-right="Right. Specialists re-read their growing tool results on every step. Fewer events per search and fewer tool calls cut those tokens most."
+               data-explanation-wrong="Look at where the tokens actually went: the specialists' input, about 50k each, from re-reading tool results. Smaller results and lower budgets attack that directly.">
+            <h3 class="quiz-question">You want runs to be cheaper. The numbers show the specialists read ~50k input tokens each. What helps most?</h3>
+            <div class="quiz-options">
+              <button class="quiz-option" data-value="a" onclick="selectOption(this)"><div class="quiz-option-radio"></div><span>Make the Reporter's ticket shorter</span></button>
+              <button class="quiz-option" data-value="b" onclick="selectOption(this)"><div class="quiz-option-radio"></div><span>Use a bigger model for the specialists</span></button>
+              <button class="quiz-option" data-value="c" onclick="selectOption(this)"><div class="quiz-option-radio"></div><span>Return fewer events per search and lower the specialists' tool budgets</span></button>
+            </div>
+            <div class="quiz-feedback"></div>
+          </div>
+
+          <div class="quiz-question-block"
+               data-correct="a"
+               data-explanation-right="Yes. The code changed but the running server still has the old code loaded. adk web doesn't reload by itself, so restart it."
+               data-explanation-wrong="Most 'my fix didn't work' moments with adk web come down to one thing: it loaded the code when it started. Restart it after every change.">
+            <h3 class="quiz-question">You fixed a prompt, but the UI still behaves the old way. First thing to check?</h3>
+            <div class="quiz-options">
+              <button class="quiz-option" data-value="a" onclick="selectOption(this)"><div class="quiz-option-radio"></div><span>Did you restart <code>adk web</code> after the change?</span></button>
+              <button class="quiz-option" data-value="b" onclick="selectOption(this)"><div class="quiz-option-radio"></div><span>Is the model broken?</span></button>
+              <button class="quiz-option" data-value="c" onclick="selectOption(this)"><div class="quiz-option-radio"></div><span>Is the approval queue full?</span></button>
+            </div>
+            <div class="quiz-feedback"></div>
+          </div>
+
+          <button class="quiz-check-btn" onclick="checkQuiz('quiz-module5')">Check Answers</button>
+          <button class="quiz-reset-btn" onclick="resetQuiz('quiz-module5')">Try Again</button>
+        </div>
+
+        <div class="callout callout-info">
+          <div class="callout-icon">🎓</div>
+          <div class="callout-content">
+            <strong class="callout-title">You now know the whole system</strong>
+            <p>Agents are model + instructions + tools + a form + an out-tray. Workflow agents decide the order. Session state carries the results. MCP plugs into the systems. Plain-code guardrails keep the AI's hands off anything real.</p>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </div>
+</section>

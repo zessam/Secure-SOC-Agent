@@ -1,0 +1,231 @@
+<section class="module" id="module-2" style="background: var(--color-bg-warm)">
+  <div class="module-content">
+    <header class="module-header animate-in">
+      <span class="module-number">02</span>
+      <h1 class="module-title">What Is an ADK Agent?</h1>
+      <p class="module-subtitle">Google ADK explained from zero: the five things every agent is made of</p>
+    </header>
+
+    <div class="module-body">
+
+      <section class="screen animate-in">
+        <h2 class="screen-heading">ADK in one sentence</h2>
+        <p><span class="term" data-definition="Agent Development Kit: a free Python library from Google for building AI agents. It handles the boring parts (calling the model, running tools, passing results between agents) so you only describe what each agent should do.">Google ADK</span> is a toolkit that turns an <span class="term" data-definition="Large Language Model: the AI 'brain' (like Gemini or Qwen) that reads text and writes text. On its own it can only talk; it can't look anything up or press any buttons.">LLM</span> into an <strong>agent</strong>: an AI that can look things up and work toward a goal, not just chat.</p>
+        <p>Think of hiring a new employee. A smart graduate (the model) is useless on day one without an onboarding kit. ADK is that kit.</p>
+
+        <div class="pattern-cards">
+          <div class="pattern-card" style="border-top: 3px solid var(--color-actor-1)">
+            <div class="pattern-icon" style="background: var(--color-actor-1)">🧠</div>
+            <h4 class="pattern-title">model</h4>
+            <p class="pattern-desc">Which brain they use: Gemini, or Qwen on your own vLLM server.</p>
+          </div>
+          <div class="pattern-card" style="border-top: 3px solid var(--color-actor-2)">
+            <div class="pattern-icon" style="background: var(--color-actor-2)">📜</div>
+            <h4 class="pattern-title">instruction</h4>
+            <p class="pattern-desc">The job description: "You are the Triage agent. Decide severity…"</p>
+          </div>
+          <div class="pattern-card" style="border-top: 3px solid var(--color-actor-3)">
+            <div class="pattern-icon" style="background: var(--color-actor-3)">🔑</div>
+            <h4 class="pattern-title">tools</h4>
+            <p class="pattern-desc">The keycards: which systems they may look at (SIEM, AD…).</p>
+          </div>
+          <div class="pattern-card" style="border-top: 3px solid var(--color-actor-4)">
+            <div class="pattern-icon" style="background: var(--color-actor-4)">🗂️</div>
+            <h4 class="pattern-title">output_schema</h4>
+            <p class="pattern-desc">The form they must fill in: fixed boxes such as severity and users.</p>
+          </div>
+          <div class="pattern-card" style="border-top: 3px solid var(--color-actor-5)">
+            <div class="pattern-icon" style="background: var(--color-actor-5)">📥</div>
+            <h4 class="pattern-title">output_key</h4>
+            <p class="pattern-desc">The out-tray: where they drop the filled form for the next person.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="screen animate-in">
+        <h2 class="screen-heading">A real agent, line by line</h2>
+        <p>This is the actual Triage agent. Every agent in the project looks like this.</p>
+
+        <div class="translation-block animate-in">
+          <div class="translation-code">
+            <span class="translation-label">CODE · soc_agents/triage/agent.py</span>
+            <pre><code><span class="code-line"><span class="code-keyword">def</span> <span class="code-function">build_triage_agent</span>() -&gt; LlmAgent:</span>
+<span class="code-line">    <span class="code-keyword">return</span> <span class="code-function">LlmAgent</span>(</span>
+<span class="code-line">        <span class="code-property">name</span>=<span class="code-string">"triage"</span>,</span>
+<span class="code-line">        <span class="code-property">description</span>=<span class="code-string">"First look at a SOC alert: severity, entities, time window, what to investigate."</span>,</span>
+<span class="code-line">        <span class="code-property">model</span>=<span class="code-function">get_model</span>(<span class="code-string">"pro"</span>),</span>
+<span class="code-line">        <span class="code-property">static_instruction</span>=STATIC,  <span class="code-comment"># fixed rules: cache-friendly system prompt</span></span>
+<span class="code-line">        <span class="code-property">tools</span>=[</span>
+<span class="code-line">            <span class="code-function">mcp_tools</span>(<span class="code-string">"siem_mcp"</span>, [<span class="code-string">"get_alert"</span>, <span class="code-string">"get_events"</span>, <span class="code-string">"list_alerts"</span>]),</span>
+<span class="code-line">            <span class="code-function">mcp_tools</span>(<span class="code-string">"edr_read_mcp"</span>, [<span class="code-string">"get_events"</span>]),</span>
+<span class="code-line">            <span class="code-function">mcp_tools</span>(<span class="code-string">"ad_mcp"</span>, [<span class="code-string">"get_user"</span>, <span class="code-string">"get_host"</span>]),</span>
+<span class="code-line">            <span class="code-function">mcp_tools</span>(<span class="code-string">"case_mcp"</span>, [<span class="code-string">"get_case"</span>, <span class="code-string">"search_changes"</span>]),</span>
+<span class="code-line">        ],</span>
+<span class="code-line">        <span class="code-property">include_contents</span>=<span class="code-string">"none"</span>,  <span class="code-comment"># inputs come via {state} in the instruction, not chat history</span></span>
+<span class="code-line">        <span class="code-property">output_schema</span>=TriageResult,</span>
+<span class="code-line">        <span class="code-property">output_key</span>=<span class="code-string">"triage"</span>,</span>
+<span class="code-line">        <span class="code-property">before_tool_callback</span>=<span class="code-function">guarded</span>(<span class="code-number">8</span>),</span>
+<span class="code-line">        <span class="code-property">before_model_callback</span>=shared_system_prompt,</span>
+<span class="code-line">    )</span></code></pre>
+          </div>
+          <div class="translation-english">
+            <span class="translation-label">PLAIN ENGLISH</span>
+            <div class="translation-lines">
+              <p class="tl">A recipe that builds the Triage agent.</p>
+              <p class="tl">Create a thinking agent (LlmAgent = "an agent with a model inside").</p>
+              <p class="tl">Its name tag is "triage".</p>
+              <p class="tl">A one-line summary of its job.</p>
+              <p class="tl">Use the strongest model tier ("pro").</p>
+              <p class="tl">Its job description, which never changes between runs.</p>
+              <p class="tl">The systems it may look at:</p>
+              <p class="tl">the SIEM: only these 3 lookups,</p>
+              <p class="tl">the EDR: only fetching events,</p>
+              <p class="tl">Active Directory: only user and PC lookups,</p>
+              <p class="tl">the case system: only case details and change records.</p>
+              <p class="tl">(end of the tool list)</p>
+              <p class="tl">Don't re-read the whole chat history: cheaper and faster.</p>
+              <p class="tl">The answer must fit the TriageResult form.</p>
+              <p class="tl">Save the answer on the shared notepad under the label "triage".</p>
+              <p class="tl">Before every tool use, run the safety checks (max 8 tool calls).</p>
+              <p class="tl">Before every model call, tidy the prompt (more in Module 5).</p>
+              <p class="tl">(done)</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="callout callout-accent">
+          <div class="callout-icon">💡</div>
+          <div class="callout-content">
+            <strong class="callout-title">An agent is mostly configuration</strong>
+            <p>Notice there's no "how to investigate" logic in this code. The thinking happens inside the model. Your code only sets <em>what it knows, what it may touch, and what shape its answer takes</em>. That's why you change agent behaviour by editing <code>prompt.py</code>, not by writing new code.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="screen animate-in">
+        <h2 class="screen-heading">Four kinds of agent in this project</h2>
+        <p>Not every "agent" in ADK thinks. Some are just managers that decide who works when.</p>
+
+        <div class="pattern-cards">
+          <div class="pattern-card" style="border-top: 3px solid var(--color-actor-1)">
+            <div class="pattern-icon" style="background: var(--color-actor-1)">🧠</div>
+            <h4 class="pattern-title">LlmAgent</h4>
+            <p class="pattern-desc">Has a model and thinks. Triage, the 4 specialists, Investigator, Planner.</p>
+          </div>
+          <div class="pattern-card" style="border-top: 3px solid var(--color-actor-2)">
+            <div class="pattern-icon" style="background: var(--color-actor-2)">🏭</div>
+            <h4 class="pattern-title">SequentialAgent</h4>
+            <p class="pattern-desc">An assembly line: runs its sub-agents one after another, always in the same order.</p>
+          </div>
+          <div class="pattern-card" style="border-top: 3px solid var(--color-actor-3)">
+            <div class="pattern-icon" style="background: var(--color-actor-3)">🏎️</div>
+            <h4 class="pattern-title">ParallelAgent</h4>
+            <p class="pattern-desc">A pit crew: all sub-agents work at the same time. Used for the 4 specialists.</p>
+          </div>
+          <div class="pattern-card" style="border-top: 3px solid var(--color-actor-4)">
+            <div class="pattern-icon" style="background: var(--color-actor-4)">⚙️</div>
+            <h4 class="pattern-title">BaseAgent (custom)</h4>
+            <p class="pattern-desc">Plain code dressed as an agent. The Reporter fills a ticket template, no AI.</p>
+          </div>
+        </div>
+
+        <div class="translation-block animate-in">
+          <div class="translation-code">
+            <span class="translation-label">CODE · soc_agents/workflow.py</span>
+            <pre><code><span class="code-line"><span class="code-keyword">return</span> <span class="code-function">SequentialAgent</span>(</span>
+<span class="code-line">    <span class="code-property">name</span>=<span class="code-string">"incident_workflow"</span>,</span>
+<span class="code-line">    <span class="code-property">description</span>=<span class="code-string">"Handles one SOC alert end to end."</span>,</span>
+<span class="code-line">    <span class="code-property">before_agent_callback</span>=intake_router,  <span class="code-comment"># plain code: alert -&gt; run; approval commands -&gt; handled without AI</span></span>
+<span class="code-line">    <span class="code-property">sub_agents</span>=[<span class="code-function">build_triage_agent</span>(), <span class="code-function">build_specialists</span>(), <span class="code-function">build_investigator_agent</span>(),</span>
+<span class="code-line">                <span class="code-function">build_planner_agent</span>(), <span class="code-function">build_reporter_agent</span>()],</span>
+<span class="code-line">)</span></code></pre>
+          </div>
+          <div class="translation-english">
+            <span class="translation-label">PLAIN ENGLISH</span>
+            <div class="translation-lines">
+              <p class="tl">Build an assembly line…</p>
+              <p class="tl">…called "incident_workflow"…</p>
+              <p class="tl">…whose job is handling one alert.</p>
+              <p class="tl">Before the line starts, the Intake doorman checks the message (Module 1).</p>
+              <p class="tl">The stations, in order: Triage, then the specialists (a pit crew), then the Investigator…</p>
+              <p class="tl">…then the Planner, then the Reporter.</p>
+              <p class="tl">(done)</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="screen animate-in">
+        <h2 class="screen-heading">Swapping the brain: Gemini or your own server</h2>
+        <p>The agents never name a specific model. They ask for a <em>tier</em> ("pro" for hard thinking, "flash" for quick work), and one small <span class="term" data-definition="A named, reusable block of code that does one job. You 'call' it with inputs and it gives back a result, like a vending machine.">function</span> decides which model that means, using settings in the <span class="term" data-definition="A small private settings file (named .env) holding things like API keys and server addresses. It's never shared or committed to git.">.env file</span>.</p>
+
+        <div class="translation-block animate-in">
+          <div class="translation-code">
+            <span class="translation-label">CODE · soc_agents/common/models.py</span>
+            <pre><code><span class="code-line"><span class="code-keyword">def</span> <span class="code-function">get_model</span>(tier: str) -&gt; str | BaseLlm:</span>
+<span class="code-line">    <span class="code-string">"""Model for a tier: 'pro' (reasoning), 'flash' (specialists), 'lite' (guard/judge)."""</span></span>
+<span class="code-line">    provider = os.environ.<span class="code-function">get</span>(<span class="code-string">"SOC_MODEL_PROVIDER"</span>, <span class="code-string">"vllm"</span>).<span class="code-function">lower</span>()</span>
+<span class="code-line">    <span class="code-keyword">if</span> provider == <span class="code-string">"vllm"</span>:</span>
+<span class="code-line">        model = os.environ.<span class="code-function">get</span>(<span class="code-string">f"VLLM_MODEL_</span>{tier.<span class="code-function">upper</span>()}<span class="code-string">"</span>) <span class="code-keyword">or</span> os.environ.<span class="code-function">get</span>(<span class="code-string">"VLLM_MODEL"</span>)</span></code></pre>
+          </div>
+          <div class="translation-english">
+            <span class="translation-label">PLAIN ENGLISH</span>
+            <div class="translation-lines">
+              <p class="tl">"Give me the model for this tier."</p>
+              <p class="tl">(A note explaining the three tiers.)</p>
+              <p class="tl">Read SOC_MODEL_PROVIDER from the settings; if it's missing, assume vllm.</p>
+              <p class="tl">If it's the local vLLM server…</p>
+              <p class="tl">…use the tier-specific model if one is set, otherwise the general VLLM_MODEL.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="badge-list">
+          <div class="badge-item"><code class="badge-code">SOC_MODEL_PROVIDER=vllm</code><span class="badge-desc">Use your own <span class="term" data-definition="vLLM is free software that runs an open AI model (like Qwen) on your own GPU and answers requests the same way OpenAI's servers do. No per-request bill, no daily quota.">vLLM</span> server: no quota, data stays local</span></div>
+          <div class="badge-item"><code class="badge-code">SOC_MODEL_PROVIDER=gemini</code><span class="badge-desc">Use Google's Gemini with an <span class="term" data-definition="A secret password-like string that proves to a service (here Google AI Studio) that you're allowed to use it, and counts your usage.">API key</span>: easy, but the free tier is limited</span></div>
+        </div>
+      </section>
+
+      <section class="screen animate-in">
+        <h2 class="screen-heading">Check your understanding</h2>
+        <div class="quiz-container" id="quiz-module2">
+          <div class="scenario-block">
+            <div class="scenario-context">
+              <span class="scenario-label">Scenario</span>
+              <p>You want a 5th specialist that checks the email gateway, running alongside the other four.</p>
+            </div>
+          </div>
+          <div class="quiz-question-block"
+               data-correct="a"
+               data-explanation-right="Yes. A new LlmAgent with only the email tools it needs, added to the ParallelAgent's list, so it runs at the same time as the others."
+               data-explanation-wrong="Not quite. The specialists live in the ParallelAgent (the pit crew). Adding the new one there makes it run alongside the others, and it should get only email tools.">
+            <h3 class="quiz-question">What do you ask the AI coding tool to do?</h3>
+            <div class="quiz-options">
+              <button class="quiz-option" data-value="a" onclick="selectOption(this)"><div class="quiz-option-radio"></div><span>Create a new LlmAgent with email-only tools and add it to the specialists' ParallelAgent</span></button>
+              <button class="quiz-option" data-value="b" onclick="selectOption(this)"><div class="quiz-option-radio"></div><span>Give the Triage agent all the email tools as well</span></button>
+              <button class="quiz-option" data-value="c" onclick="selectOption(this)"><div class="quiz-option-radio"></div><span>Add it to the SequentialAgent after the Reporter</span></button>
+            </div>
+            <div class="quiz-feedback"></div>
+          </div>
+
+          <div class="quiz-question-block"
+               data-correct="c"
+               data-explanation-right="Right. If the step is the same every time (fill a template), plain code is faster, free, and can't make things up. That's exactly why the Reporter became a custom BaseAgent."
+               data-explanation-wrong="Think about whether this step needs judgment. Turning known results into a fixed format doesn't, so plain code (a custom BaseAgent) beats a model: faster, free, never invents facts.">
+            <h3 class="quiz-question">A step only reformats results that already exist into a ticket. Which kind of agent fits best?</h3>
+            <div class="quiz-options">
+              <button class="quiz-option" data-value="a" onclick="selectOption(this)"><div class="quiz-option-radio"></div><span>An LlmAgent with the "pro" model, so it writes nicely</span></button>
+              <button class="quiz-option" data-value="b" onclick="selectOption(this)"><div class="quiz-option-radio"></div><span>A ParallelAgent</span></button>
+              <button class="quiz-option" data-value="c" onclick="selectOption(this)"><div class="quiz-option-radio"></div><span>A custom BaseAgent with plain code (a template)</span></button>
+            </div>
+            <div class="quiz-feedback"></div>
+          </div>
+
+          <button class="quiz-check-btn" onclick="checkQuiz('quiz-module2')">Check Answers</button>
+          <button class="quiz-reset-btn" onclick="resetQuiz('quiz-module2')">Try Again</button>
+        </div>
+      </section>
+
+    </div>
+  </div>
+</section>

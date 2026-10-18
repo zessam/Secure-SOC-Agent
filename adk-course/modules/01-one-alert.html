@@ -1,0 +1,173 @@
+<section class="module" id="module-1" style="background: var(--color-bg)">
+  <div class="module-content">
+    <header class="module-header animate-in">
+      <span class="module-number">01</span>
+      <h1 class="module-title">One Alert, Start to Finish</h1>
+      <p class="module-subtitle">What this agent does for a bank's security team, and the journey of a single alarm through it</p>
+    </header>
+
+    <div class="module-body">
+
+      <section class="screen animate-in">
+        <h2 class="screen-heading">The job: a security team that never sleeps</h2>
+        <p>Banks have a <span class="term" data-definition="Security Operations Center: the team (and room) that watches a company's computers 24/7 and responds when something looks like an attack.">SOC</span>. Every day it gets hundreds of alarms called <span class="term" data-definition="An automatic warning raised by a security tool when it sees something suspicious, e.g. 'Word started a hidden PowerShell window'. Each alert has an ID like ALR-A2-001.">alerts</span>. Most are harmless. A few are real attacks, and a human analyst needs about an hour to dig into each one.</p>
+        <p>This project is a team of AI helpers that does that first hour of digging in a few minutes. It never touches a real system unless a human says yes.</p>
+
+        <div class="icon-rows">
+          <div class="icon-row">
+            <div class="icon-circle" style="background: var(--color-actor-1)">🚨</div>
+            <div><strong>Input: one alert</strong><p>e.g. "Office application spawned encoded PowerShell on WS-042"</p></div>
+          </div>
+          <div class="icon-row">
+            <div class="icon-circle" style="background: var(--color-actor-2)">🔎</div>
+            <div><strong>Work: AI agents investigate</strong><p>They read logs, computer activity, account data and threat intelligence</p></div>
+          </div>
+          <div class="icon-row">
+            <div class="icon-circle" style="background: var(--color-actor-5)">📋</div>
+            <div><strong>Output: verdict, plan and ticket</strong><p>"Real attack, high severity. Here's what to block. Please approve."</p></div>
+          </div>
+        </div>
+
+        <div class="callout callout-info">
+          <div class="callout-icon">🧪</div>
+          <div class="callout-content">
+            <strong class="callout-title">It's a lab, not a real bank</strong>
+            <p>Everything is fake: "Contoso Bank", its users and its attacks. The security tools are pretend versions that read from files, so you can experiment safely.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="screen animate-in">
+        <h2 class="screen-heading">Think of a hospital emergency room</h2>
+        <p>The word "triage" literally comes from the ER. When a patient arrives, a nurse decides how urgent it is, specialists run tests in parallel, a doctor makes the diagnosis, the patient signs consent, and only then is treatment given.</p>
+        <div class="flow-steps">
+          <div class="flow-step"><div class="flow-step-num">1</div><p><strong>Triage nurse</strong><br>How bad is it?</p></div>
+          <div class="flow-arrow">→</div>
+          <div class="flow-step"><div class="flow-step-num">2</div><p><strong>Lab + X-ray</strong><br>Tests at the same time</p></div>
+          <div class="flow-arrow">→</div>
+          <div class="flow-step"><div class="flow-step-num">3</div><p><strong>Doctor</strong><br>Diagnosis</p></div>
+          <div class="flow-arrow">→</div>
+          <div class="flow-step"><div class="flow-step-num">4</div><p><strong>Consent form</strong><br>Patient agrees</p></div>
+          <div class="flow-arrow">→</div>
+          <div class="flow-step"><div class="flow-step-num">5</div><p><strong>Nurse</strong><br>Gives treatment</p></div>
+        </div>
+        <p>Our agent works the same way: <strong>Triage → Specialists → Investigator → Response Planner → human approval → Executor</strong>. Keep this picture in mind; every later module zooms into one of these boxes.</p>
+      </section>
+
+      <section class="screen animate-in">
+        <h2 class="screen-heading">Follow alert ALR-A2-001 through the system</h2>
+        <p>An employee, s.khan, opened a fake invoice. Click <strong>Next Step</strong> to watch the alert travel.</p>
+
+        <div class="flow-animation" data-steps='[
+          {"highlight":"flow-actor-1","label":"The SIEM raises alert ALR-A2-001. You paste it into the chat: New SIEM alert ALR-A2-001. Triage it."},
+          {"highlight":"flow-actor-2","label":"Intake (plain code) reads the ID, picks scenario A2, and starts the AI pipeline","packet":true,"from":"actor-1","to":"actor-2"},
+          {"highlight":"flow-actor-3","label":"Triage looks up the alert, the user and the PC: high severity, ask EDR, SIEM and Threat Intel","packet":true,"from":"actor-2","to":"actor-3"},
+          {"highlight":"flow-actor-4","label":"Four specialists dig in at the same time: Word to PowerShell to svchost-update.exe, C2 traffic, phishing email","packet":true,"from":"actor-3","to":"actor-4"},
+          {"highlight":"flow-actor-5","label":"Investigator merges it into one story: true positive, high, WS-042 compromised, DC01 clean","packet":true,"from":"actor-4","to":"actor-5"},
+          {"highlight":"flow-actor-6","label":"Response Planner proposes actions; policy code blocks unsafe ones; the rest wait in the approval queue","packet":true,"from":"actor-5","to":"actor-6"},
+          {"highlight":"flow-actor-7","label":"You type approve all as zessam, then execute. The Executor (plain code) carries out only approved actions","packet":true,"from":"actor-6","to":"actor-7"}
+        ]'>
+          <div class="flow-actors">
+            <div class="flow-actor" id="flow-actor-1"><div class="flow-actor-icon">🚨</div><span>Alert</span></div>
+            <div class="flow-actor" id="flow-actor-2"><div class="flow-actor-icon">🚪</div><span>Intake</span></div>
+            <div class="flow-actor" id="flow-actor-3"><div class="flow-actor-icon">🩺</div><span>Triage</span></div>
+            <div class="flow-actor" id="flow-actor-4"><div class="flow-actor-icon">🔬</div><span>4 Specialists</span></div>
+            <div class="flow-actor" id="flow-actor-5"><div class="flow-actor-icon">🧠</div><span>Investigator</span></div>
+            <div class="flow-actor" id="flow-actor-6"><div class="flow-actor-icon">📝</div><span>Planner + Policy</span></div>
+            <div class="flow-actor" id="flow-actor-7"><div class="flow-actor-icon">✅</div><span>Human + Executor</span></div>
+          </div>
+          <div class="flow-packet"></div>
+          <div class="flow-step-label">Click "Next Step" to begin</div>
+          <div class="flow-controls">
+            <button class="btn flow-next-btn">Next Step</button>
+            <button class="btn flow-reset-btn">Restart</button>
+            <span class="flow-progress"></span>
+          </div>
+        </div>
+      </section>
+
+      <section class="screen animate-in">
+        <h2 class="screen-heading">The very first line of code that runs</h2>
+        <p>When you open the chat, the first thing that runs is <strong>not AI</strong>. It's a small piece of normal code called Intake. It reads your message and decides what to do with it.</p>
+
+        <div class="translation-block animate-in">
+          <div class="translation-code">
+            <span class="translation-label">CODE · soc_agents/intake.py</span>
+            <pre><code><span class="code-line">if m := ALERT_RE.search(text):</span>
+<span class="code-line">    alert_id = m.group(0).upper()</span>
+<span class="code-line">    handled = state.get(&quot;handled_alerts&quot;) or {}</span>
+<span class="code-line">    if alert_id in handled and not re.search(r&quot;\b(rerun|re-run|again)\b&quot;, text, re.I):</span>
+<span class="code-line">        return _reply(f&quot;`{alert_id}` was already investigated in this session (incident `{handled[alert_id]}`).\n\n&quot;</span>
+<span class="code-line">                      f&quot;{_queue_table(handled[alert_id])}\n\nSay `rerun {alert_id}` to investigate it again.&quot;)</span>
+<span class="code-line">    scenario = alert_id.split(&quot;-&quot;)[1]</span>
+<span class="code-line">    if not _scenario_exists(scenario):</span>
+<span class="code-line">        return _reply(f&quot;Unknown alert `{alert_id}`: no scenario `{scenario}` in the lab data.&quot;)</span>
+<span class="code-line">    state[&quot;current_alert&quot;] = alert_id</span>
+<span class="code-line">    state[&quot;scenario&quot;] = scenario  # every tool call of this run is scoped to it</span>
+<span class="code-line">    return None  # run the AI pipeline</span></code></pre>
+          </div>
+          <div class="translation-english">
+            <span class="translation-label">PLAIN ENGLISH</span>
+            <div class="translation-lines">
+              <p class="tl">Look for something shaped like an alert ID (e.g. ALR-A2-001) in your message.</p>
+              <p class="tl">If found, keep the ID, in capital letters.</p>
+              <p class="tl">Get the list of alerts this chat has already investigated.</p>
+              <p class="tl">If this alert is on that list and you didn't say "rerun"…</p>
+              <p class="tl">…reply "already investigated" and show its approval queue…</p>
+              <p class="tl">…instead of paying for a second full AI run.</p>
+              <p class="tl">Cut the ID at the dashes: the middle part, "A2", is the scenario.</p>
+              <p class="tl">If no such scenario exists in the lab data…</p>
+              <p class="tl">…say "unknown alert" and stop.</p>
+              <p class="tl">Write the alert ID on the shared notepad (the "state") for later agents.</p>
+              <p class="tl">Also note the scenario, so every agent reads only that scenario's data.</p>
+              <p class="tl">Returning "nothing" means "carry on and start the AI agents".</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="callout callout-accent">
+          <div class="callout-icon">💡</div>
+          <div class="callout-content">
+            <strong class="callout-title">Not everything should be AI</strong>
+            <p>Reading an ID from text is a job for a simple rule. It's instant, free and never wrong. Good AI systems keep AI for judgment calls and use plain code for everything predictable. When you ask an AI to build something, say so explicitly: "do this in plain code, not with the model".</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="screen animate-in">
+        <h2 class="screen-heading">Check your understanding</h2>
+        <div class="quiz-container" id="quiz-module1">
+          <div class="quiz-question-block"
+               data-correct="b"
+               data-explanation-right="Exactly. Intake is plain code: it handles commands like approve, status and execute without starting any AI, so they cost nothing."
+               data-explanation-wrong="Not quite. Approving is a rule-based action, not a judgment call. Intake (plain code) handles it directly, so no AI agent is started.">
+            <h3 class="quiz-question">You type <code>approve all as zessam</code>. Which part of the system handles it?</h3>
+            <div class="quiz-options">
+              <button class="quiz-option" data-value="a" onclick="selectOption(this)"><div class="quiz-option-radio"></div><span>The Triage agent reads it and decides</span></button>
+              <button class="quiz-option" data-value="b" onclick="selectOption(this)"><div class="quiz-option-radio"></div><span>Intake, plain code, before any AI runs</span></button>
+              <button class="quiz-option" data-value="c" onclick="selectOption(this)"><div class="quiz-option-radio"></div><span>The Response Planner approves its own plan</span></button>
+            </div>
+            <div class="quiz-feedback"></div>
+          </div>
+
+          <div class="quiz-question-block"
+               data-correct="c"
+               data-explanation-right="Right. Like an ER, the order matters: you can't diagnose before the tests, and you can't treat before consent. Each step needs the previous step's result."
+               data-explanation-wrong="Think about the ER: the doctor needs the test results first. Each step in this pipeline uses the result of the step before it.">
+            <h3 class="quiz-question">A teammate wants the Investigator to run <em>before</em> the specialists "to save time". What's the problem?</h3>
+            <div class="quiz-options">
+              <button class="quiz-option" data-value="a" onclick="selectOption(this)"><div class="quiz-option-radio"></div><span>None, the order doesn't matter</span></button>
+              <button class="quiz-option" data-value="b" onclick="selectOption(this)"><div class="quiz-option-radio"></div><span>The Investigator would run out of memory</span></button>
+              <button class="quiz-option" data-value="c" onclick="selectOption(this)"><div class="quiz-option-radio"></div><span>The Investigator combines the specialists' findings, so there would be nothing to combine yet</span></button>
+            </div>
+            <div class="quiz-feedback"></div>
+          </div>
+
+          <button class="quiz-check-btn" onclick="checkQuiz('quiz-module1')">Check Answers</button>
+          <button class="quiz-reset-btn" onclick="resetQuiz('quiz-module1')">Try Again</button>
+        </div>
+      </section>
+
+    </div>
+  </div>
+</section>

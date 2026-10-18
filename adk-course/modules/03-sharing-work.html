@@ -1,0 +1,181 @@
+<section class="module" id="module-3" style="background: var(--color-bg)">
+  <div class="module-content">
+    <header class="module-header animate-in">
+      <span class="module-number">03</span>
+      <h1 class="module-title">How Agents Share Work</h1>
+      <p class="module-subtitle">Session state passes results between agents, and MCP tools let them read the security systems</p>
+    </header>
+
+    <div class="module-body">
+
+      <section class="screen animate-in">
+        <h2 class="screen-heading">Passing the baton: session state</h2>
+        <p>Agents never talk to each other directly. They work like a relay race: each runner finishes their lap and hands a baton to the next. In ADK the baton is the <span class="term" data-definition="A small storage space that belongs to one chat session. Any agent in the session can write a labelled value into it ('triage' = {...}) and later agents can read it. It's like a shared notepad for the conversation.">session state</span>.</p>
+        <p>Each agent's <code>output_key</code> says which label it writes. Here's what's on the notepad after one A2 run:</p>
+
+        <div class="badge-list">
+          <div class="badge-item"><code class="badge-code">scenario</code><span class="badge-desc">"A2", written by Intake from the alert ID</span></div>
+          <div class="badge-item"><code class="badge-code">triage</code><span class="badge-desc">Severity, users, hosts, time window, questions for specialists</span></div>
+          <div class="badge-item"><code class="badge-code">edr_findings · siem_findings · …</code><span class="badge-desc">One report per specialist, each citing event IDs</span></div>
+          <div class="badge-item"><code class="badge-code">investigation</code><span class="badge-desc">Verdict, timeline, MITRE ATT&amp;CK, compromised vs clean</span></div>
+          <div class="badge-item"><code class="badge-code">response_plan</code><span class="badge-desc">Proposed actions, each marked allowed/blocked by policy</span></div>
+          <div class="badge-item"><code class="badge-code">incident_report · incident_id</code><span class="badge-desc">The ticket, and the ID used by the approval queue</span></div>
+        </div>
+      </section>
+
+      <section class="screen animate-in">
+        <h2 class="screen-heading">How an agent reads the baton</h2>
+        <p>A word in curly braces inside an agent's instructions is a <span class="term" data-definition="A marker in text, like {triage}, that ADK automatically replaces with a real value from session state just before the model reads it. Like a mail-merge field in a letter template.">placeholder</span>. Just before the model reads its instructions, ADK swaps <code>{triage}</code> for Triage's actual answer.</p>
+
+        <div class="translation-block animate-in">
+          <div class="translation-code">
+            <span class="translation-label">CODE · soc_agents/specialists/base.py</span>
+            <pre><code><span class="code-line"><span class="code-comment"># The only live data: sent as the user message, so the system prompt stays identical across runs.</span></span>
+<span class="code-line">INCIDENT_INPUTS = <span class="code-string">"""Triage output for this incident (JSON):</span></span>
+<span class="code-line"><span class="code-string">{triage}</span></span>
+<span class="code-line"><span class="code-string">"""</span></span></code></pre>
+          </div>
+          <div class="translation-english">
+            <span class="translation-label">PLAIN ENGLISH</span>
+            <div class="translation-lines">
+              <p class="tl">A note: this is the only part that changes from run to run (more on why in Module 5).</p>
+              <p class="tl">The message every specialist receives starts with this heading…</p>
+              <p class="tl">…and ADK pastes Triage's full answer here, in <span class="term" data-definition="JavaScript Object Notation: a simple text format for structured data, using {curly braces}, &quot;labels&quot; and values. Easy for both humans and programs to read.">JSON</span>.</p>
+              <p class="tl">(end of the message)</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="callout callout-accent">
+          <div class="callout-icon">💡</div>
+          <div class="callout-content">
+            <strong class="callout-title">Structured outputs make teamwork reliable</strong>
+            <p>Because every agent must fill in a fixed form (its <code>output_schema</code>), the next agent always gets the same fields in the same place. When you design multi-agent systems, ask for "structured output with a schema" rather than free text.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="screen animate-in">
+        <h2 class="screen-heading">If the agents could talk…</h2>
+        <p>Here's the A2 investigation told as a group chat. In reality every "message" is a write to, or a read from, session state.</p>
+
+        <div class="chat-window" id="chat-module3">
+          <div class="chat-messages">
+            <div class="chat-message" data-msg="0" data-sender="intake" style="display:none">
+              <div class="chat-avatar" style="background: var(--color-actor-4)">🚪</div>
+              <div class="chat-bubble"><span class="chat-sender" style="color: var(--color-actor-4)">Intake</span>
+                <p>New alert ALR-A2-001. I've written scenario = A2 on the notepad. Triage, you're up.</p></div>
+            </div>
+            <div class="chat-message" data-msg="1" data-sender="triage" style="display:none">
+              <div class="chat-avatar" style="background: var(--color-actor-1)">🩺</div>
+              <div class="chat-bubble"><span class="chat-sender" style="color: var(--color-actor-1)">Triage</span>
+                <p>Checked the alert, s.khan and WS-042. No approved change. Severity high. EDR: what ran after 10:16? TI: is 203.0.113.200 bad? Saved as "triage".</p></div>
+            </div>
+            <div class="chat-message" data-msg="2" data-sender="edr" style="display:none">
+              <div class="chat-avatar" style="background: var(--color-actor-2)">🖥️</div>
+              <div class="chat-bubble"><span class="chat-sender" style="color: var(--color-actor-2)">EDR specialist</span>
+                <p>Read "triage". Process tree: Outlook → Word → PowerShell → svchost-update.exe (unsigned). Run key set, beacons to cdn-sync-api.example. Saved as "edr_findings".</p></div>
+            </div>
+            <div class="chat-message" data-msg="3" data-sender="ti" style="display:none">
+              <div class="chat-avatar" style="background: var(--color-actor-3)">🌐</div>
+              <div class="chat-bubble"><span class="chat-sender" style="color: var(--color-actor-3)">Threat Intel specialist</span>
+                <p>Same time as EDR: 203.0.113.200/201 and the domain are malicious, campaign GhostLatch. Saved as "threat_intel_findings".</p></div>
+            </div>
+            <div class="chat-message" data-msg="4" data-sender="identity" style="display:none">
+              <div class="chat-avatar" style="background: var(--color-text-muted)">👤</div>
+              <div class="chat-bubble"><span class="chat-sender" style="color: var(--color-text-muted)">Identity specialist</span>
+                <p>Triage didn't ask for me, so I skipped without even calling the model. Zero cost. 👍</p></div>
+            </div>
+            <div class="chat-message" data-msg="5" data-sender="inv" style="display:none">
+              <div class="chat-avatar" style="background: var(--color-actor-5)">🧠</div>
+              <div class="chat-bubble"><span class="chat-sender" style="color: var(--color-actor-5)">Investigator</span>
+                <p>Read all reports and re-checked 3 event IDs myself. Verdict: true positive, high. WS-042 compromised, DC01 clean. Saved as "investigation".</p></div>
+            </div>
+            <div class="chat-message" data-msg="6" data-sender="planner" style="display:none">
+              <div class="chat-avatar" style="background: var(--color-actor-1)">📝</div>
+              <div class="chat-bubble"><span class="chat-sender" style="color: var(--color-actor-1)">Response Planner</span>
+                <p>Proposing: isolate WS-042, block the C2 IPs and domain, reset s.khan. I can only propose. A human has to approve.</p></div>
+            </div>
+          </div>
+          <div class="chat-typing" style="display:none">
+            <div class="chat-avatar">?</div>
+            <div class="chat-typing-dots"><span class="typing-dot"></span><span class="typing-dot"></span><span class="typing-dot"></span></div>
+          </div>
+          <div class="chat-controls">
+            <button class="btn chat-next-btn">Next Message</button>
+            <button class="btn chat-all-btn">Play All</button>
+            <button class="btn chat-reset-btn">Replay</button>
+            <span class="chat-progress"></span>
+          </div>
+        </div>
+      </section>
+
+      <section class="screen animate-in">
+        <h2 class="screen-heading">Tools: one standard plug for every system</h2>
+        <p>Agents reach the SIEM, EDR, AD, threat intel and case systems through <span class="term" data-definition="Model Context Protocol: an open standard for connecting AI agents to tools. Any system that 'speaks MCP' can be plugged into any MCP-capable agent, the way any USB-C charger fits any USB-C phone.">MCP</span>. Think of USB-C: one plug shape, any device. Each security system is a small <span class="term" data-definition="A program that waits for requests and answers them. Here, each mock security system (SIEM, EDR…) is a tiny server that answers questions like 'get alert ALR-A2-001'.">MCP server</span> exposing a few "lookups".</p>
+
+        <div class="translation-block animate-in">
+          <div class="translation-code">
+            <span class="translation-label">CODE · mcp_servers/siem_mcp.py</span>
+            <pre><code><span class="code-line">    @<span class="code-function">read_tool</span>(mcp)</span>
+<span class="code-line">    <span class="code-keyword">def</span> <span class="code-function">get_alert</span>(alert_id: str) -&gt; dict:</span>
+<span class="code-line">        <span class="code-string">"""Get one SIEM alert by id (e.g. ALR-A2-001), including entities, MITRE techniques and evidence event ids."""</span></span>
+<span class="code-line">        <span class="code-keyword">for</span> a <span class="code-keyword">in</span> store.alerts:</span>
+<span class="code-line">            <span class="code-keyword">if</span> a[<span class="code-string">"alert_id"</span>].<span class="code-function">lower</span>() == alert_id.<span class="code-function">lower</span>():</span>
+<span class="code-line">                <span class="code-keyword">return</span> a</span>
+<span class="code-line">        <span class="code-keyword">return</span> {<span class="code-string">"error"</span>: <span class="code-string">f"alert </span>{alert_id}<span class="code-string"> not found"</span>}</span></code></pre>
+          </div>
+          <div class="translation-english">
+            <span class="translation-label">PLAIN ENGLISH</span>
+            <div class="translation-lines">
+              <p class="tl">Register this as a read-only tool agents may call.</p>
+              <p class="tl">The tool is called get_alert and takes one input: an alert ID.</p>
+              <p class="tl">This description is what the model reads to decide when to use the tool, so it matters.</p>
+              <p class="tl">Go through every alert in the (fake) SIEM data…</p>
+              <p class="tl">…and if the ID matches (ignoring upper/lower case)…</p>
+              <p class="tl">…return that alert.</p>
+              <p class="tl">Otherwise say clearly that it wasn't found, never make one up.</p>
+            </div>
+          </div>
+        </div>
+
+        <p>Each agent only gets the plugs it needs. In <code>mcp_tools("siem_mcp", ["get_alert", "get_events"])</code>, the list is a <span class="term" data-definition="An allow-list: only the items named are permitted, everything else is blocked. The opposite of a block-list, and much safer.">tool filter</span>. Triage can't search the SIEM in bulk, and no agent at all has a tool that changes anything.</p>
+      </section>
+
+      <section class="screen animate-in">
+        <h2 class="screen-heading">Check your understanding</h2>
+        <div class="quiz-container" id="quiz-module3">
+          <div class="quiz-question-block"
+               data-correct="b"
+               data-explanation-right="Exactly. The Investigator reads {edr_findings?} from state. If the EDR specialist failed and wrote nothing, there's nothing to read, so look at the EDR step's events first."
+               data-explanation-wrong="Agents only see what's on the session-state notepad. If the Investigator never mentions EDR evidence, the first suspect is that edr_findings was never written. Check the EDR specialist's events.">
+            <h3 class="quiz-question">The Investigator's verdict never mentions the malware process tree. Where do you look first?</h3>
+            <div class="quiz-options">
+              <button class="quiz-option" data-value="a" onclick="selectOption(this)"><div class="quiz-option-radio"></div><span>The Reporter's ticket template</span></button>
+              <button class="quiz-option" data-value="b" onclick="selectOption(this)"><div class="quiz-option-radio"></div><span>The State tab: is <code>edr_findings</code> there and filled in?</span></button>
+              <button class="quiz-option" data-value="c" onclick="selectOption(this)"><div class="quiz-option-radio"></div><span>The vLLM server settings</span></button>
+            </div>
+            <div class="quiz-feedback"></div>
+          </div>
+
+          <div class="quiz-question-block"
+               data-correct="a"
+               data-explanation-right="Right. The tool's description is the model's only guide to when and how to use it. A vague description leads to the tool being ignored or misused."
+               data-explanation-wrong="The model never sees the tool's code, only its name and description. If the description is vague, the model doesn't know when to use it. Improve the description first.">
+            <h3 class="quiz-question">You add a new MCP tool, but the agents never use it. What's the most likely fix?</h3>
+            <div class="quiz-options">
+              <button class="quiz-option" data-value="a" onclick="selectOption(this)"><div class="quiz-option-radio"></div><span>Write a clearer tool description (and check it's in the agent's tool filter)</span></button>
+              <button class="quiz-option" data-value="b" onclick="selectOption(this)"><div class="quiz-option-radio"></div><span>Make the tool's code longer</span></button>
+              <button class="quiz-option" data-value="c" onclick="selectOption(this)"><div class="quiz-option-radio"></div><span>Switch from vLLM to Gemini</span></button>
+            </div>
+            <div class="quiz-feedback"></div>
+          </div>
+
+          <button class="quiz-check-btn" onclick="checkQuiz('quiz-module3')">Check Answers</button>
+          <button class="quiz-reset-btn" onclick="resetQuiz('quiz-module3')">Try Again</button>
+        </div>
+      </section>
+
+    </div>
+  </div>
+</section>
