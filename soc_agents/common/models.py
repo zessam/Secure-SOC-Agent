@@ -11,11 +11,13 @@ from typing import Any, AsyncGenerator
 from google.adk.models._capabilities import LlmCapabilities
 from google.adk.models.apigee_llm import CompletionsHTTPClient
 from google.adk.models.base_llm import BaseLlm
+from google.adk.models.google_llm import Gemini
 from google.adk.models.llm_request import LlmRequest
 from google.adk.models.llm_response import LlmResponse
+from google.genai import types
 from pydantic import PrivateAttr
 
-GEMINI_DEFAULTS = {"pro": "gemini-3.1-pro-preview", "flash": "gemini-3.5-flash", "lite": "gemini-3.5-flash"}
+GEMINI_DEFAULTS = {"pro": "gemini-3.1-pro-preview", "flash": "gemini-3.5-flash", "lite": "gemini-3.5-flash-lite"}
 
 
 class _VllmClient(CompletionsHTTPClient):
@@ -66,5 +68,9 @@ def get_model(tier: str) -> str | BaseLlm:
         return VllmLlm(model=model, base_url=os.environ.get("VLLM_BASE_URL", "http://localhost:8000/v1"),
                        api_key=os.environ.get("VLLM_API_KEY"))
     if provider == "gemini":
-        return os.environ.get(f"GEMINI_MODEL_{tier.upper()}", GEMINI_DEFAULTS[tier])
+        # Free tier allows ~5 requests/min per model: wait and retry on 429/503 instead of failing.
+        retry = types.HttpRetryOptions(attempts=8, initial_delay=15, max_delay=65, exp_base=1.5,
+                                       http_status_codes=[429, 500, 503])
+        return Gemini(model=os.environ.get(f"GEMINI_MODEL_{tier.upper()}", GEMINI_DEFAULTS[tier]),
+                      retry_options=retry)
     raise RuntimeError(f"Unknown SOC_MODEL_PROVIDER {provider!r} (use gemini or vllm)")

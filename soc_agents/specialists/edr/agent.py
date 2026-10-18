@@ -13,5 +13,5 @@ TOOLS = [
 TOOL_BUDGET = 12
 
 
-def build() -> LlmAgent:
-    return build_specialist('edr', DESCRIPTION, ROLE, TOOLS, TOOL_BUDGET)
+def build(mode: str = "incident") -> LlmAgent:
+    return build_specialist('edr', DESCRIPTION, ROLE, TOOLS, TOOL_BUDGET, mode)

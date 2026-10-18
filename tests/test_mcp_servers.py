@@ -38,7 +38,7 @@ def test_store_never_reads_ground_truth_or_narrative(scenario):
     assert "expected.yaml" not in read
     assert "scenario.yaml" not in read
     with pytest.raises(PermissionError):
-        store._path("expected.yaml")
+        store._path(store.folders[0], "expected.yaml")
 
 
 @pytest.mark.parametrize("module", SERVERS)
@@ -146,3 +146,21 @@ def test_s8_alert_flood_is_paged():
     res = call(siem_mcp, "S8", "list_alerts", limit=100)
     assert res["total_matched"] == 200
     assert res["returned"] == 50
+
+
+# ---- ALL mode: every scenario loaded at once -----------------------------------------------
+
+def test_all_mode_loads_every_scenario():
+    store = ScenarioStore("ALL")
+    assert len(store.folders) == 14
+    assert "expected.yaml" not in " ".join(store.files_read)
+    assert len(store.alerts) == sum(len(ScenarioStore(s).alerts) for s in ("A1", "A2", "S8")) + \
+        sum(len(ScenarioStore(s).alerts) for s in ("A3", "A4", "A5", "A6", "A7", "A8", "A9", "A10", "S1", "S2", "S4"))
+
+
+def test_all_mode_cases_and_cross_scenario_lookups():
+    assert call(case_mcp, "ALL", "get_case", case_id="CASE-2002")["case_id"] == "CASE-2002"
+    assert call(case_mcp, "ALL", "get_case", case_id="CASE-1023")["case_id"] == "CASE-1023"
+    assert "cases" in call(case_mcp, "ALL", "get_case")
+    assert call(siem_mcp, "ALL", "get_alert", alert_id="ALR-A4-001")["entities"]["users"] == ["a.patel"]
+    assert "Domain Admins" in call(ad_mcp, "ALL", "get_user", username="m.chen")["privileged_groups"]

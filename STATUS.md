@@ -10,6 +10,7 @@
 | Triage agent (`soc_agents/triage.py`) | Built and tested live on vLLM (A2: correct) |
 | 4 specialists (`soc_agents/specialists/`) | Built; run in parallel after Triage |
 | Investigator (`soc_agents/investigator/`) | Built; verdict, timeline, ATT&CK, scope |
+| Analyst Copilot (`soc_agents/copilot/`) | Built and tested live on Gemini (A8: 4/5 findings, 16/16 citations real) |
 | Response Planner, Reporter | Not started |
 
 **Code layout: one folder per agent** (`agent.py` = wiring, `prompt.py` = instructions, `schema.py` = output):

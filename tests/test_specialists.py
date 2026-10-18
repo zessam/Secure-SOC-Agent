@@ -5,6 +5,7 @@ import asyncio
 
 from soc_agents.specialists import build_specialists
 from soc_agents.specialists.base import skip_unless_requested as _skip_unless_requested
+from soc_agents.specialists.schema import SpecialistFindings
 from soc_agents.workflow import build_incident_workflow
 
 
@@ -44,6 +45,8 @@ def test_workflow_order(monkeypatch):
 
 def test_specialist_skipped_when_not_requested():
     state = {"triage": {"specialists_needed": ["edr", "threat_intel"]}}
-    assert _skip_unless_requested("identity")(_Ctx(state)) is not None
-    assert state["identity_findings"]["skipped"] is True
+    content = _skip_unless_requested("identity")(_Ctx(state))
+    # the skip message must itself be a valid specialist report (ADK validates it against output_schema)
+    report = SpecialistFindings.model_validate_json(content.parts[0].text)
+    assert report.specialist == "identity" and report.summary.startswith("Skipped")
     assert _skip_unless_requested("edr")(_Ctx(state)) is None

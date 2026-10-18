@@ -9,13 +9,22 @@ from ..common.models import get_model
 from ..common.tools import mcp_tools
 from .schema import SpecialistFindings
 
-COMMON_RULES = """
+INCIDENT_CONTEXT = """
 Triage output for this incident (JSON):
 {triage}
 
-How to work:
 - Answer the questions in triage.questions_for_specialists that concern your system.
 - Always filter by the entities and the triage time_window; widen the window only if needed.
+"""
+
+COPILOT_CONTEXT = """
+You were called by the Analyst Copilot with an analyst's question (the request). Answer it for your
+system only. Use the users/hosts/IOCs and time range in the request; if no time is given, use the
+last 24 hours before the reference time in the request.
+"""
+
+COMMON_RULES = """
+How to work:
 - Pivot at most 3 rounds: look -> follow the most suspicious lead -> confirm. Then stop.
 - Every finding must cite event ids you saw in tool results. Never invent ids, IPs, hosts or hashes.
 - Indicators are IOCs that may later be BLOCKED: only suspicious items (unsigned/dropped files,
@@ -36,24 +45,29 @@ def skip_unless_requested(name: str):
         triage = callback_context.state.get("triage") or {}
         needed = triage.get("specialists_needed") if isinstance(triage, dict) else None
         if needed is not None and name not in needed:
-            callback_context.state[f"{name}_findings"] = {"specialist": name, "skipped": True,
-                                                         "reason": "not requested by triage"}
-            return types.Content(role="model", parts=[types.Part(text=f"{name} specialist skipped (not requested by triage).")])
+            # Must be valid SpecialistFindings JSON: ADK validates it against output_schema and
+            # stores it under output_key like a normal answer.
+            skipped = SpecialistFindings(
+                specialist=name, summary="Skipped: triage did not request this specialist.",
+                malicious_activity_found=False, findings=[], gaps=["not requested by triage"])
+            return types.Content(role="model", parts=[types.Part(text=skipped.model_dump_json())])
         return None
 
     return callback
 
 
 def build_specialist(name: str, description: str, role: str, tools: list[tuple[str, list[str]]],
-                     budget: int) -> LlmAgent:
+                     budget: int, mode: str = "incident") -> LlmAgent:
+    """mode="incident": runs in the workflow after Triage. mode="copilot": called as a tool by the copilot."""
+    incident = mode == "incident"
     return LlmAgent(
         name=f"{name}_specialist",
         description=description,
         model=get_model("flash"),
-        instruction=role + "\n" + COMMON_RULES,
+        instruction=role + "\n" + (INCIDENT_CONTEXT if incident else COPILOT_CONTEXT) + COMMON_RULES,
         tools=[mcp_tools(server, allowed) for server, allowed in tools],
         output_schema=SpecialistFindings,
         output_key=f"{name}_findings",
-        before_agent_callback=skip_unless_requested(name),
+        before_agent_callback=skip_unless_requested(name) if incident else None,
         before_tool_callback=tool_budget(budget),
     )

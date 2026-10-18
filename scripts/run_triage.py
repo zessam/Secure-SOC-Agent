@@ -38,7 +38,7 @@ async def main(scenario: str) -> None:
     agent = build_triage_agent()
     runner = InMemoryRunner(agent=agent, app_name="soc")
     session = await runner.session_service.create_session(app_name="soc", user_id="analyst")
-    print(f"== Triage {scenario} / {alert_id}  (model: {agent.model if isinstance(agent.model, str) else f"vLLM {agent.model.model} @ {agent.model.base_url}"})")
+    print(f"== Triage {scenario} / {alert_id}  (model: {getattr(agent.model, "model", agent.model)})")
     try:
         async for event in runner.run_async(user_id="analyst", session_id=session.id,
                                             new_message=types.Content(role="user", parts=[types.Part(text=message)])):

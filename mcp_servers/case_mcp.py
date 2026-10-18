@@ -19,13 +19,16 @@ def build_server(store: ScenarioStore) -> MCPServer:
 
     @mcp.tool(annotations=READ_ONLY)
     def get_case(case_id: str | None = None) -> dict:
-        """The SOAR case by id (e.g. CASE-2002). With no id, returns the case for the current incident."""
-        case = store.soar_case
-        if not case:
-            return {"error": "no SOAR case"}
-        if case_id and case.get("case_id", "").lower() != case_id.lower():
+        """A SOAR case by id (e.g. CASE-2002). With no id: the only case, or a list of open cases."""
+        if case_id:
+            for case in store.soar_cases:
+                if case.get("case_id", "").lower() == case_id.lower():
+                    return case
             return {"error": f"case {case_id} not found"}
-        return case
+        if len(store.soar_cases) == 1:
+            return store.soar_cases[0]
+        return {"cases": [{k: c.get(k) for k in ("case_id", "title", "priority", "status", "alerts")}
+                          for c in store.soar_cases]}
 
     @mcp.tool(annotations=READ_ONLY)
     def get_ticket(number: str) -> dict:

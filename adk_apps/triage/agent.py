@@ -13,4 +13,4 @@ from soc_agents.triage import build_triage_agent  # noqa: E402
 
 root_agent = build_triage_agent()
 _m = root_agent.model
-print(f"[triage] model: {_m if isinstance(_m, str) else f'vLLM {_m.model} @ {_m.base_url}'}", file=sys.stderr)
+print(f"[triage] model: {getattr(_m, 'model', _m)}", file=sys.stderr)

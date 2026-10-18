@@ -37,7 +37,7 @@ async def main(scenario: str) -> None:
         sys.exit(f"Scenario {scenario} has no alert (it is an analyst question); use the copilot instead.")
     alert_id = store.alerts[0]["alert_id"]
     m = get_model("flash")
-    print(f"== {scenario} / {alert_id}  model: {m if isinstance(m, str) else f'vLLM {m.model} @ {m.base_url}'}")
+    print(f"== {scenario} / {alert_id}  model: {getattr(m, 'model', m)}{' @ ' + m.base_url if getattr(m, 'base_url', None) else ''}")
 
     workflow = build_incident_workflow()
     runner = InMemoryRunner(agent=workflow, app_name="soc")

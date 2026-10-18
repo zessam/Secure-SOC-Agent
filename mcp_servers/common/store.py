@@ -36,16 +36,29 @@ class ScenarioStore:
         self.scenario_id = (scenario_id or os.environ.get("SCENARIO") or "").upper()
         if not self.scenario_id:
             raise ValueError("No scenario selected: pass scenario_id or set SCENARIO (e.g. SCENARIO=A2)")
-        self.folder = self._resolve_folder(self.scenario_id)
+        # SCENARIO=ALL loads every scenario at once (one busy SOC day); otherwise one scenario folder.
+        self.folders = self._resolve_folders(self.scenario_id)
         self.files_read: list[str] = []
 
-        self.alerts: list[dict] = self._json("alerts.json", [])
-        self.siem_events: list[dict] = self._jsonl("siem_events.jsonl")
-        self.edr_events: list[dict] = self._jsonl("edr_telemetry.jsonl")
-        self.ad_objects: dict = self._json("ad_objects.json", {})
-        self.ti_indicators: list[dict] = self._json("ti_indicators.json", [])
-        self.soar_case: dict | None = self._json("soar_case.json", None)
-        self.tickets: list[dict] = self._json("tickets.json", [])
+        self.alerts: list[dict] = []
+        self.siem_events: list[dict] = []
+        self.edr_events: list[dict] = []
+        self.ad_objects: dict = {"overrides": {}}
+        self.soar_cases: list[dict] = []
+        self.tickets: list[dict] = []
+        intel: dict[str, dict] = {}
+        for folder in self.folders:
+            self.alerts += self._json(folder, "alerts.json", [])
+            self.siem_events += self._jsonl(folder, "siem_events.jsonl")
+            self.edr_events += self._jsonl(folder, "edr_telemetry.jsonl")
+            self.ad_objects["overrides"].update(self._json(folder, "ad_objects.json", {}).get("overrides") or {})
+            for ind in self._json(folder, "ti_indicators.json", []):
+                intel[ind["indicator"].lower()] = ind
+            case = self._json(folder, "soar_case.json", None)
+            if case:
+                self.soar_cases.append(case)
+            self.tickets += self._json(folder, "tickets.json", [])
+        self.ti_indicators: list[dict] = list(intel.values())
 
         env = self.data_dir / "environment"
         self.ad_users: list[dict] = self._env_json(env / "ad_users.json", [])
@@ -60,28 +73,30 @@ class ScenarioStore:
         self._by_id = {e["event"]["id"]: e for e in self.siem_events + self.edr_events}
 
     # ---- loading -------------------------------------------------------------------------
-    def _resolve_folder(self, scenario_id: str) -> Path:
+    def _resolve_folders(self, scenario_id: str) -> list[Path]:
         catalog = json.loads((self.data_dir / "scenarios" / "catalog.json").read_text(encoding="utf-8"))
+        if scenario_id == "ALL":
+            return [self.data_dir / e["folder"] for e in catalog["scenarios"]]
         for entry in catalog["scenarios"]:
             if entry["id"].upper() == scenario_id:
-                return self.data_dir / entry["folder"]
+                return [self.data_dir / entry["folder"]]
         known = ", ".join(e["id"] for e in catalog["scenarios"])
-        raise ValueError(f"Unknown scenario {scenario_id!r}. Known: {known}")
+        raise ValueError(f"Unknown scenario {scenario_id!r}. Known: ALL, {known}")
 
-    def _path(self, name: str) -> Path:
+    def _path(self, folder: Path, name: str) -> Path:
         if name not in SYSTEM_FILES:
             raise PermissionError(f"{name} is not a system file and must not be loaded")
-        return self.folder / name
+        return folder / name
 
-    def _json(self, name: str, default: Any) -> Any:
-        path = self._path(name)
+    def _json(self, folder: Path, name: str, default: Any) -> Any:
+        path = self._path(folder, name)
         if not path.exists():
             return default
         self.files_read.append(str(path))
         return json.loads(path.read_text(encoding="utf-8"))
 
-    def _jsonl(self, name: str) -> list[dict]:
-        path = self._path(name)
+    def _jsonl(self, folder: Path, name: str) -> list[dict]:
+        path = self._path(folder, name)
         if not path.exists():
             return []
         self.files_read.append(str(path))
