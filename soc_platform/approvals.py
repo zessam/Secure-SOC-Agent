@@ -4,7 +4,8 @@ Each action of a policy-reviewed response plan becomes a request:
   policy blocked             -> status "blocked"        (kept for audit, can never run)
   low impact (no approval)   -> status "auto_approved"  (decided_by "policy")
   high impact                -> status "pending"        (a named human must approve or reject)
-Executor marks requests "executed" or "failed".
+Executor marks requests "executed" or "failed". A new investigation of the same alert marks the older
+incident's pending requests "superseded", so duplicate actions never pile up.
 """
 from __future__ import annotations
 
@@ -51,7 +52,13 @@ def _row(r: sqlite3.Row | None) -> dict | None:
 def submit_plan(incident_id: str, response_plan: dict) -> list[dict]:
     """Queue every action of a policy-reviewed plan. Returns the created requests."""
     created = []
+    alert_prefix = incident_id.rsplit("-", 1)[0]
     with _conn() as con:
+        superseded = con.execute(
+            "UPDATE requests SET status='superseded', comment=? WHERE status='pending' AND incident_id LIKE ? "
+            "AND incident_id != ?", (f"superseded by {incident_id}", alert_prefix + "-%", incident_id)).rowcount
+        if superseded:
+            audit.log("planner", "requests_superseded", incident_id=incident_id, count=superseded)
         for a in response_plan.get("actions", []):
             if a.get("policy") == "blocked":
                 status, decided_by = "blocked", "policy"

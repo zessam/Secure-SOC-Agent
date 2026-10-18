@@ -4,7 +4,7 @@ from __future__ import annotations
 from google.adk.agents import LlmAgent
 from google.genai import types
 
-from ..common.callbacks import tool_budget
+from ..common.callbacks import guarded, shared_system_prompt
 from ..common.models import get_model
 from ..common.tools import mcp_tools
 from .schema import SpecialistFindings
@@ -77,5 +77,6 @@ def build_specialist(name: str, description: str, role: str, tools: list[tuple[s
         output_schema=SpecialistFindings,
         output_key=f"{name}_findings",
         before_agent_callback=skip_unless_requested(name) if incident else None,
-        before_tool_callback=tool_budget(budget),
+        before_tool_callback=guarded(budget),
+        before_model_callback=shared_system_prompt,
     )

@@ -7,6 +7,7 @@ from __future__ import annotations
 
 import json
 import os
+from contextvars import ContextVar
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
@@ -71,6 +72,13 @@ class ScenarioStore:
         self.siem_events.sort(key=lambda e: e["_ts"])
         self.edr_events.sort(key=lambda e: e["_ts"])
         self._by_id = {e["event"]["id"]: e for e in self.siem_events + self.edr_events}
+        self._cache: dict[str, Any] = {}
+
+    def cached(self, key: str, build) -> Any:
+        """Per-scenario memo for derived views (e.g. merged AD users)."""
+        if key not in self._cache:
+            self._cache[key] = build()
+        return self._cache[key]
 
     # ---- loading -------------------------------------------------------------------------
     def _resolve_folders(self, scenario_id: str) -> list[Path]:
@@ -112,3 +120,30 @@ class ScenarioStore:
     # ---- shared lookups ------------------------------------------------------------------
     def event_by_id(self, event_id: str) -> dict | None:
         return self._by_id.get(event_id)
+
+
+# The scenario of the current tool call (set per call by the read_tool wrapper).
+active_scenario: ContextVar[str | None] = ContextVar("soc_active_scenario", default=None)
+
+
+class MultiStore:
+    """Serves every scenario from one server, each kept separate; the scenario is chosen per tool call.
+
+    Scenarios load lazily on first use, so a server only reads the data it is asked about.
+    """
+
+    def __init__(self, default: str | None = None, data_dir: str | Path | None = None):
+        self.data_dir = data_dir
+        self.default = (default or "").upper() or None
+        self._stores: dict[str, ScenarioStore] = {}
+
+    def store(self, scenario_id: str | None = None) -> ScenarioStore:
+        sid = (scenario_id or active_scenario.get() or self.default or "").upper()
+        if not sid:
+            raise ValueError("No scenario for this call: start from an alert id such as ALR-A2-001")
+        if sid not in self._stores:
+            self._stores[sid] = ScenarioStore(sid, self.data_dir)
+        return self._stores[sid]
+
+    def __getattr__(self, name: str) -> Any:
+        return getattr(self.store(), name)

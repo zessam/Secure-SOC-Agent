@@ -1,4 +1,4 @@
-"""adk web entry point:  SCENARIO=A2 .venv/bin/adk web --port 8080 adk_apps  (pick incident_workflow)"""
+"""The single UI endpoint:  .venv/bin/adk web --port 8080 adk_apps   (any scenario: the alert id selects it)"""
 import sys
 from pathlib import Path
 

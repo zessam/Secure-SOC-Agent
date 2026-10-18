@@ -3,7 +3,7 @@ from __future__ import annotations
 
 from google.adk.agents import LlmAgent
 
-from ..common.callbacks import tool_budget
+from ..common.callbacks import guarded, shared_system_prompt
 from ..common.models import get_model
 from ..common.tools import mcp_tools
 from .prompt import INPUTS, STATIC
@@ -24,5 +24,6 @@ def build_investigator_agent() -> LlmAgent:
         include_contents="none",  # inputs come via {state} in the instruction, not chat history
         output_schema=InvestigationReport,
         output_key="investigation",
-        before_tool_callback=tool_budget(6),
+        before_tool_callback=guarded(6),
+        before_model_callback=shared_system_prompt,
     )

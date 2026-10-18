@@ -27,10 +27,10 @@ def _hhmm(ts: str | None) -> str:
     return m.group(1) if m else (ts or "-")
 
 
-def _case_id(alert_id: str | None) -> str | None:
+def _case_id(alert_id: str | None, scenario: str | None = None) -> str | None:
     try:
         from mcp_servers.common.store import ScenarioStore  # lab SOAR data
-        for case in ScenarioStore().soar_cases:
+        for case in ScenarioStore(scenario).soar_cases:
             if alert_id in case.get("alerts", []):
                 return case["case_id"]
     except Exception:  # noqa: BLE001
@@ -50,7 +50,8 @@ def _status(inv: dict, actions: list[dict]) -> str:
     return "monitoring"
 
 
-def build_report(triage: dict, inv: dict, plan: dict, incident_id: str | None) -> dict:
+def build_report(triage: dict, inv: dict, plan: dict, incident_id: str | None,
+                 scenario: str | None = None) -> dict:
     """Short one-screen ticket; optional sections appear only when they have content."""
     triage, inv, plan = triage or {}, inv or {}, plan or {}
     actions = plan.get("actions", [])
@@ -98,7 +99,7 @@ def build_report(triage: dict, inv: dict, plan: dict, incident_id: str | None) -
 
     return {
         "incident_id": incident_id,
-        "case_id": _case_id(triage.get("alert_id")),
+        "case_id": _case_id(triage.get("alert_id"), scenario),
         "ticket_title": inv.get("title") or _short(triage.get("summary"), 80),
         "priority": PRIORITY.get(severity, "P3"),
         "status": status,
@@ -106,11 +107,11 @@ def build_report(triage: dict, inv: dict, plan: dict, incident_id: str | None) -
     }
 
 
-def _known_secrets() -> list[str]:
+def _known_secrets(scenario: str | None = None) -> list[str]:
     """Credentials stored in AD descriptions (lab data). In production: a secret scanner / DLP service."""
     try:
         from mcp_servers.common.store import ScenarioStore
-        store = ScenarioStore()
+        store = ScenarioStore(scenario)
         descriptions = [u.get("description") or "" for u in store.ad_users]
         descriptions += [o.get("description") or "" for o in (store.ad_objects.get("overrides") or {}).values()]
         found = []
@@ -121,8 +122,8 @@ def _known_secrets() -> list[str]:
         return []
 
 
-def redact_report(report: dict) -> dict:
-    secrets, total = _known_secrets(), 0
+def redact_report(report: dict, scenario: str | None = None) -> dict:
+    secrets, total = _known_secrets(scenario), 0
     for key, value in list(report.items()):
         if isinstance(value, str):
             report[key], n = redact(value, secrets)
@@ -136,8 +137,9 @@ class ReportBuilder(BaseAgent):
 
     async def _run_async_impl(self, ctx) -> AsyncGenerator[Event, None]:
         state = ctx.session.state
+        scenario = state.get("scenario")
         report = redact_report(build_report(state.get("triage"), state.get("investigation"),
-                                            state.get("response_plan"), state.get("incident_id")))
+                                            state.get("response_plan"), state.get("incident_id"), scenario), scenario)
         yield Event(
             invocation_id=ctx.invocation_id, author=self.name, branch=ctx.branch,
             content=types.Content(role="model", parts=[types.Part(text=f"# {report['ticket_title']}\n\n"

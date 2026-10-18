@@ -33,10 +33,10 @@ def _kind(value: str) -> str:
 
 def build_server(store: ScenarioStore) -> MCPServer:
     mcp = MCPServer("ti-mcp", instructions=INSTRUCTIONS)
-    intel = {i["indicator"].lower(): i for i in store.ti_indicators}
 
     def lookup(value: str) -> dict:
         v = value.strip()
+        intel = store.cached("ti_intel", lambda: {i["indicator"].lower(): i for i in store.ti_indicators})
         hit = intel.get(v.lower())
         if hit:
             return hit

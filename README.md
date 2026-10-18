@@ -183,33 +183,34 @@ Start vLLM with tool calling enabled, for example:
 
 ## 7. Running it
 
-### Which data the systems serve: `SCENARIO`
-- `SCENARIO=A2`: only scenario A2's data, which is best for testing one case.
-- `SCENARIO=ALL` (default): all 14 scenarios at once (one busy day, 210 alerts).
-
-### Web UI (ADK dev UI)
+### Web UI: one endpoint for every scenario
 ```bash
-SCENARIO=A2 .venv/bin/adk web --port 8080 adk_apps
+.venv/bin/adk web --port 8080 adk_apps
 ```
-1. Open http://localhost:8080.
-2. Pick **incident_workflow**, or **triage** to run Triage only.
-3. Send `New SIEM alert ALR-A2-001. Triage it.`
+1. Open http://localhost:8080 and pick **soc_agent**.
+2. Send an alert, e.g. `New SIEM alert ALR-A4-001. Triage it.`
 
-The **Events** tab shows each agent and tool call. The **State** tab shows every output: `triage`, `edr_findings`, …, `investigation`, `response_plan`, `incident_report`, `incident_id`.
+**The alert id selects the scenario** (`ALR-A4-001` → A4). Every tool call of that run is scoped to that
+scenario's data by plain code, never by the model, so scenarios never mix and no restart is needed.
 
-> Restart `adk web` after code changes; it does not reload them. Do not use port 8000 if vLLM runs there.
-
-To run another scenario, restart with that scenario and send its alert id:
-
-| Scenario | Message to send |
+| Message | What happens |
 |---|---|
-| A1–A7, S1, S2, S4 | `New SIEM alert ALR-<ID>-001. Triage it.`, e.g. `ALR-A4-001` |
-| S8 | `New SIEM alert ALR-S8-001. Triage it.` (one of 200 flood alerts) |
-| A8, A9, A10 | No alert; these are analyst questions for the Copilot (`scripts/ask.py`) |
+| `New SIEM alert ALR-<ID>-001. Triage it.` | Runs the pipeline (A1–A7, S1, S2, S4, S8) |
+| the same alert again | Not re-run; shows its queue (`rerun ALR-…` to force) |
+| `status` | Approval queue of the current incident |
+| `approve all as <name>` / `approve APR-… as <name>` | Approve (a human name is required) |
+| `reject APR-… as <name> because <reason>` | Reject |
+| `execute` | Executor runs the approved actions |
 
-```bash
-SCENARIO=A4 .venv/bin/adk web --port 8080 adk_apps     # then: New SIEM alert ALR-A4-001. Triage it.
-```
+Commands are handled by the plain-code Intake step, so they never start the AI agents. The **State** tab shows
+`triage`, `*_findings`, `investigation`, `response_plan`, `incident_report`, `incident_id`.
+
+> Restart `adk web` after code changes. Do not use port 8000 if vLLM runs there.
+
+**Performance:**
+- All agents share **one identical system prompt**; each agent's own rules go in the first message. Prompt caches therefore hit across agents and scenarios.
+- Live data is sent only as inputs.
+- Tool results are compact JSON.
 
 ### Command line
 ```bash
@@ -267,8 +268,7 @@ Regenerate the data with `python3 data/generator/generate.py`. It is determinist
 ```
 Secure-SOC-Agent/
 ├── adk_apps/                 ADK web UI entry points
-│   ├── incident_workflow/    the full workflow
-│   └── triage/               triage only
+│   └── soc_agent/            the single UI endpoint (any scenario)
 ├── soc_agents/               the AI agents (Google ADK)
 │   ├── common/               models.py (Gemini/vLLM) · tools.py (MCP) · callbacks.py · schemas.py
 │   ├── triage/               agent.py · prompt.py · schema.py

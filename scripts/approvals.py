@@ -20,7 +20,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 from soc_platform import approvals, audit, executor, killswitch  # noqa: E402
 
 ICON = {"pending": "⏳", "approved": "✅", "auto_approved": "🤖", "rejected": "❌", "blocked": "⛔",
-        "executed": "✔️ ", "failed": "💥"}
+        "executed": "✔️ ", "failed": "💥", "superseded": "↩️ "}
 
 
 def show_table(rows: list[dict]) -> None:

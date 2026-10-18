@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import argparse
+import os
 import functools
 import inspect
 import json
@@ -9,7 +10,7 @@ from typing import Callable
 from mcp.server.mcpserver import MCPServer
 from mcp.types import ToolAnnotations
 
-from .store import ScenarioStore
+from .store import MultiStore, ScenarioStore, active_scenario
 
 READ_ONLY = ToolAnnotations(read_only_hint=True, destructive_hint=False, idempotent_hint=True, open_world_hint=False)
 
@@ -26,13 +27,26 @@ def compact(result) -> str:
 
 
 def read_tool(mcp: MCPServer):
-    """Register a read-only tool whose dict result is sent as compact JSON text."""
+    """Register a read-only tool: result sent as compact JSON; optional `scenario` scopes the call.
+
+    `scenario` is set by the platform (agent-side callback from the alert id), not by the model.
+    """
     def register(fn):
+        sig = inspect.signature(fn)
+        scenario_param = inspect.Parameter("scenario", inspect.Parameter.KEYWORD_ONLY, default="", annotation=str)
+
         @functools.wraps(fn)
-        def wrapper(*args, **kwargs):
-            return compact(fn(*args, **kwargs))
-        wrapper.__signature__ = inspect.signature(fn).replace(return_annotation=str)
-        wrapper.__annotations__ = {**fn.__annotations__, "return": str}
+        def wrapper(*args, scenario: str = "", **kwargs):
+            token = active_scenario.set(scenario.upper()) if scenario else None
+            try:
+                return compact(fn(*args, **kwargs))
+            finally:
+                if token is not None:
+                    active_scenario.reset(token)
+
+        wrapper.__signature__ = sig.replace(parameters=[*sig.parameters.values(), scenario_param],
+                                            return_annotation=str)
+        wrapper.__annotations__ = {**fn.__annotations__, "scenario": str, "return": str}
         mcp.tool(annotations=READ_ONLY)(wrapper)
         return fn
     return register
@@ -45,7 +59,10 @@ def serve(build: Callable[[ScenarioStore], MCPServer]) -> None:
     parser.add_argument("--transport", default="stdio", choices=["stdio", "streamable-http"])
     parser.add_argument("--port", type=int, default=8000)
     args = parser.parse_args()
-    server = build(ScenarioStore(args.scenario))
+    scenario = (args.scenario or os.environ.get("SCENARIO") or "").upper()
+    # ALL = every scenario merged into one dataset; otherwise one server serves any scenario per call.
+    store = ScenarioStore("ALL") if scenario == "ALL" else MultiStore(default=scenario if scenario != "AUTO" else None)
+    server = build(store)
     if args.transport == "stdio":
         server.run("stdio")
     else:

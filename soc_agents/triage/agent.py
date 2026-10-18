@@ -3,7 +3,7 @@ from __future__ import annotations
 
 from google.adk.agents import LlmAgent
 
-from ..common.callbacks import tool_budget
+from ..common.callbacks import guarded, shared_system_prompt
 from ..common.models import get_model
 from .prompt import STATIC
 from .schema import TriageResult
@@ -25,5 +25,6 @@ def build_triage_agent() -> LlmAgent:
         include_contents="none",  # inputs come via {state} in the instruction, not chat history
         output_schema=TriageResult,
         output_key="triage",
-        before_tool_callback=tool_budget(8),
+        before_tool_callback=guarded(8),
+        before_model_callback=shared_system_prompt,
     )

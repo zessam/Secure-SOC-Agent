@@ -12,11 +12,11 @@ PROJECT_ROOT = Path(__file__).resolve().parents[2]
 
 
 def mcp_tools(server: str, allowed: list[str]) -> McpToolset:
-    """Launch mcp_servers.<server> for the current SCENARIO (default ALL = every scenario) and expose only `allowed` tools."""
+    """Launch mcp_servers.<server> for the current SCENARIO (default AUTO = any scenario, chosen per call from the alert) and expose only `allowed` tools."""
     params = StdioServerParameters(
         command=sys.executable,
         args=["-m", f"mcp_servers.{server}"],
-        env={**os.environ, "SCENARIO": os.environ.get("SCENARIO", "ALL"), "PYTHONPATH": str(PROJECT_ROOT)},
+        env={**os.environ, "SCENARIO": os.environ.get("SCENARIO", "AUTO"), "PYTHONPATH": str(PROJECT_ROOT)},
         cwd=str(PROJECT_ROOT),
     )
     return McpToolset(

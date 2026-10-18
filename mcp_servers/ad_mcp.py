@@ -22,10 +22,32 @@ PRIVILEGED_GROUPS = {"domain admins", "enterprise admins", "schema admins", "adm
 def build_server(store: ScenarioStore) -> MCPServer:
     mcp = MCPServer("ad-mcp", instructions=INSTRUCTIONS)
 
-    users: dict[str, dict] = {u["sAMAccountName"].lower(): copy.deepcopy(u) for u in store.ad_users}
-    for name, attrs in (store.ad_objects.get("overrides") or {}).items():
-        users.setdefault(name.lower(), {"sAMAccountName": name}).update(copy.deepcopy(attrs))
-    groups = {g["name"].lower(): g for g in store.ad_groups}
+    def _users() -> dict[str, dict]:
+        merged = {u["sAMAccountName"].lower(): copy.deepcopy(u) for u in store.ad_users}
+        for name, attrs in (store.ad_objects.get("overrides") or {}).items():
+            merged.setdefault(name.lower(), {"sAMAccountName": name}).update(copy.deepcopy(attrs))
+        return merged
+
+    class _Lazy(dict):
+        """dict view resolved per call, so each scenario gets its own AD state."""
+        def __init__(self, key, build):
+            super().__init__()
+            self._key, self._build = key, build
+
+        def _d(self):
+            return store.cached(self._key, self._build)
+
+        def get(self, k, default=None):
+            return self._d().get(k, default)
+
+        def values(self):
+            return self._d().values()
+
+        def __contains__(self, k):
+            return k in self._d()
+
+    users = _Lazy("ad_users", _users)
+    groups = _Lazy("ad_groups", lambda: {g["name"].lower(): g for g in store.ad_groups})
 
     def members_of(group: str) -> list[str]:
         g = group.lower()
