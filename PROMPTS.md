@@ -2,11 +2,10 @@
 
 The systems load **all scenarios at once** (`SCENARIO=ALL`, the default), so you can ask about any of them in one session.
 
-**Start the web UI** (then pick **copilot**):
-```bash
-.venv/bin/adk web --port 8080 adk_apps
-```
-**Or use the command line:**
+> The Copilot is not in the web UI for now; use the command line. In the UI, use **incident_workflow** with
+> `New SIEM alert <ALERT-ID>. Triage it.` (see README §7).
+
+**Command line:**
 ```bash
 .venv/bin/python scripts/ask.py "<your question>"
 ```
