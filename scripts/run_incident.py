@@ -75,6 +75,16 @@ async def main(scenario: str) -> None:
                       f" | case {report.get('case_id')}**\n\n{report['report_markdown']}\n", encoding="utf-8")
         print(f"ticket  {md.relative_to(ROOT)}")
 
+    incident_id = session.state.get("incident_id")
+    if incident_id:
+        from soc_platform import approvals
+        print(f"\n===== approval queue for {incident_id} =====")
+        for r in approvals.list_requests(incident_id):
+            print(f"  {r['id']}  {r['status']:<13} {r['action']:<22} {r['target']}   ({r['policy_reason']})")
+        print(f"\nreview : .venv/bin/python scripts/approvals.py list --incident {incident_id}")
+        print(f"approve: .venv/bin/python scripts/approvals.py approve <APR-id> --by <your name>")
+        print(f"execute: .venv/bin/python scripts/approvals.py execute {incident_id}")
+
 
 if __name__ == "__main__":
     p = argparse.ArgumentParser()

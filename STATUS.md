@@ -13,7 +13,8 @@
 | Analyst Copilot (`soc_agents/copilot/`) | Built and tested live on Gemini (A8: 4/5 findings, 16/16 citations real) |
 | Response Planner (`soc_agents/planner/`) | Built: proposes actions; `policy.py` (plain code) enforces approval and blocks unsafe ones |
 | Reporter (`soc_agents/reporter/`) | Built: writes the ticket; `redact.py` (plain code) strips secrets |
-| Approval queue, Executor | Not started (Phase 3) |
+| Approval queue + Executor (`soc_platform/`) | Built: SQLite approval queue, plain-code Executor, kill switch, audit log |
+| Write-only servers | Built: `edr_response_mcp`, `ad_write_mcp`, `soar_write_mcp` (Executor identity + approval id required) |
 
 **Code layout: one folder per agent** (`agent.py` = wiring, `prompt.py` = instructions, `schema.py` = output):
 
@@ -31,6 +32,9 @@ soc_agents/
 ├── reporter/        agent.py · prompt.py · schema.py · redact.py
 ├── copilot/         agent.py · prompt.py
 └── workflow.py      Triage → specialists (parallel) → Investigator → Response Planner → Reporter
+
+soc_platform/        approvals.py (queue) · executor.py · killswitch.py · audit.py   (plain code, no AI)
+scripts/approvals.py analyst console: list / approve / reject / execute / audit / kill-switch
 ```
 
 **The 5 mock systems the agents will query:**

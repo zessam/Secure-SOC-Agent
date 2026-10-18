@@ -19,7 +19,7 @@ Write report_markdown with these sections:
 ## MITRE ATT&CK       - technique id, name, tactic
 ## Scope              - compromised users/hosts; checked and clean
 ## Indicators         - table: type | value | why
-## Proposed actions   - table: action | target | approval needed | policy decision | reason
+## Proposed actions   - table: approval id | action | target | approval needed | policy decision | reason
                         (list BLOCKED actions separately with the policy reason; nothing has been
                         executed yet - actions wait for human approval)
 ## Not recommended    - over-reactions rejected and why

@@ -23,11 +23,23 @@ def _signed_hashes(investigation: dict) -> set[str]:
 
 
 def apply_policy(callback_context):
-    """after_agent_callback: replace the raw plan in state with the policy-reviewed plan."""
+    """after_agent_callback: policy-review the plan, then queue it for human approval (plain code)."""
     plan = callback_context.state.get("response_plan")
-    if isinstance(plan, dict):
-        investigation = callback_context.state.get("investigation") or {}
-        callback_context.state["response_plan"] = review_plan(plan, investigation, _signed_hashes(investigation))
+    if not isinstance(plan, dict):
+        return None
+    investigation = callback_context.state.get("investigation") or {}
+    reviewed = review_plan(plan, investigation, _signed_hashes(investigation))
+    triage = callback_context.state.get("triage") or {}
+    incident_id = f"{triage.get('alert_id', 'INC')}-{callback_context.invocation_id[-6:]}"
+    from soc_platform import approvals
+    queued = approvals.submit_plan(incident_id, reviewed)
+    by_key = {(q["action"], q["target"]): q for q in queued}
+    for a in reviewed["actions"]:
+        q = by_key.get((a["action"], a["target"]))
+        if q:
+            a["approval_id"], a["approval_status"] = q["id"], q["status"]
+    callback_context.state["incident_id"] = incident_id
+    callback_context.state["response_plan"] = reviewed
     return None
 
 
