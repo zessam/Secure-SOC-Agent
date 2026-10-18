@@ -13,7 +13,7 @@ def test_copilot_has_specialists_and_read_tools_only(monkeypatch):
     monkeypatch.setenv("SCENARIO", "A8")
     agent = build_copilot_agent()
     agent_tools = {t.agent.name: t.agent for t in agent.tools if isinstance(t, AgentTool)}
-    assert [a.name for a in agent_tools["incident_workflow"].sub_agents] == ["triage", "specialists", "investigator"]
+    assert [a.name for a in agent_tools["incident_workflow"].sub_agents] == ["triage", "specialists", "investigator", "response_planner"]
     specialists = [a for n, a in agent_tools.items() if n != "incident_workflow"]
     assert sorted(s.name for s in specialists) == ["edr_specialist", "identity_specialist", "siem_specialist",
                                                    "threat_intel_specialist"]

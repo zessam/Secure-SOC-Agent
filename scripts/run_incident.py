@@ -20,7 +20,7 @@ from dotenv import load_dotenv  # noqa: E402
 load_dotenv(ROOT / ".env", override=True)
 
 OUTPUT_KEYS = ["triage", "siem_findings", "edr_findings", "identity_findings", "threat_intel_findings",
-               "investigation"]
+               "investigation", "response_plan"]
 
 
 async def main(scenario: str) -> None:
