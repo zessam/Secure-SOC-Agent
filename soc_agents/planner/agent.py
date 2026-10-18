@@ -50,6 +50,7 @@ def build_planner_agent() -> LlmAgent:
         model=get_model("pro"),
         instruction=INSTRUCTION,
         tools=[mcp_tools("ad_mcp", ["get_host", "get_user"])],  # check tier / account type before proposing
+        include_contents="none",  # inputs come via {state} in the instruction, not chat history
         output_schema=ResponsePlan,
         output_key="response_plan",
         before_tool_callback=tool_budget(4),

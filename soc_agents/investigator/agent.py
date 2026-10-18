@@ -20,6 +20,7 @@ def build_investigator_agent() -> LlmAgent:
             mcp_tools("siem_mcp", ["get_events"]),
             mcp_tools("edr_read_mcp", ["get_events"]),
         ],
+        include_contents="none",  # inputs come via {state} in the instruction, not chat history
         output_schema=InvestigationReport,
         output_key="investigation",
         before_tool_callback=tool_budget(6),

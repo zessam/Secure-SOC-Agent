@@ -7,7 +7,7 @@ import copy
 
 from mcp.server.mcpserver import MCPServer
 
-from .common import READ_ONLY, serve
+from .common import read_tool, serve
 from .common.query import aggregate, build_filter, get_field, page
 from .common.store import ScenarioStore
 
@@ -41,7 +41,7 @@ def build_server(store: ScenarioStore) -> MCPServer:
         view["privileged_groups"] = sorted(m for m in u.get("memberOf", []) if m.lower() in PRIVILEGED_GROUPS)
         return view
 
-    @mcp.tool(annotations=READ_ONLY)
+    @read_tool(mcp)
     def get_user(username: str) -> dict:
         """AD account for a sAMAccountName or UPN: title, department, manager, groups, privileged flag,
         enabled state, MFA registration, primary workstation."""
@@ -49,7 +49,7 @@ def build_server(store: ScenarioStore) -> MCPServer:
         u = users.get(key)
         return user_view(u) if u else {"error": f"user {username} not found"}
 
-    @mcp.tool(annotations=READ_ONLY)
+    @read_tool(mcp)
     def get_group(group: str) -> dict:
         """Members of an AD group (current state, including recent changes)."""
         if group.lower() not in groups and not members_of(group):
@@ -58,7 +58,7 @@ def build_server(store: ScenarioStore) -> MCPServer:
         return {"group": group, "privileged": group.lower() in PRIVILEGED_GROUPS,
                 "member_count": len(mem), "members": mem[:200]}
 
-    @mcp.tool(annotations=READ_ONLY)
+    @read_tool(mcp)
     def search_users(department: str | None = None, group: str | None = None,
                      privileged: bool | None = None, enabled: bool | None = None, limit: int = 50) -> dict:
         """Find accounts by department, group membership, privileged or enabled flag (summary rows)."""
@@ -77,7 +77,7 @@ def build_server(store: ScenarioStore) -> MCPServer:
         lim = max(1, min(limit or 50, 50))
         return {"total_matched": len(rows), "truncated": len(rows) > lim, "users": rows[:lim]}
 
-    @mcp.tool(annotations=READ_ONLY)
+    @read_tool(mcp)
     def get_host(host: str) -> dict:
         """Asset inventory record for a hostname or IP: owner, OS, tier, criticality, EDR agent state."""
         for a in store.assets:
@@ -85,9 +85,9 @@ def build_server(store: ScenarioStore) -> MCPServer:
                 return a
         return {"error": f"host {host} not in asset inventory"}
 
-    @mcp.tool(annotations=READ_ONLY)
+    @read_tool(mcp)
     def signin_history(user: str, start: str | None = None, end: str | None = None,
-                       outcome: str | None = None, limit: int = 25) -> dict:
+                       outcome: str | None = None, limit: int = 10) -> dict:
         """Entra ID sign-in and MFA events for a user, with a summary of source IPs/countries/outcomes
         and up to 50 raw events (newest first)."""
         f = build_filter(user=user, dataset="azuread", start=start, end=end, outcome=outcome)
@@ -100,9 +100,9 @@ def build_server(store: ScenarioStore) -> MCPServer:
         }
         return res
 
-    @mcp.tool(annotations=READ_ONLY)
+    @read_tool(mcp)
     def directory_changes(user: str | None = None, group: str | None = None, start: str | None = None,
-                          end: str | None = None, limit: int = 25) -> dict:
+                          end: str | None = None, limit: int = 10) -> dict:
         """AD audit events that change accounts or groups (e.g. member added to a group, password reset),
         filtered by the actor/target user or group name."""
         f = build_filter(user=user, dataset="windows.security", start=start, end=end)

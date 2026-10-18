@@ -12,7 +12,7 @@ from typing import Any, Callable, Iterable
 from .store import parse_ts
 
 MAX_LIMIT = 50
-DEFAULT_LIMIT = 25
+DEFAULT_LIMIT = 10
 
 # Fields an "entity" filter matches against (user, host or IP / domain / mailbox).
 ENTITY_FIELDS = (

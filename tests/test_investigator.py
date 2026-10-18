@@ -28,9 +28,9 @@ def test_investigator_only_verifies_evidence(monkeypatch):
 def test_report_accepts_json_string_fields():
     r = InvestigationReport.model_validate({
         "title": "t", "verdict": "true_positive", "confidence": "high", "severity": "high",
-        "executive_summary": "s", "root_cause": "phish",
+        "summary": "s",
         "attack_timeline": '[{"time": "2026-10-13T10:16:05Z", "what_happened": "ps", "evidence_event_ids": ["A2-EDR-00035"]}]',
-        "mitre_attack": [{"technique_id": "T1059.001", "name": "PowerShell", "tactic": "Execution"}],
+        "mitre_attack": ["T1059.001 PowerShell (Execution)"],
         "scope": '{"compromised_users": ["s.khan"], "compromised_hosts": ["WS-042"]}',
         "indicators": [], "what_needs_containing": ["WS-042"], "escalate_to_human": False,
     })

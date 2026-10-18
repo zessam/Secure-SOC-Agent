@@ -11,7 +11,7 @@ TOOLS = [
     ('ti_mcp', ['lookup_indicators', 'search_campaign']),
     ('edr_read_mcp', ['host_connections']),
 ]
-TOOL_BUDGET = 8
+TOOL_BUDGET = 5
 
 
 def build(mode: str = "incident") -> LlmAgent:

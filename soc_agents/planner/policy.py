@@ -56,6 +56,17 @@ def _is_protected_ip(value: str) -> bool:
     return any(ip in net for net in PROTECTED_NETWORKS)
 
 
+def _host_of(action: str, target: str, known_hosts: set[str]) -> str:
+    """Host part of a target: 'WS-042', 'WS-042:22916', 'WS-042:C:\\path' or 'payload.exe on WS-042'."""
+    if action in ("kill_process", "quarantine_file"):
+        if ":" in target and not target[1:3] == ":\\":
+            return target.split(":", 1)[0].strip()
+        for token in target.replace("(", " ").replace(")", " ").replace(",", " ").split():
+            if token.lower() in known_hosts or token.upper() in _load_tiers():
+                return token
+    return target
+
+
 def review_plan(plan: dict, investigation: dict | None, signed_hashes: set[str] | None = None) -> dict:
     """Return a copy of the plan where every action has requires_approval, policy and policy_reason."""
     investigation = investigation or {}
@@ -72,6 +83,8 @@ def review_plan(plan: dict, investigation: dict | None, signed_hashes: set[str] 
 
     for a in actions:
         act, target = a.get("action", ""), str(a.get("target", ""))
+        if act in HOST_ACTIONS:
+            target = _host_of(act, target, compromised_hosts | clean)
         t = _norm(target)
         a["requires_approval"] = act not in NO_APPROVAL
         reason = None

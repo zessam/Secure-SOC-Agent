@@ -10,7 +10,7 @@ DESCRIPTION = 'Checks accounts: AD attributes, group membership, Entra ID sign-i
 TOOLS = [
     ('ad_mcp', ['get_user', 'get_group', 'search_users', 'get_host', 'signin_history', 'directory_changes']),
 ]
-TOOL_BUDGET = 10
+TOOL_BUDGET = 6
 
 
 def build(mode: str = "incident") -> LlmAgent:

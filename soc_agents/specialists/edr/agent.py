@@ -10,7 +10,7 @@ DESCRIPTION = 'Investigates endpoints: process trees, network connections, files
 TOOLS = [
     ('edr_read_mcp', ['get_process_tree', 'host_connections', 'search_host_events', 'get_detections', 'find_indicator', 'aggregate_host_events', 'get_events']),
 ]
-TOOL_BUDGET = 12
+TOOL_BUDGET = 8
 
 
 def build(mode: str = "incident") -> LlmAgent:

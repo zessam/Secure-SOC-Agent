@@ -22,7 +22,8 @@ def build_triage_agent() -> LlmAgent:
             mcp_tools("ad_mcp", ["get_user", "get_host"]),
             mcp_tools("case_mcp", ["get_case", "search_changes"]),
         ],
+        include_contents="none",  # inputs come via {state} in the instruction, not chat history
         output_schema=TriageResult,
         output_key="triage",
-        before_tool_callback=tool_budget(10),
+        before_tool_callback=tool_budget(8),
     )

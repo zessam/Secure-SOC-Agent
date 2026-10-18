@@ -5,8 +5,13 @@ model names come from env vars so nothing is hard-coded in agent code.
 """
 from __future__ import annotations
 
+import asyncio
+import logging
 import os
+import random
 from typing import Any, AsyncGenerator
+
+import httpx
 
 from google.adk.models._capabilities import LlmCapabilities
 from google.adk.models.apigee_llm import CompletionsHTTPClient
@@ -30,10 +35,33 @@ class _VllmClient(CompletionsHTTPClient):
     def _construct_payload(self, llm_request: LlmRequest, stream: bool) -> dict[str, Any]:
         payload = super()._construct_payload(llm_request, stream)
         payload["model"] = self._model
+        if os.environ.get("VLLM_THINKING", "off").lower() in ("off", "false", "0"):
+            # Qwen-style models: skip the hidden reasoning tokens (much faster / cheaper per call).
+            payload["chat_template_kwargs"] = {"enable_thinking": False}
         fmt = payload.get("response_format")
         if fmt and fmt.get("type") == "json_schema" and "schema" not in fmt["json_schema"]:
             fmt["json_schema"] = {"name": "output", "schema": fmt["json_schema"]}
         return payload
+
+
+log = logging.getLogger(__name__)
+
+# One local GPU server: cap simultaneous requests (the 4 parallel specialists otherwise time out).
+_SLOTS: dict[int, asyncio.Semaphore] = {}
+
+
+def _slots() -> asyncio.Semaphore:
+    loop_id = id(asyncio.get_running_loop())
+    if loop_id not in _SLOTS:
+        _SLOTS[loop_id] = asyncio.Semaphore(int(os.environ.get("VLLM_MAX_CONCURRENCY", "2")))
+    return _SLOTS[loop_id]
+_RETRIES = 4
+
+
+def _retriable(e: BaseException) -> bool:
+    if isinstance(e, (httpx.TimeoutException, httpx.NetworkError)):
+        return True
+    return isinstance(e, httpx.HTTPStatusError) and e.response.status_code in (408, 429, 500, 502, 503, 504)
 
 
 class VllmLlm(BaseLlm):
@@ -54,7 +82,18 @@ class VllmLlm(BaseLlm):
         if self._client is None:
             headers = {"Authorization": f"Bearer {self.api_key}"} if self.api_key else {}
             self._client = _VllmClient(self.model, base_url=self.base_url, headers=headers)
-        async for response in self._client.generate_content_async(llm_request, stream):
+        for attempt in range(_RETRIES + 1):
+            try:
+                async with _slots():
+                    responses = [r async for r in self._client.generate_content_async(llm_request, False)]
+                break
+            except Exception as e:  # noqa: BLE001
+                if attempt == _RETRIES or not _retriable(e):
+                    raise
+                delay = min(60, 5 * 2 ** attempt) + random.uniform(0, 2)
+                log.warning("vLLM call failed (%s); retry %d/%d in %.0fs", type(e).__name__, attempt + 1, _RETRIES, delay)
+                await asyncio.sleep(delay)
+        for response in responses:
             yield response
 
 

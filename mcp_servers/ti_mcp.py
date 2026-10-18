@@ -6,7 +6,7 @@ import re
 
 from mcp.server.mcpserver import MCPServer
 
-from .common import READ_ONLY, serve
+from .common import read_tool, serve
 from .common.store import ScenarioStore
 
 INSTRUCTIONS = """Read-only threat intelligence. lookup_indicators returns a verdict (malicious / suspicious /
@@ -49,14 +49,14 @@ def build_server(store: ScenarioStore) -> MCPServer:
                 result.update(verdict="internal", tags=["rfc1918"])
         return result
 
-    @mcp.tool(annotations=READ_ONLY)
+    @read_tool(mcp)
     def lookup_indicators(indicators: list[str]) -> dict:
         """Reputation for up to 20 IOCs (IPs, domains, SHA-256/MD5 hashes, URLs) in one call."""
         batch = indicators[:MAX_BATCH]
         return {"results": [lookup(i) for i in batch],
                 "skipped": indicators[MAX_BATCH:]}
 
-    @mcp.tool(annotations=READ_ONLY)
+    @read_tool(mcp)
     def search_campaign(name: str) -> dict:
         """All known indicators for a campaign / threat actor name (substring match)."""
         hits = [i for i in store.ti_indicators if name.lower() in str(i.get("campaign") or "").lower()]

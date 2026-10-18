@@ -10,7 +10,7 @@ DESCRIPTION = 'Searches SIEM logs: email, sign-ins, Windows auth, proxy, DNS, fi
 TOOLS = [
     ('siem_mcp', ['search_events', 'aggregate_events', 'get_events', 'list_alerts']),
 ]
-TOOL_BUDGET = 12
+TOOL_BUDGET = 8
 
 
 def build(mode: str = "incident") -> LlmAgent:

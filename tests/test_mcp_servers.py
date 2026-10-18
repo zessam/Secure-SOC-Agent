@@ -80,7 +80,7 @@ def test_a2_process_tree_outlook_word_powershell_payload():
 
 def test_a2_connections_show_c2_domain_and_ti_says_malicious():
     conns = call(edr_read_mcp, "A2", "host_connections", host="WS-042")
-    domains = {d["domain"] for d in conns["destinations"]}
+    domains = {d.get("domain") for d in conns["destinations"]}
     assert "cdn-sync-api.example" in domains
     ti = call(ti_mcp, "A2", "lookup_indicators", indicators=["cdn-sync-api.example", "10.10.5.42", "8.8.8.8"])
     verdicts = {r["indicator"]: r["verdict"] for r in ti["results"]}

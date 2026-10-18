@@ -22,20 +22,20 @@ ActionType = Literal[
 class ProposedAction(BaseModel):
     action: ActionType
     target: str = Field(description="Exactly one host, user, IP, domain, hash, group change or case id")
-    reason: str = Field(description="Why, in one sentence, tied to the investigation")
-    evidence_event_ids: list[str] = Field(description="Event ids that justify this action")
+    reason: str = Field(description="Max 10 words")
+    evidence_event_ids: list[str] = Field(description="1-2 event ids")
     urgency: Literal["immediate", "soon", "later"]
 
 
 class NotRecommended(BaseModel):
     action: str
     target: str
-    reason: str = Field(description="Why this tempting action should NOT be taken")
+    reason: str = Field(description="Max 10 words")
 
 
 class ResponsePlan(AgentOutput):
-    summary: str = Field(description="2-3 sentences: the response strategy")
+    summary: str = Field(description="One sentence, max 25 words")
     actions: list[ProposedAction]
     not_recommended: list[NotRecommended] = Field(
-        default_factory=list, description="Over-reactions you considered and rejected (e.g. isolating a clean host)")
+        default_factory=list, description="Max 3 over-reactions you rejected (e.g. isolating a clean host)")
     close_case: bool = Field(description="True only for false/benign positives with nothing to contain")
