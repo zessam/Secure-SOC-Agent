@@ -7,8 +7,25 @@
 | Fake bank data (`data/`) | Done: 14 scenarios, ~1,200 SIEM and ~530 EDR events |
 | Mock security systems (`mcp_servers/`) | Done: 5 read-only MCP servers |
 | Tests (`tests/`) | Done: 26 tests pass |
-| Triage agent (`soc_agents/triage.py`) | Built; needs a model (Gemini key or vLLM) for a live run |
-| Other agents | Not started |
+| Triage agent (`soc_agents/triage.py`) | Built and tested live on vLLM (A2: correct) |
+| 4 specialists (`soc_agents/specialists/`) | Built; run in parallel after Triage |
+| Investigator (`soc_agents/investigator/`) | Built; verdict, timeline, ATT&CK, scope |
+| Response Planner, Reporter | Not started |
+
+**Code layout: one folder per agent** (`agent.py` = wiring, `prompt.py` = instructions, `schema.py` = output):
+
+```
+soc_agents/
+├── common/          models.py (vLLM/Gemini) · tools.py (MCP) · callbacks.py · schemas.py
+├── triage/          agent.py · prompt.py · schema.py
+├── specialists/     base.py · schema.py
+│   ├── siem/        agent.py · prompt.py
+│   ├── edr/         agent.py · prompt.py
+│   ├── identity/    agent.py · prompt.py
+│   └── threat_intel/agent.py · prompt.py
+├── investigator/    agent.py · prompt.py · schema.py
+└── workflow.py      Triage → specialists (parallel) → Investigator
+```
 
 **The 5 mock systems the agents will query:**
 
